@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace manutVeiculo
 {
-    class Veiculo
+    public class Veiculo
     {
     }
 }

@@ -96,11 +96,11 @@ namespace manutVeiculo
 
             return cpf.EndsWith(Digito);
         }
-       
+
 
         private void btnCancelarAdd_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja sair sem salvar?", "Confirmação", 
+            if (MessageBox.Show("Deseja sair sem salvar?", "Confirmação",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 //
@@ -109,7 +109,7 @@ namespace manutVeiculo
             {
                 this.Close();
             }
-            
+
         }
 
 
@@ -127,13 +127,13 @@ namespace manutVeiculo
                 }
                 else
                 {
-                    
-                    foreach (Pessoa p in lista_pessoa)
-                        if (txtCpf.Text.Equals(p.cpf))
-                    {
-                            existe = true;
-                    }
-                    
+
+                    //foreach (Pessoa p in lista_pessoa)
+                    //    if (txtCpf.Text.Equals(p.cpf))
+                    //{
+                    //        existe = true;
+                    //}
+
                     if (existe)
                     {
                         MessageBox.Show("CPF já existe no cadastro!");
@@ -142,9 +142,9 @@ namespace manutVeiculo
                     {
                         if (rbtnMasc.Checked) sexo = "masculino";
                         if (rbtnFem.Checked) sexo = "feminino";
-                        p = new Pessoa(txtCpf.Text, txtNome.Text, sexo, txtTelefone.Text, txtRua.Text, txtBairro.Text, txtNro.Text, txtCep.Text, txtCidade.Text, txtUf.Text);
-                        pessoadao.Insert(p);
-                        lista_pessoa = pessoadao.ListAll();
+                        //p = new Pessoa(txtCpf.Text, txtNome.Text, sexo, txtTelefone.Text, txtRua.Text, txtBairro.Text, txtNro.Text, txtCep.Text, txtCidade.Text, txtUf.Text);
+                        //pessoadao.Insert(p);
+                        //lista_pessoa = pessoadao.ListAll();
                         adicionado = true;
                         txtNome.Text = "";
                         txtCpf.Text = "";
@@ -153,7 +153,7 @@ namespace manutVeiculo
                         txtTelefone.Text = "";
                         txtRua.Text = "";
                         txtBairro.Text = "";
-                        txtNro.Text = "";                        
+                        txtNro.Text = "";
                         txtCep.Text = "";
                         txtCidade.Text = "";
                         txtUf.Text = "";
@@ -161,5 +161,7 @@ namespace manutVeiculo
                         existe = false;
                     }
                 }
-    
+            }
+        }
+    }
 }

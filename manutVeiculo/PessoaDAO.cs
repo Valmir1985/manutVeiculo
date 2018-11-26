@@ -1,16 +1,21 @@
 ﻿using manutVeiculo;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.SQLite;
+using System.Data;
 
-public class PessoaDAO
+namespace manutVeiculo
 {
-	public PessoaDAO()
-	{
+    public class PessoaDAO
+    {
+        public PessoaDAO()
+        {
+        }
         public void Insert(Pessoa p)
         {
             Database manutVeic = Database.GetInstance();
-            string qry = string.Format ("INSERT INTO pessoa (id, cpf, nome, sexo, rua, bairro, numero, cep, cidade, uf) VALUE ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')", p.Id, p.Nome, p.Cpf, p.Sexo.ToString(), p.Rua, p.Bairro, p.Numero, p.Cep, p.Cidade, p.Uf);
+            string qry = string.Format("INSERT INTO pessoa (id, cpf, nome, sexo, rua, bairro, numero, cep, cidade, uf) VALUE ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')", p.Id, p.Nome, p.Cpf, p.Sexo.ToString(), p.Rua, p.Bairro, p.Numero, p.Cep, p.Cidade, p.Uf);
             DBHospital.ExecuteSQL(qry);
         }
 
@@ -31,7 +36,7 @@ public class PessoaDAO
 
             if (dr.Read())
             {
-                p = new Pessoa("", "", "", "", "", "", "", "", "", "");
+                p = new Pessoa(-1, "", "", "", "", "", -1, "", "", "", null);
                 p.Id = dr.GetInt16(0);
                 p.Cpf = dr.GetString(1);
                 p.Nome = dr.GetString(2);
@@ -46,6 +51,7 @@ public class PessoaDAO
             dr.Close();
             conexao.Close();
             return p;
+
         }
 
         public void Update(Pessoa p)
@@ -59,9 +65,9 @@ public class PessoaDAO
 
         public void Delete(int id)
         {
-            Database manutVeic = Database.GetInstance();
-            string qry = string.Format("DELETE FROM Pessoa WHERE id = '" + id + "'");
-            manutVeic.ExecuteSQL(qry);
+            //Database manutVeic = Database.GetInstance();
+            //string qry = string.Format("DELETE FROM Pessoa WHERE id = '" + id + "'");
+            //manutVeic.ExecuteSQL(qry);
         }
 
         public List<Pessoa> ListAll()
@@ -92,7 +98,7 @@ public class PessoaDAO
                 string cep = dr.GetString(7);
                 string cidade = dr.GetString(8);
                 string uf = dr.GetString(9);
-                
+
                 p = new Pessoa(id, cpf, nome, sexo, rua, bairro, numero, cep, cidade, uf);
                 lista_pessoa.Add(p);
             }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace manutVeiculo
 {
-    class Pessoa
+    public class Pessoa
     {
         private int id;
         private String cpf;
