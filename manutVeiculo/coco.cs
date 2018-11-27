@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace manutVeiculo
 {
-    public partial class teste : Form
+    public partial class coco : Form
     {
-        public teste()
+        public coco()
         {
             InitializeComponent();
         }
