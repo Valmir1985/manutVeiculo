@@ -14,9 +14,9 @@ namespace manutVeiculo
         }
         public void Insert(Pessoa p)
         {
-            Database manutVeic = Database.GetInstance();
+            Database manutVeiculo = Database.GetInstance();
             string qry = string.Format("INSERT INTO pessoa (id, cpf, nome, sexo, rua, bairro, numero, cep, cidade, uf) VALUE ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')", p.Id, p.Nome, p.Cpf, p.Sexo.ToString(), p.Rua, p.Bairro, p.Numero, p.Cep, p.Cidade, p.Uf);
-            DBHospital.ExecuteSQL(qry);
+            manutVeiculo.ExecuteSQL(qry);
         }
 
         public Pessoa Read(string id)
@@ -56,11 +56,11 @@ namespace manutVeiculo
 
         public void Update(Pessoa p)
         {
-            Database manutVeic = Database.GetInstance();
+            Database manutVeiculo = Database.GetInstance();
 
             string qry = string.Format("UPDATE Pessoa SET id='{0}',cpf='{2}',nome='{3}',sexo='{4}',rua='{5}',bairro='{6}',numero='{7}',cep='{8}',cidade='{9}',uf='{10}'" + "WHERE id='{1}'", p.Nome, p.Cpf, p.Nasc.ToString("yyyy-MM-dd"), p.Sexo, p.Tel, p.Logradouro, p.Num, p.Complemento, p.Cep, p.Cidade, p.Uf, p.Pais, p.Profissao);
 
-            manutVeic.ExecuteSQL(qry);
+            manutVeiculo.ExecuteSQL(qry);
         }
 
         public void Delete(int id)
@@ -88,13 +88,13 @@ namespace manutVeiculo
 
             while (dr.Read())
             {
-                int id = dr.GetString(0);
+                int id = dr.GetInt16(0);
                 string nome = dr.GetString(1);
                 string cpf = dr.GetString(2);
                 string sexo = dr.GetString(3);
                 string rua = dr.GetString(4);
                 string bairro = dr.GetString(5);
-                string numero = dr.GetString(6);
+                int numero = dr.GetInt16(6);
                 string cep = dr.GetString(7);
                 string cidade = dr.GetString(8);
                 string uf = dr.GetString(9);
@@ -131,13 +131,13 @@ namespace manutVeiculo
 
             while (dr.Read())
             {
-                int id = dr.GetString(0);
+                int id = dr.GetInt16(0);
                 string nome = dr.GetString(1);
                 string cpf = dr.GetString(2);
                 string sexo = dr.GetString(3);
                 string rua = dr.GetString(4);
                 string bairro = dr.GetString(5);
-                int numero = dr.GetString(6);
+                int numero = dr.GetInt16(6);
                 string cep = dr.GetString(7);
                 string cidade = dr.GetString(8);
                 string uf = dr.GetString(9);

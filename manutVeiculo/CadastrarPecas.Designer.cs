@@ -32,18 +32,20 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.txtMarca = new System.Windows.Forms.TextBox();
+            this.txtModelo = new System.Windows.Forms.TextBox();
+            this.txtPeca = new System.Windows.Forms.TextBox();
+            this.txtKmTroca = new System.Windows.Forms.TextBox();
+            this.btnCadastrar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.panelPeca = new System.Windows.Forms.Panel();
+            this.panelPeca.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(48, 36);
+            this.label1.Location = new System.Drawing.Point(28, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 0;
@@ -53,7 +55,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(317, 36);
+            this.label2.Location = new System.Drawing.Point(297, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 13);
             this.label2.TabIndex = 1;
@@ -62,7 +64,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(50, 104);
+            this.label3.Location = new System.Drawing.Point(30, 89);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 13);
             this.label3.TabIndex = 2;
@@ -71,79 +73,89 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(317, 104);
+            this.label4.Location = new System.Drawing.Point(297, 89);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "Km de troca";
             // 
-            // textBox1
+            // txtMarca
             // 
-            this.textBox1.Location = new System.Drawing.Point(51, 52);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(184, 20);
-            this.textBox1.TabIndex = 4;
+            this.txtMarca.Location = new System.Drawing.Point(31, 37);
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Size = new System.Drawing.Size(184, 20);
+            this.txtMarca.TabIndex = 4;
             // 
-            // textBox2
+            // txtModelo
             // 
-            this.textBox2.Location = new System.Drawing.Point(51, 120);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(184, 20);
-            this.textBox2.TabIndex = 5;
+            this.txtModelo.Location = new System.Drawing.Point(31, 105);
+            this.txtModelo.Name = "txtModelo";
+            this.txtModelo.Size = new System.Drawing.Size(184, 20);
+            this.txtModelo.TabIndex = 5;
             // 
-            // textBox3
+            // txtPeca
             // 
-            this.textBox3.Location = new System.Drawing.Point(320, 52);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(194, 20);
-            this.textBox3.TabIndex = 6;
+            this.txtPeca.Location = new System.Drawing.Point(300, 37);
+            this.txtPeca.Name = "txtPeca";
+            this.txtPeca.Size = new System.Drawing.Size(194, 20);
+            this.txtPeca.TabIndex = 6;
             // 
-            // textBox4
+            // txtKmTroca
             // 
-            this.textBox4.Location = new System.Drawing.Point(320, 120);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(194, 20);
-            this.textBox4.TabIndex = 7;
+            this.txtKmTroca.Location = new System.Drawing.Point(300, 105);
+            this.txtKmTroca.Name = "txtKmTroca";
+            this.txtKmTroca.Size = new System.Drawing.Size(194, 20);
+            this.txtKmTroca.TabIndex = 7;
             // 
-            // button1
+            // btnCadastrar
             // 
-            this.button1.Location = new System.Drawing.Point(99, 171);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 35);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Cadastrar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Location = new System.Drawing.Point(99, 171);
+            this.btnCadastrar.Name = "btnCadastrar";
+            this.btnCadastrar.Size = new System.Drawing.Size(84, 35);
+            this.btnCadastrar.TabIndex = 8;
+            this.btnCadastrar.Text = "Cadastrar";
+            this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnCancelar
             // 
-            this.button2.Location = new System.Drawing.Point(372, 171);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(84, 35);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnCancelar.Location = new System.Drawing.Point(372, 171);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(84, 35);
+            this.btnCancelar.TabIndex = 9;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Form6
+            // panelPeca
+            // 
+            this.panelPeca.Controls.Add(this.txtKmTroca);
+            this.panelPeca.Controls.Add(this.txtPeca);
+            this.panelPeca.Controls.Add(this.txtModelo);
+            this.panelPeca.Controls.Add(this.txtMarca);
+            this.panelPeca.Controls.Add(this.label4);
+            this.panelPeca.Controls.Add(this.label3);
+            this.panelPeca.Controls.Add(this.label2);
+            this.panelPeca.Controls.Add(this.label1);
+            this.panelPeca.Location = new System.Drawing.Point(20, 15);
+            this.panelPeca.Name = "panelPeca";
+            this.panelPeca.Size = new System.Drawing.Size(533, 144);
+            this.panelPeca.TabIndex = 10;
+            // 
+            // CadastrarPecas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(576, 228);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panelPeca);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnCadastrar);
             this.MaximizeBox = false;
-            this.Name = "Form6";
+            this.Name = "CadastrarPecas";
             this.Text = "Cadastro de Peças";
+            this.panelPeca.ResumeLayout(false);
+            this.panelPeca.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -153,11 +165,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox txtMarca;
+        private System.Windows.Forms.TextBox txtModelo;
+        private System.Windows.Forms.TextBox txtPeca;
+        private System.Windows.Forms.TextBox txtKmTroca;
+        private System.Windows.Forms.Button btnCadastrar;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Panel panelPeca;
     }
 }

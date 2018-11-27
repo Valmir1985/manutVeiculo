@@ -15,14 +15,11 @@ namespace manutVeiculo
     public partial class CadastrarCliente : Form
     {
         private PessoaDAO pessoadao = new PessoaDAO();
-        private VeiculoDAO veiculodao = new VeiculoDAO();
         List<Pessoa> lista_pessoa;
-        List<Veiculo> lista_veiculo;
         private Pessoa p;
         private string sexo;
         private bool adicionado = false;
-        private bool existe = false;//teste teste
-        private int hello;
+        private bool existe = false;
 
         public bool adicionou()
         {
@@ -31,24 +28,17 @@ namespace manutVeiculo
         public CadastrarCliente()
         {
             InitializeComponent();
-            //this.Text = "Adicionar Cliente";
             txtCpf.Text = "";
             txtNome.Text = "";
             rbtnMasc.Checked = false;
             rbtnFem.Checked = false;
             txtTelefone.Text = "";
-            txtCep.Text = "";
-            txtBairro.Text = "";
             txtRua.Text = "";
+            txtBairro.Text = "";
+            txtNro.Text = "";
+            txtCep.Text = "";
             txtCidade.Text = "";
             txtUf.Text = "";
-            txtNro.Text = "";
-            txtCor.Text = "";
-            txtPlaca.Text = "";
-            txtKmRodado.Text = "";
-            txtAno.Text = "";
-            txtMarca.Text = "";
-            lista_veiculo = veiculodao.ListAll();
             lista_pessoa = pessoadao.ListAll();
             btnCadastrar.Visible = true;
         }
