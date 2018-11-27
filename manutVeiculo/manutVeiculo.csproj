@@ -75,6 +75,12 @@
     <Compile Include="ConsultaOS.Designer.cs">
       <DependentUpon>ConsultaOS.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTeste.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTeste.Designer.cs">
+      <DependentUpon>FormTeste.cs</DependentUpon>
+    </Compile>
     <Compile Include="Peca.cs" />
     <Compile Include="PecaDAO.cs" />
     <Compile Include="Pessoa.cs" />
