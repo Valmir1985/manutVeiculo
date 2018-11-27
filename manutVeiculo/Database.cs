@@ -52,6 +52,7 @@ namespace manutVeiculo
                 conn.Open();
 
                 StringBuilder sql = new StringBuilder();
+
                 sql.AppendLine("CREATE TABLE IF NOT EXISTS Pessoa(");
             sql.AppendLine("id VARCHAR(20) NOT NULL PRIMARY KEY, ");
             sql.AppendLine("cpf VARCHAR(20) NOT NULL, ");
@@ -77,12 +78,11 @@ namespace manutVeiculo
                 sql.Clear();
 
                 sql.AppendLine("CREATE TABLE IF NOT EXISTS Veiculo(");
-            sql.AppendLine("id VARCHAR(20) NOT NULL PRIMARY KEY, ");
             sql.AppendLine("idCliente VARCHAR(20) NOT NULL FOREIGN KEY('id') REFERENCES pessoa, ");
             sql.AppendLine("marca VARCHAR(50), ");  
                 sql.AppendLine("modelo VARCHAR(50), ");
                 sql.AppendLine("combustivel VARCHAR(20), ");
-                sql.AppendLine("placa VARCHAR(50), ");
+                sql.AppendLine("placa VARCHAR(50) NOT NULL PRIMARY KEY, ");
                 sql.AppendLine("kmRodado VARCHAR(10), ");
                 sql.AppendLine("ano VARCHAR(10), ");
 
@@ -117,8 +117,33 @@ namespace manutVeiculo
                 {
                     MessageBox.Show("Erro ao criar banco de dados: " + ex.Message);
                 }
-                conn.Close();
+
+            sql.Clear();
+
+
+        sql.AppendLine("CREATE TABLE IF NOT EXISTS Os(");
+            sql.AppendLine("id VARCHAR(10) NOT NULL PRIMARY KEY, ");
+            sql.AppendLine("cliente VARCHAR(50) FOREIGN KEY ('id') REFERENCES pessoa, ");
+            sql.AppendLine("placa VARCHAR(20) FOREIGN KEY ('placa') REFERENCES veiculo, ");
+            sql.AppendLine("status BOOLEAN, ");
+            sql.AppendLine("peca VARCHAR(100), ");
+            sql.AppendLine("valor VARCHAR(50), ");
+            sql.AppendLine("km INTEGER, ");
+            sql.AppendLine("data DATE, ");
+
+            cmd = new SQLiteCommand(sql.ToString(), conn);
+            try
+            {
+                cmd.ExecuteNonQuery();
             }
-        }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao criar banco de dados: " + ex.Message);
+            }
+            
+            conn.Close();
+            }
     }
 }
+
+

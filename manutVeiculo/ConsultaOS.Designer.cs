@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.gbOS = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.txtOS = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.dGViewConsultaOS = new System.Windows.Forms.DataGridView();
             this.ColumnNrOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPlaca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnStatusOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnConsultar = new System.Windows.Forms.Button();
+            this.txtOS = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.gbOS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGViewConsultaOS)).BeginInit();
             this.SuspendLayout();
@@ -45,8 +45,8 @@
             // gbOS
             // 
             this.gbOS.Controls.Add(this.dGViewConsultaOS);
-            this.gbOS.Controls.Add(this.button2);
-            this.gbOS.Controls.Add(this.button1);
+            this.gbOS.Controls.Add(this.btnCancelar);
+            this.gbOS.Controls.Add(this.btnConsultar);
             this.gbOS.Controls.Add(this.txtOS);
             this.gbOS.Controls.Add(this.label1);
             this.gbOS.Location = new System.Drawing.Point(23, 13);
@@ -55,40 +55,6 @@
             this.gbOS.TabIndex = 6;
             this.gbOS.TabStop = false;
             this.gbOS.Text = "Ordem de Serviço";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(461, 89);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(84, 35);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(190, 89);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 35);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Consultar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // txtOS
-            // 
-            this.txtOS.Location = new System.Drawing.Point(308, 43);
-            this.txtOS.Name = "txtOS";
-            this.txtOS.Size = new System.Drawing.Size(124, 20);
-            this.txtOS.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(339, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nro da OS";
             // 
             // dGViewConsultaOS
             // 
@@ -134,6 +100,42 @@
             this.columnStatusOS.ReadOnly = true;
             this.columnStatusOS.Width = 238;
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(461, 89);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(84, 35);
+            this.btnCancelar.TabIndex = 3;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnConsultar
+            // 
+            this.btnConsultar.Location = new System.Drawing.Point(190, 89);
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Size = new System.Drawing.Size(84, 35);
+            this.btnConsultar.TabIndex = 2;
+            this.btnConsultar.Text = "Consultar";
+            this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtOS
+            // 
+            this.txtOS.Location = new System.Drawing.Point(308, 43);
+            this.txtOS.Name = "txtOS";
+            this.txtOS.Size = new System.Drawing.Size(124, 20);
+            this.txtOS.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(339, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Nro da OS";
+            // 
             // ConsultarOS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -152,8 +154,8 @@
         #endregion
 
         private System.Windows.Forms.GroupBox gbOS;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnConsultar;
         private System.Windows.Forms.TextBox txtOS;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dGViewConsultaOS;
