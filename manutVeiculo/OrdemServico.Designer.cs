@@ -31,24 +31,26 @@
             this.gpbOs = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnFinaliza = new System.Windows.Forms.Button();
-            this.lvOs = new System.Windows.Forms.ListView();
-            this.columnTroca = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnPeca = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnKm = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnValor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnVisualizar = new System.Windows.Forms.Button();
             this.txtOs = new System.Windows.Forms.TextBox();
             this.lbOs = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnFinalizar = new System.Windows.Forms.Button();
+            this.dGViewHistVeiculo = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnProprietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnData1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gpbOs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGViewHistVeiculo)).BeginInit();
             this.SuspendLayout();
             // 
             // gpbOs
             // 
+            this.gpbOs.Controls.Add(this.dGViewHistVeiculo);
             this.gpbOs.Controls.Add(this.btnCancel);
             this.gpbOs.Controls.Add(this.btnFinaliza);
-            this.gpbOs.Controls.Add(this.lvOs);
             this.gpbOs.Controls.Add(this.btnVisualizar);
             this.gpbOs.Controls.Add(this.txtOs);
             this.gpbOs.Controls.Add(this.lbOs);
@@ -77,42 +79,6 @@
             this.btnFinaliza.TabIndex = 9;
             this.btnFinaliza.Text = "Finalizar";
             this.btnFinaliza.UseVisualStyleBackColor = true;
-            // 
-            // lvOs
-            // 
-            this.lvOs.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.lvOs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnTroca,
-            this.columnPeca,
-            this.columnKm,
-            this.columnValor});
-            this.lvOs.HoverSelection = true;
-            this.lvOs.Location = new System.Drawing.Point(25, 79);
-            this.lvOs.Name = "lvOs";
-            this.lvOs.Size = new System.Drawing.Size(715, 416);
-            this.lvOs.TabIndex = 8;
-            this.lvOs.UseCompatibleStateImageBehavior = false;
-            this.lvOs.View = System.Windows.Forms.View.Details;
-            // 
-            // columnTroca
-            // 
-            this.columnTroca.Text = "Troca";
-            this.columnTroca.Width = 195;
-            // 
-            // columnPeca
-            // 
-            this.columnPeca.Text = "Peça";
-            this.columnPeca.Width = 219;
-            // 
-            // columnKm
-            // 
-            this.columnKm.Text = "Km";
-            this.columnKm.Width = 143;
-            // 
-            // columnValor
-            // 
-            this.columnValor.Text = "Valor";
-            this.columnValor.Width = 153;
             // 
             // btnVisualizar
             // 
@@ -159,7 +125,59 @@
             this.btnFinalizar.Text = "Finalizar";
             this.btnFinalizar.UseVisualStyleBackColor = true;
             // 
-            // Form3
+            // dGViewHistVeiculo
+            // 
+            this.dGViewHistVeiculo.AllowUserToAddRows = false;
+            this.dGViewHistVeiculo.AllowUserToDeleteRows = false;
+            this.dGViewHistVeiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGViewHistVeiculo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.columnProprietario,
+            this.columnData1});
+            this.dGViewHistVeiculo.Location = new System.Drawing.Point(25, 87);
+            this.dGViewHistVeiculo.Name = "dGViewHistVeiculo";
+            this.dGViewHistVeiculo.ReadOnly = true;
+            this.dGViewHistVeiculo.Size = new System.Drawing.Size(715, 408);
+            this.dGViewHistVeiculo.TabIndex = 11;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Troca";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Peça";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 220;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Km";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 140;
+            // 
+            // columnProprietario
+            // 
+            this.columnProprietario.HeaderText = "Valor";
+            this.columnProprietario.Name = "columnProprietario";
+            this.columnProprietario.ReadOnly = true;
+            this.columnProprietario.Width = 140;
+            // 
+            // columnData1
+            // 
+            this.columnData1.HeaderText = "Data";
+            this.columnData1.Name = "columnData1";
+            this.columnData1.ReadOnly = true;
+            this.columnData1.Width = 122;
+            // 
+            // OrdemServico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -168,10 +186,11 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnFinalizar);
             this.MaximizeBox = false;
-            this.Name = "Form3";
+            this.Name = "OrdemServico";
             this.Text = "Ordem de Serviço";
             this.gpbOs.ResumeLayout(false);
             this.gpbOs.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGViewHistVeiculo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -184,12 +203,13 @@
         private System.Windows.Forms.TextBox txtOs;
         private System.Windows.Forms.Label lbOs;
         private System.Windows.Forms.Button btnVisualizar;
-        private System.Windows.Forms.ListView lvOs;
-        private System.Windows.Forms.ColumnHeader columnTroca;
-        private System.Windows.Forms.ColumnHeader columnPeca;
-        private System.Windows.Forms.ColumnHeader columnKm;
-        private System.Windows.Forms.ColumnHeader columnValor;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnFinaliza;
+        private System.Windows.Forms.DataGridView dGViewHistVeiculo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnProprietario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnData1;
     }
 }

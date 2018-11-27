@@ -108,7 +108,7 @@ namespace manutVeiculo
             return lista_pessoa;
         }
 
-        public List<Pessoa> FindByName(string nom)
+        public List<Pessoa> FindByName(string cpf)
         {
             List<Pessoa> lista_pessoa = new List<Pessoa>();
             Pessoa p = null;
@@ -116,8 +116,8 @@ namespace manutVeiculo
 
             string qry;
 
-            if (nom != "")
-                qry = string.Format("SELECT id,cpf,nome,sexo,rua,bairro,numero,cep,cidade,uf FROM Pessoa WHERE nome LIKE '%{0}%'", nom);
+            if (cpf != "")
+                qry = string.Format("SELECT id,cpf,nome,sexo,rua,bairro,numero,cep,cidade,uf FROM Pessoa WHERE cpf LIKE '%{0}%'", cpf);
             else
                 qry = string.Format("SELECT id,cpf,nome,sexo,rua,bairro,numero,cep,cidade,uf FROM Pessoa");
 

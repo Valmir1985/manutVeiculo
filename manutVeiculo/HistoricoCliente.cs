@@ -13,10 +13,17 @@ namespace manutVeiculo
 {
     public partial class HistoricoCliente : Form
     {
+        private PessoaDAO pessoadao = new PessoaDAO();
+        List<Pessoa> lista_pessoa;
+
+    
         public HistoricoCliente()
         {
             InitializeComponent();
+            dGViewHistCli.Rows.Clear(); 
+            
         }
+
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -29,6 +36,23 @@ namespace manutVeiculo
             {
                 this.Close();
             }
+        }
+
+        private void btnConfirma_Click(object sender, EventArgs e)
+        {
+            if (!txtCpfHistorico.Text.Equals(""))
+            { 
+                dGViewHistCli.DataSource = pessoadao.FindByName(txtCpfHistorico.Text);
+            }
+            else
+            {
+                MessageBox.Show("Digite um CPF válido!");
+            }
+        }
+
+        private void lvHistCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
