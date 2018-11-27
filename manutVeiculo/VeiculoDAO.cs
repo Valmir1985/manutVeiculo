@@ -15,17 +15,23 @@ namespace manutVeiculo
         public void Insert(Veiculo v)
         {
             Database manutVeiculo = Database.GetInstance();
-            string qry = string.Format("INSERT INTO veiculoCliente (id, marca, modelo, combustivel, placa, kmRodado, ano) VALUE ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", v.Id, v.Marca, v.Modelo, v.Combustivel, v.Placa, v.KmRodado, v.Ano);
+            string qry = string.Format("INSERT INTO veiculo (id, marca, modelo, combustivel, placa, kmRodado, ano) VALUE ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", v.Id, v.Marca, v.Modelo, v.Combustivel, v.Placa, v.KmRodado, v.Ano);
             manutVeiculo.ExecuteSQL(qry);
         }
 
-        public Veiculo Read(string id)
+
+        public Veiculo getById(string id)
+        {
+            string qry = string.Format("SELECT id, marca, modelo, combustivel, placa, kmRodado, ano FROM veiculo WHERE id ='{0}'", id);
+            return Read(qry).FirstOrDefault();
+
+        }
+
+        private List<Veiculo> Read(string qry)
         {
             Veiculo v = null;
             SQLiteConnection conexao = Database.GetInstance().GetConnection();
-
-            string qry = string.Format("SELECT id, marca, modelo, combustivel, placa, kmRodado, ano FROM veiculoCliente WHERE id ='{0}'", id);
-
+            
             if (conexao.State != System.Data.ConnectionState.Open)
             {
                 conexao.Open();
@@ -34,7 +40,9 @@ namespace manutVeiculo
             SQLiteCommand comm = new SQLiteCommand(qry, conexao);
             SQLiteDataReader dr = comm.ExecuteReader();
 
-            if (dr.Read())
+            List<Veiculo> veiculo = new List<Veiculo>();
+
+            while (dr.Read())
             {
                 v = new Veiculo();
                 v.Id = dr.GetInt16(0);
@@ -44,10 +52,36 @@ namespace manutVeiculo
                 v.Placa = dr.GetString(4);
                 v.KmRodado = dr.GetInt16(5);
                 v.Ano = dr.GetInt16(6);
+                veiculo.Add(v);
+            }
+
+            foreach (Veiculo vc in veiculo)
+            {
+                qry = string.Format("SELECT * FROM pessoa WHERE id ='{0}'", vc.Id);
+
+                comm = new SQLiteCommand(qry, conexao);
+                dr = comm.ExecuteReader();
+
+
+                while (dr.Read())
+                {
+                    var p = new Pessoa();
+                    p.Id = dr.GetInt16(0);
+                    p.Cpf = dr.GetString(1);
+                    p.Nome = dr.GetString(2);
+                    p.Sexo = dr.GetString(3);
+                    p.Rua = dr.GetString(4);
+                    p.Bairro = dr.GetString(5);
+                    p.Numero = dr.GetInt16(6);
+                    p.Cep = dr.GetString(7);
+                    p.Cidade = dr.GetString(8);
+                    p.Uf = dr.GetString(9);
+                    vc.Pessoa.Add(p);
+                }
             }
             dr.Close();
             conexao.Close();
-            return v;
+            return veiculo;
         }
 
        /* public void Update(Veiculo v)
@@ -68,81 +102,20 @@ namespace manutVeiculo
 
         public List<Veiculo> ListAll()
         {
-            List<Veiculo> lista_veiculo = new List<Veiculo>();
-            Veiculo v = null;
-            SQLiteConnection conexao = Database.GetInstance().GetConnection();
-
             string qry = string.Format("SELECT id,marca,modelo,combustive,placa,kmRodado,ano FROM Veiculo;");
-
-            if (conexao.State != System.Data.ConnectionState.Open)
-            {
-                conexao.Open();
-            }
-
-            SQLiteCommand comm = new SQLiteCommand(qry, conexao);
-            SQLiteDataReader dr = comm.ExecuteReader();
-
-            while (dr.Read())
-            {
-                int id = dr.GetInt16(0);
-                string marca = dr.GetString(1);
-                string modelo = dr.GetString(2);
-                string combustivel = dr.GetString(3);
-                string placa = dr.GetString(4);
-                int kmRodado = dr.GetInt16(5);
-                int ano = dr.GetInt16(6);
-
-
-                v = new Veiculo(id ,marca, modelo, combustivel, placa, kmRodado, ano, null);
-                lista_veiculo.Add(v);
-            }
-            dr.Close();
-            conexao.Close();
-
-            return lista_veiculo;
+            return Read(qry);
         }
 
-        /* public List<Veiculo> FindByName(string nom)             HABILITAR PROCURAR POR NOME ????
-         {
-             List<Veiculo> lista_veiculo = new List<Veiculo>();
-             Veiculo v = null;
-             SQLiteConnection conexao = Database.GetInstance().GetConnection();
-
+         public List<Veiculo> FindByPlaca(string placa)
+        {
              string qry;
 
-             if (nom != "")
+             if (placa != "")
                  qry = string.Format("SELECT id,marca,modelo,combustivel,placa,kmRodado,ano FROM Veiculo WHERE nome LIKE '%{0}%'", nom);
              else
                  qry = string.Format("SELECT id,cpf,nome,sexo,rua,bairro,numero,cep,cidade,uf FROM Pessoa");
-
-             if (conexao.State != System.Data.ConnectionState.Open)
-             {
-                 conexao.Open();
-             }
-
-             SQLiteCommand comm = new SQLiteCommand(qry, conexao);
-             SQLiteDataReader dr = comm.ExecuteReader();
-
-             while (dr.Read())
-             {
-                 int id = dr.GetString(0);
-                 string nome = dr.GetString(1);
-                 string cpf = dr.GetString(2);
-                 string sexo = dr.GetString(3);
-                 string rua = dr.GetString(4);
-                 string bairro = dr.GetString(5);
-                 int numero = dr.GetString(6);
-                 string cep = dr.GetString(7);
-                 string cidade = dr.GetString(8);
-                 string uf = dr.GetString(9);
-
-                 p = new Pessoa(id, cpf, nome, sexo, rua, bairro, numero, cep, cidade, uf);
-                 lista_pessoa.Add(p);
-             }
-             dr.Close();
-             conexao.Close();
-
-             return lista_pessoa;
-         }*/
+             
+             return Read(qry);
+         }
     }
 }

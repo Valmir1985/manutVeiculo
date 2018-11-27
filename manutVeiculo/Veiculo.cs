@@ -15,14 +15,14 @@ namespace manutVeiculo
         private String placa;
         private int kmRodado;
         private int ano;
-        private Pessoa pessoa;
+        List<Pessoa> pessoa;
 
         public Veiculo()
         {
                 
         }
 
-        public Veiculo(int id, string marca, string modelo, string combustivel, string placa, int kmRodado, int ano, Pessoa pessoa)
+        public Veiculo(int id, string marca, string modelo, string combustivel, string placa, int kmRodado, int ano, List<Pessoa> pessoa)
         {
             this.id = id;
             this.marca = marca;
@@ -42,6 +42,6 @@ namespace manutVeiculo
         public string Placa { get => placa; set => placa = value; }
         public int KmRodado { get => kmRodado; set => kmRodado = value; }
         public int Ano { get => ano; set => ano = value; }
-        internal Pessoa Pessoa { get => pessoa; set => pessoa = value; }
+        public List<Pessoa> Pessoa { get => pessoa; set => pessoa = value; }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.SQLite;
 using System.Data;
+using System.Linq;
 
 namespace manutVeiculo
 {
@@ -19,12 +20,17 @@ namespace manutVeiculo
             manutVeiculo.ExecuteSQL(qry);
         }
 
-        public Pessoa Read(string id)
+        public Pessoa getById(string id)
+        {
+            string qry = string.Format("SELECT id, cpf, nome, sexo, rua, bairro, numero, cep, cidade, uf FROM pessoa WHERE id ='{0}'", id);
+            return Read(qry).FirstOrDefault();
+
+        }
+
+        private List<Pessoa> Read(string qry)
         {
             Pessoa p = null;
             SQLiteConnection conexao = Database.GetInstance().GetConnection();
-
-            string qry = string.Format("SELECT id, cpf, nome, sexo, rua, bairro, numero, cep, cidade, uf FROM Pessoa WHERE id ='{0}'", id);
 
             if (conexao.State != System.Data.ConnectionState.Open)
             {
@@ -34,7 +40,9 @@ namespace manutVeiculo
             SQLiteCommand comm = new SQLiteCommand(qry, conexao);
             SQLiteDataReader dr = comm.ExecuteReader();
 
-            if (dr.Read())
+            List<Pessoa> pessoa = new List<Pessoa>();
+
+            while (dr.Read())
             {
                 p = new Pessoa();
                 p.Id = dr.GetInt16(0);
@@ -47,10 +55,34 @@ namespace manutVeiculo
                 p.Cep = dr.GetString(7);
                 p.Cidade = dr.GetString(8);
                 p.Uf = dr.GetString(9);
+                pessoa.Add(p);
             }
+
+            foreach (Pessoa ps in pessoa)
+            {
+                qry = string.Format("SELECT * FROM veiculo WHERE idCliente ='{0}'", ps.Id);
+
+                comm = new SQLiteCommand(qry, conexao);
+                dr = comm.ExecuteReader();
+
+
+                while (dr.Read())
+                {
+                    var v = new Veiculo();
+                    v.Id = dr.GetInt16(0);
+                    v.Marca = dr.GetString(1);
+                    v.Modelo = dr.GetString(2);
+                    v.Combustivel = dr.GetString(3);
+                    v.Placa = dr.GetString(4);
+                    v.KmRodado = dr.GetInt16(5);
+                    v.Ano = dr.GetInt16(6);
+                    p.Veiculo.Add(v);
+                }
+            }            
+
             dr.Close();
             conexao.Close();
-            return p;
+            return pessoa;
 
         }
 
@@ -58,7 +90,7 @@ namespace manutVeiculo
         {
             Database manutVeiculo = Database.GetInstance();
 
-            string qry = string.Format("UPDATE Pessoa SET id='{0}',cpf='{1}',nome='{2}',sexo='{3}',rua='{4}',bairro='{5}',numero='{6}',cep='{7}',cidade='{8}',uf='{9}'" + "WHERE id='{0}'", p.Id, p.Cpf, p.Nome, p.Sexo, p.Rua, p.Bairro, p.Numero, p.Cep);
+            string qry = string.Format("UPDATE pessoa SET id='{0}',cpf='{1}',nome='{2}',sexo='{3}',rua='{4}',bairro='{5}',numero='{6}',cep='{7}',cidade='{8}',uf='{9}'" + "WHERE id='{0}'", p.Id, p.Cpf, p.Nome, p.Sexo, p.Rua, p.Bairro, p.Numero, p.Cep);
 
             manutVeiculo.ExecuteSQL(qry);
         }
@@ -66,54 +98,18 @@ namespace manutVeiculo
         public void Delete(int id)
         {
             Database manutVeic = Database.GetInstance();
-            string qry = string.Format("DELETE FROM Pessoa WHERE id = '" + id + "'");
+            string qry = string.Format("DELETE FROM pessoa WHERE id = '" + id + "'");
             manutVeic.ExecuteSQL(qry);
         }
 
         public List<Pessoa> ListAll()
         {
-            List<Pessoa> lista_pessoa = new List<Pessoa>();
-            Pessoa p = null;
-            SQLiteConnection conexao = Database.GetInstance().GetConnection();
-
-            string qry = string.Format("SELECT id,cpf,nome,sexo,rua,bairro,numero,cep,cidade,uf FROM Pessoa;");
-
-            if (conexao.State != System.Data.ConnectionState.Open)
-            {
-                conexao.Open();
-            }
-
-            SQLiteCommand comm = new SQLiteCommand(qry, conexao);
-            SQLiteDataReader dr = comm.ExecuteReader();
-
-            while (dr.Read())
-            {
-                int id = dr.GetInt16(0);
-                string nome = dr.GetString(1);
-                string cpf = dr.GetString(2);
-                string sexo = dr.GetString(3);
-                string rua = dr.GetString(4);
-                string bairro = dr.GetString(5);
-                int numero = dr.GetInt16(6);
-                string cep = dr.GetString(7);
-                string cidade = dr.GetString(8);
-                string uf = dr.GetString(9);
-
-                p = new Pessoa(id, cpf, nome, sexo, rua, bairro, numero, cep, cidade, uf);
-                lista_pessoa.Add(p);
-            }
-            dr.Close();
-            conexao.Close();
-
-            return lista_pessoa;
+            string qry = string.Format("SELECT id,cpf,nome,sexo,rua,bairro,numero,cep,cidade,uf FROM pessoa;");
+            return Read(qry);
         }
 
-        public List<Pessoa> FindByName(string cpf)
+        public List<Pessoa> FindByCpf(string cpf)
         {
-            List<Pessoa> lista_pessoa = new List<Pessoa>();
-            Pessoa p = null;
-            SQLiteConnection conexao = Database.GetInstance().GetConnection();
-
             string qry;
 
             if (cpf != "")
@@ -121,34 +117,7 @@ namespace manutVeiculo
             else
                 qry = string.Format("SELECT id,cpf,nome,sexo,rua,bairro,numero,cep,cidade,uf FROM Pessoa");
 
-            if (conexao.State != System.Data.ConnectionState.Open)
-            {
-                conexao.Open();
-            }
-
-            SQLiteCommand comm = new SQLiteCommand(qry, conexao);
-            SQLiteDataReader dr = comm.ExecuteReader();
-
-            while (dr.Read())
-            {
-                int id = dr.GetInt16(0);
-                string nome = dr.GetString(1);
-                cpf = dr.GetString(2);
-                string sexo = dr.GetString(3);
-                string rua = dr.GetString(4);
-                string bairro = dr.GetString(5);
-                int numero = dr.GetInt16(6);
-                string cep = dr.GetString(7);
-                string cidade = dr.GetString(8);
-                string uf = dr.GetString(9);
-
-                p = new Pessoa(id, cpf, nome, sexo, rua, bairro, numero, cep, cidade, uf);
-                lista_pessoa.Add(p);
-            }
-            dr.Close();
-            conexao.Close();
-
-            return lista_pessoa;
+            return Read(qry);
         }
     }
 }

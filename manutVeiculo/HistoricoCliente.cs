@@ -42,7 +42,7 @@ namespace manutVeiculo
         {
             if (!txtCpfHistorico.Text.Equals(""))
             { 
-                dGViewHistCli.DataSource = pessoadao.FindByName(txtCpfHistorico.Text);
+                dGViewHistCli.DataSource = pessoadao.FindByCpf(txtCpfHistorico.Text);
             }
             else
             {

@@ -18,13 +18,15 @@ namespace manutVeiculo
         private String cep;
         private String cidade;
         private String uf;
+        List<Veiculo> veiculo;
+
 
         public Pessoa()
         {
 
         }
 
-        public Pessoa(int id, string cpf, string nome, string sexo, string rua, string bairro, int numero, string cep, string cidade, string uf)
+        public Pessoa(int id, string cpf, string nome, string sexo, string rua, string bairro, int numero, string cep, string cidade, string uf, List<Veiculo> veiculo)
         {
             this.id = id;
             this.cpf = cpf;
@@ -36,6 +38,12 @@ namespace manutVeiculo
             this.cep = cep;
             this.cidade = cidade;
             this.uf = uf;
+            this.veiculo = veiculo;
+
+            if(this.veiculo == null)
+            {
+                this.veiculo = new List<Veiculo>();
+            }
         }
 
         public int Id { get => id; set => id = value; }
@@ -48,6 +56,7 @@ namespace manutVeiculo
         public string Cep { get => cep; set => cep = value; }
         public string Cidade { get => cidade; set => cidade = value; }
         public string Uf { get => uf; set => uf = value; }
+        public List<Veiculo> Veiculo { get => veiculo; set => veiculo = value; }
     }
 }
 
