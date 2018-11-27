@@ -76,6 +76,7 @@
       <DependentUpon>ConsultaOS.cs</DependentUpon>
     </Compile>
     <Compile Include="Database.cs" />
+    <Compile Include="Os.cs" />
     <Compile Include="Peca.cs" />
     <Compile Include="PecaDAO.cs" />
     <Compile Include="Pessoa.cs" />
