@@ -69,23 +69,11 @@
     <Compile Include="CadastrarVeiculo.Designer.cs">
       <DependentUpon>CadastrarVeiculo.cs</DependentUpon>
     </Compile>
-    <Compile Include="coco.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="coco.Designer.cs">
-      <DependentUpon>coco.cs</DependentUpon>
-    </Compile>
     <Compile Include="ConsultaOS.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ConsultaOS.Designer.cs">
       <DependentUpon>ConsultaOS.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormTeste.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormTeste.Designer.cs">
-      <DependentUpon>FormTeste.cs</DependentUpon>
     </Compile>
     <Compile Include="Peca.cs" />
     <Compile Include="PecaDAO.cs" />
