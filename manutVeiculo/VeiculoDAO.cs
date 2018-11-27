@@ -66,7 +66,7 @@ namespace manutVeiculo
             manutVeiculo.ExecuteSQL(qry);
         }
 
-        public List<Pessoa> ListAll()
+        public List<Veiculo> ListAll()
         {
             List<Veiculo> lista_veiculo = new List<Veiculo>();
             Veiculo v = null;

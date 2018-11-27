@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.gpbVeiculo = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.txtCor = new System.Windows.Forms.TextBox();
+            this.txtCombustivel = new System.Windows.Forms.ComboBox();
+            this.txtAno = new System.Windows.Forms.TextBox();
             this.txtPlaca = new System.Windows.Forms.TextBox();
             this.txtKmRodado = new System.Windows.Forms.TextBox();
-            this.txtAno = new System.Windows.Forms.TextBox();
+            this.txtModelo = new System.Windows.Forms.TextBox();
             this.txtMarca = new System.Windows.Forms.TextBox();
             this.lbKm = new System.Windows.Forms.Label();
             this.lbCombustivel = new System.Windows.Forms.Label();
@@ -48,11 +48,11 @@
             // 
             // gpbVeiculo
             // 
-            this.gpbVeiculo.Controls.Add(this.comboBox1);
-            this.gpbVeiculo.Controls.Add(this.txtCor);
+            this.gpbVeiculo.Controls.Add(this.txtCombustivel);
+            this.gpbVeiculo.Controls.Add(this.txtAno);
             this.gpbVeiculo.Controls.Add(this.txtPlaca);
             this.gpbVeiculo.Controls.Add(this.txtKmRodado);
-            this.gpbVeiculo.Controls.Add(this.txtAno);
+            this.gpbVeiculo.Controls.Add(this.txtModelo);
             this.gpbVeiculo.Controls.Add(this.txtMarca);
             this.gpbVeiculo.Controls.Add(this.lbKm);
             this.gpbVeiculo.Controls.Add(this.lbCombustivel);
@@ -67,25 +67,25 @@
             this.gpbVeiculo.TabStop = false;
             this.gpbVeiculo.Text = "Informações do Veículo";
             // 
-            // comboBox1
+            // txtCombustivel
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.txtCombustivel.FormattingEnabled = true;
+            this.txtCombustivel.Items.AddRange(new object[] {
             "",
             "Gasolina",
             "Etanol",
             "Diesel"});
-            this.comboBox1.Location = new System.Drawing.Point(95, 67);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(180, 21);
-            this.comboBox1.TabIndex = 16;
+            this.txtCombustivel.Location = new System.Drawing.Point(95, 67);
+            this.txtCombustivel.Name = "txtCombustivel";
+            this.txtCombustivel.Size = new System.Drawing.Size(180, 21);
+            this.txtCombustivel.TabIndex = 16;
             // 
-            // txtCor
+            // txtAno
             // 
-            this.txtCor.Location = new System.Drawing.Point(396, 116);
-            this.txtCor.Name = "txtCor";
-            this.txtCor.Size = new System.Drawing.Size(126, 20);
-            this.txtCor.TabIndex = 15;
+            this.txtAno.Location = new System.Drawing.Point(396, 116);
+            this.txtAno.Name = "txtAno";
+            this.txtAno.Size = new System.Drawing.Size(126, 20);
+            this.txtAno.TabIndex = 15;
             // 
             // txtPlaca
             // 
@@ -101,12 +101,12 @@
             this.txtKmRodado.Size = new System.Drawing.Size(180, 20);
             this.txtKmRodado.TabIndex = 12;
             // 
-            // txtAno
+            // txtModelo
             // 
-            this.txtAno.Location = new System.Drawing.Point(396, 23);
-            this.txtAno.Name = "txtAno";
-            this.txtAno.Size = new System.Drawing.Size(126, 20);
-            this.txtAno.TabIndex = 11;
+            this.txtModelo.Location = new System.Drawing.Point(396, 23);
+            this.txtModelo.Name = "txtModelo";
+            this.txtModelo.Size = new System.Drawing.Size(126, 20);
+            this.txtModelo.TabIndex = 11;
             // 
             // txtMarca
             // 
@@ -208,11 +208,11 @@
         #endregion
 
         private System.Windows.Forms.GroupBox gpbVeiculo;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox txtCor;
+        private System.Windows.Forms.ComboBox txtCombustivel;
+        private System.Windows.Forms.TextBox txtAno;
         private System.Windows.Forms.TextBox txtPlaca;
         private System.Windows.Forms.TextBox txtKmRodado;
-        private System.Windows.Forms.TextBox txtAno;
+        private System.Windows.Forms.TextBox txtModelo;
         private System.Windows.Forms.TextBox txtMarca;
         private System.Windows.Forms.Label lbKm;
         private System.Windows.Forms.Label lbCombustivel;
