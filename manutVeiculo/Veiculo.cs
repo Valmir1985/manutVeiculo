@@ -17,6 +17,11 @@ namespace manutVeiculo
         private int ano;
         private Pessoa pessoa;
 
+        public Veiculo()
+        {
+                
+        }
+
         public Veiculo(int id, string marca, string modelo, string combustivel, string placa, int kmRodado, int ano, Pessoa pessoa)
         {
             this.id = id;

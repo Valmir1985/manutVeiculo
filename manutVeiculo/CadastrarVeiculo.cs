@@ -16,12 +16,13 @@ namespace manutVeiculo
         List<Veiculo> lista_veiculo;
         private Veiculo v;
         private bool adicionado = false;
+        private Pessoa pessoa;
 
         public bool adicionou()
         {
             return adicionado;
         }
-        public CadastrarVeiculo()
+        public CadastrarVeiculo(Pessoa pessoa)
         {
             InitializeComponent();
             txtMarca.Text = "";
@@ -31,6 +32,7 @@ namespace manutVeiculo
             txtKmRodado.Text = "";
             lista_veiculo = veiculodao.ListAll();
             btnCadastrar.Visible = true;
+            this.pessoa = pessoa;
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
@@ -41,7 +43,7 @@ namespace manutVeiculo
             }
             else
             {
-                v = new Veiculo(txtMarca.Text, txtModelo.Text, txtCombustivel.Text, txtPlaca.Text, txtKmRodado.Text);
+                v = new Veiculo(0, txtMarca.Text, txtModelo.Text, txtCombustivel.Text, txtPlaca.Text, int.Parse(txtKmRodado.Text), int.Parse(txtAno.Text), pessoa);
                 veiculodao.Insert(v);
                 lista_veiculo = veiculodao.ListAll();
                 adicionado = true;

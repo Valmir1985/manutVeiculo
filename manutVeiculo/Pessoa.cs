@@ -18,9 +18,13 @@ namespace manutVeiculo
         private String cep;
         private String cidade;
         private String uf;
-        private Veiculo veiculo;
 
-        public Pessoa(int id, string cpf, string nome, string sexo, string rua, string bairro, int numero, string cep, string cidade, string uf, Veiculo veiculo)
+        public Pessoa()
+        {
+
+        }
+
+        public Pessoa(int id, string cpf, string nome, string sexo, string rua, string bairro, int numero, string cep, string cidade, string uf)
         {
             this.id = id;
             this.cpf = cpf;
@@ -32,7 +36,6 @@ namespace manutVeiculo
             this.cep = cep;
             this.cidade = cidade;
             this.uf = uf;
-            this.veiculo = veiculo;
         }
 
         public int Id { get => id; set => id = value; }
@@ -45,7 +48,6 @@ namespace manutVeiculo
         public string Cep { get => cep; set => cep = value; }
         public string Cidade { get => cidade; set => cidade = value; }
         public string Uf { get => uf; set => uf = value; }
-        internal Veiculo Veiculo { get => veiculo; set => veiculo = value; }
     }
 }
 

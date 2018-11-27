@@ -36,7 +36,7 @@ namespace manutVeiculo
 
             if (dr.Read())
             {
-                v = new Veiculo("", "", "", "", "", "", "");
+                v = new Veiculo();
                 v.Id = dr.GetInt16(0);
                 v.Marca = dr.GetString(1);
                 v.Modelo = dr.GetString(2);
@@ -89,11 +89,11 @@ namespace manutVeiculo
                 string modelo = dr.GetString(2);
                 string combustivel = dr.GetString(3);
                 string placa = dr.GetString(4);
-                string kmRodado = dr.GetInt16(5);
-                string ano = dr.GetInt16(6);
+                int kmRodado = dr.GetInt16(5);
+                int ano = dr.GetInt16(6);
 
 
-                v = new Veiculo(marca, modelo, combustivel, placa, kmRodado, ano);
+                v = new Veiculo(id ,marca, modelo, combustivel, placa, kmRodado, ano, null);
                 lista_veiculo.Add(v);
             }
             dr.Close();

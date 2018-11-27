@@ -36,7 +36,7 @@ namespace manutVeiculo
 
             if (dr.Read())
             {
-                p = new Pessoa(-1, "", "", "", "", "", -1, "", "", "", null);
+                p = new Pessoa();
                 p.Id = dr.GetInt16(0);
                 p.Cpf = dr.GetString(1);
                 p.Nome = dr.GetString(2);
@@ -58,16 +58,16 @@ namespace manutVeiculo
         {
             Database manutVeiculo = Database.GetInstance();
 
-            string qry = string.Format("UPDATE Pessoa SET id='{0}',cpf='{2}',nome='{3}',sexo='{4}',rua='{5}',bairro='{6}',numero='{7}',cep='{8}',cidade='{9}',uf='{10}'" + "WHERE id='{1}'", p.Nome, p.Cpf, p.Nasc.ToString("yyyy-MM-dd"), p.Sexo, p.Tel, p.Logradouro, p.Num, p.Complemento, p.Cep, p.Cidade, p.Uf, p.Pais, p.Profissao);
+            string qry = string.Format("UPDATE Pessoa SET id='{0}',cpf='{1}',nome='{2}',sexo='{3}',rua='{4}',bairro='{5}',numero='{6}',cep='{7}',cidade='{8}',uf='{9}'" + "WHERE id='{0}'", p.Id, p.Cpf, p.Nome, p.Sexo, p.Rua, p.Bairro, p.Numero, p.Cep);
 
             manutVeiculo.ExecuteSQL(qry);
         }
 
         public void Delete(int id)
         {
-            //Database manutVeic = Database.GetInstance();
-            //string qry = string.Format("DELETE FROM Pessoa WHERE id = '" + id + "'");
-            //manutVeic.ExecuteSQL(qry);
+            Database manutVeic = Database.GetInstance();
+            string qry = string.Format("DELETE FROM Pessoa WHERE id = '" + id + "'");
+            manutVeic.ExecuteSQL(qry);
         }
 
         public List<Pessoa> ListAll()
@@ -133,7 +133,7 @@ namespace manutVeiculo
             {
                 int id = dr.GetInt16(0);
                 string nome = dr.GetString(1);
-                string cpf = dr.GetString(2);
+                cpf = dr.GetString(2);
                 string sexo = dr.GetString(3);
                 string rua = dr.GetString(4);
                 string bairro = dr.GetString(5);

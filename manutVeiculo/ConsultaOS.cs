@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -34,26 +35,26 @@ namespace manutVeiculo
 
             SQLiteConnection conexao = Database.GetInstance().GetConnection();
 
-            string qry = string.Format("SELECT os.id, p.nome, v.placa, os.status FROM ((pessoa INNER JOIN os ON p.id = os.cliente) INNER JOIN   WHERE id ='{0}'", id);
+            //string qry = string.Format("SELECT os.id, p.nome, v.placa, os.status FROM ((pessoa INNER JOIN os ON p.id = os.cliente) INNER JOIN   WHERE id ='{0}'", id);
 
-            if (conexao.State != System.Data.ConnectionState.Open)
-            {
-                conexao.Open();
-            }
+            //if (conexao.State != System.Data.ConnectionState.Open)
+            //{
+            //    conexao.Open();
+            //}
 
-            SQLiteCommand comm = new SQLiteCommand(qry, conexao);
-            SQLiteDataReader dr = comm.ExecuteReader();
+            //SQLiteCommand comm = new SQLiteCommand(qry, conexao);
+            //SQLiteDataReader dr = comm.ExecuteReader();
 
-            //instanciar pessoa, veiculo e pecas p buscar nas respectivas tabelas os dados p preencher o Grid
+            ////instanciar pessoa, veiculo e pecas p buscar nas respectivas tabelas os dados p preencher o Grid
 
-            if (!txtOS.Text.Equals(""))
-            {
-                //dGViewConsultaOS.Rows.Add(os.Id, p.Nome, values.Placa, os.Status);
-            }
-            else
-            {
-                MessageBox.Show("Digite um CPF válido!");
-            }
+            //if (!txtOS.Text.Equals(""))
+            //{
+            //    //dGViewConsultaOS.Rows.Add(os.Id, p.Nome, values.Placa, os.Status);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Digite um CPF válido!");
+            //}
 
         }
 
