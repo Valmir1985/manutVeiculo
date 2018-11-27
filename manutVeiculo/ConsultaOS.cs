@@ -31,8 +31,20 @@ namespace manutVeiculo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            //intanciar pessoa, veiculo e pecas p buscar nas respectivas tabelas os dados p preencher o Grid
+
+            SQLiteConnection conexao = Database.GetInstance().GetConnection();
+
+            string qry = string.Format("SELECT os.id, p.nome, v.placa, os.status FROM ((pessoa INNER JOIN os ON p.id = os.cliente) INNER JOIN   WHERE id ='{0}'", id);
+
+            if (conexao.State != System.Data.ConnectionState.Open)
+            {
+                conexao.Open();
+            }
+
+            SQLiteCommand comm = new SQLiteCommand(qry, conexao);
+            SQLiteDataReader dr = comm.ExecuteReader();
+
+            //instanciar pessoa, veiculo e pecas p buscar nas respectivas tabelas os dados p preencher o Grid
 
             if (!txtOS.Text.Equals(""))
             {
