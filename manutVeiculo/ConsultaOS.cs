@@ -14,9 +14,9 @@ namespace manutVeiculo
     public partial class ConsultarOS : Form
     {
         private PessoaDAO pessoadao = new PessoaDAO();
-        List<Pessoa> lista_pessoa;
-        private VeiculoDAO veiculodao = new VeiculoDAO();
-        List<Veiculo> lista_veiculo;
+        //List<Pessoa> lista_pessoa;
+        //private VeiculoDAO veiculodao = new VeiculoDAO();
+       // List<Veiculo> lista_veiculo;
 
         public ConsultarOS()
         {

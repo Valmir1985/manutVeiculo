@@ -53,14 +53,14 @@ namespace manutVeiculo
 
                 StringBuilder sql = new StringBuilder();
 
-                sql.AppendLine("CREATE TABLE IF NOT EXISTS Pessoa");
-                sql.AppendLine("id VARCHAR(20) NOT NULL PRIMARY KEY, ");
+                sql.AppendLine("CREATE TABLE IF NOT EXISTS pessoa");
+                sql.AppendLine("id INTEGER NOT NULL PRIMARY KEY, ");
                 sql.AppendLine("cpf VARCHAR(20) NOT NULL, ");
                 sql.AppendLine("nome VARCHAR(100), ");
                 sql.AppendLine("sexo VARCHAR(1), ");
                 sql.AppendLine("rua VARCHAR(100), ");
                 sql.AppendLine("bairro VARCHAR(50), ");
-                sql.AppendLine("numero VARCHAR(10), ");
+                sql.AppendLine("numero INTEGER, ");
                 sql.AppendLine("cep VARCHAR(20), ");
                 sql.AppendLine("cidade VARCHAR(50), ");
                 sql.AppendLine("uf VARCHAR(2), ");
@@ -77,14 +77,15 @@ namespace manutVeiculo
 
                 sql.Clear();
 
-                sql.AppendLine("CREATE TABLE IF NOT EXISTS Veiculo");
+                sql.AppendLine("CREATE TABLE IF NOT EXISTS veiculo");
+                sql.AppendLine("id INTEGER NOT NULL PRIMARY KEY, ");
                 sql.AppendLine("idCliente VARCHAR(20) NOT NULL FOREIGN KEY('id') REFERENCES pessoa, ");
                 sql.AppendLine("marca VARCHAR(50), ");  
                 sql.AppendLine("modelo VARCHAR(50), ");
                 sql.AppendLine("combustivel VARCHAR(20), ");
-                sql.AppendLine("placa VARCHAR(50) NOT NULL PRIMARY KEY, ");
-                sql.AppendLine("kmRodado VARCHAR(10), ");
-                sql.AppendLine("ano VARCHAR(10), ");
+                sql.AppendLine("placa VARCHAR(50) , ");
+                sql.AppendLine("kmRodado INTEGER, ");
+                sql.AppendLine("ano INTEGER, ");
 
                 cmd = new SQLiteCommand(sql.ToString(), conn);
 
@@ -99,13 +100,13 @@ namespace manutVeiculo
 
                 sql.Clear();
 
-                sql.AppendLine("CREATE TABLE IF NOT EXISTS Peca(");
-                sql.AppendLine("id VARCHAR(20),");
+                sql.AppendLine("CREATE TABLE IF NOT EXISTS peca");
+                sql.AppendLine("id INTEGER NOT NULL PRIMARY KEY,");
                 sql.AppendLine("marca VARCHAR(50),");
-                sql.AppendLine("peca VARCHAR(100),");
+                sql.AppendLine("pecaServico VARCHAR(100),");
                 sql.AppendLine("modelo VARCHAR(50),");
                 sql.AppendLine("kmTroca VARCHAR(20),");
-                sql.AppendLine("preco VARCHAR(20),");
+                sql.AppendLine("preco FLOAT,");
 
                 cmd = new SQLiteCommand(sql.ToString(), conn);
 
@@ -121,8 +122,8 @@ namespace manutVeiculo
             sql.Clear();
 
 
-            sql.AppendLine("CREATE TABLE IF NOT EXISTS Os");
-            sql.AppendLine("id VARCHAR(10) NOT NULL PRIMARY KEY, ");
+            sql.AppendLine("CREATE TABLE IF NOT EXISTS os");
+            sql.AppendLine("id INTEGER NOT NULL PRIMARY KEY, ");
             sql.AppendLine("cliente VARCHAR(50) FOREIGN KEY ('id') REFERENCES pessoa, ");
             sql.AppendLine("placa VARCHAR(20) FOREIGN KEY ('placa') REFERENCES veiculo, ");
             sql.AppendLine("status BOOLEAN, ");
@@ -140,7 +141,26 @@ namespace manutVeiculo
             {
                 MessageBox.Show("Erro ao criar banco de dados: " + ex.Message);
             }
-            
+
+            sql.Clear();
+
+            sql.AppendLine("CREATE TABLE IF NOT EXISTS consultaOs(");
+            sql.AppendLine("numeroOs INTEGER NOT NULL PRIMARY KEY FOREIGN KEY ('id') REFERENCES os,");
+            sql.AppendLine("cliente INTEGER FOREIGN KEY ('id') REFERENCES pessoa,");
+            sql.AppendLine("placa VARCHAR(50),");
+            sql.AppendLine("status BOOLEAN,");
+
+            cmd = new SQLiteCommand(sql.ToString(), conn);
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao criar banco de dados: " + ex.Message);
+            }
+
             conn.Close();
             }
     }

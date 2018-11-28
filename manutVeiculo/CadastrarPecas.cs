@@ -15,7 +15,7 @@ namespace manutVeiculo
     {
         private PecaDAO pecadao = new PecaDAO();
         List<Peca> lista_peca;
-        private Peca pc;
+       // private Peca pc;
         private bool adicionado = false;
 
         public bool adicionou()

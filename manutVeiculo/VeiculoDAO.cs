@@ -111,7 +111,7 @@ namespace manutVeiculo
              string qry;
 
              if (placa != "")
-                 qry = string.Format("SELECT id,marca,modelo,combustivel,placa,kmRodado,ano FROM Veiculo WHERE nome LIKE '%{0}%'", placa);
+                 qry = string.Format("SELECT id, marca,modelo,combustivel,placa,kmRodado,ano FROM Veiculo WHERE nome LIKE '%{0}%'", placa);
              else
                  qry = string.Format("SELECT id,cpf,nome,sexo,rua,bairro,numero,cep,cidade,uf FROM Pessoa");
              

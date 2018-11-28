@@ -14,7 +14,7 @@ namespace manutVeiculo
     public partial class HistoricoCliente : Form
     {
         private PessoaDAO pessoadao = new PessoaDAO();
-        List<Pessoa> lista_pessoa;
+       // List<Pessoa> lista_pessoa;
 
     
         public HistoricoCliente()
