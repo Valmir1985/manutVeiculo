@@ -275,6 +275,7 @@
             this.btnConsultarCli.TabIndex = 18;
             this.btnConsultarCli.Text = "Consultar";
             this.btnConsultarCli.UseVisualStyleBackColor = true;
+            this.btnConsultarCli.Click += new System.EventHandler(this.btnConsultarCli_Click);
             // 
             // textBox2
             // 
@@ -340,14 +341,14 @@
             this.gbConsultaCliente.TabStop = false;
             this.gbConsultaCliente.Text = "Consultar Cliente";
             // 
-            // Form11
+            // ConsultaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(767, 502);
             this.Controls.Add(this.gbConsultaCliente);
             this.MaximizeBox = false;
-            this.Name = "Form11";
+            this.Name = "ConsultaCliente";
             this.Text = "Consulta Clientes";
             this.Load += new System.EventHandler(this.Form11_Load);
             this.gpbInfoPessoal.ResumeLayout(false);
