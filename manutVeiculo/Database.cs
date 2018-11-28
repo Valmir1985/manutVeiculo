@@ -53,10 +53,10 @@ namespace manutVeiculo
 
                 StringBuilder sql = new StringBuilder();
 
-                sql.AppendLine("CREATE TABLE IF NOT EXISTS Pessoa(");
-            sql.AppendLine("id VARCHAR(20) NOT NULL PRIMARY KEY, ");
-            sql.AppendLine("cpf VARCHAR(20) NOT NULL, ");
-            sql.AppendLine("nome VARCHAR(100), ");
+                sql.AppendLine("CREATE TABLE IF NOT EXISTS Pessoa");
+                sql.AppendLine("id VARCHAR(20) NOT NULL PRIMARY KEY, ");
+                sql.AppendLine("cpf VARCHAR(20) NOT NULL, ");
+                sql.AppendLine("nome VARCHAR(100), ");
                 sql.AppendLine("sexo VARCHAR(1), ");
                 sql.AppendLine("rua VARCHAR(100), ");
                 sql.AppendLine("bairro VARCHAR(50), ");
@@ -77,9 +77,9 @@ namespace manutVeiculo
 
                 sql.Clear();
 
-                sql.AppendLine("CREATE TABLE IF NOT EXISTS Veiculo(");
-            sql.AppendLine("idCliente VARCHAR(20) NOT NULL FOREIGN KEY('id') REFERENCES pessoa, ");
-            sql.AppendLine("marca VARCHAR(50), ");  
+                sql.AppendLine("CREATE TABLE IF NOT EXISTS Veiculo");
+                sql.AppendLine("idCliente VARCHAR(20) NOT NULL FOREIGN KEY('id') REFERENCES pessoa, ");
+                sql.AppendLine("marca VARCHAR(50), ");  
                 sql.AppendLine("modelo VARCHAR(50), ");
                 sql.AppendLine("combustivel VARCHAR(20), ");
                 sql.AppendLine("placa VARCHAR(50) NOT NULL PRIMARY KEY, ");
@@ -105,9 +105,9 @@ namespace manutVeiculo
                 sql.AppendLine("peca VARCHAR(100),");
                 sql.AppendLine("modelo VARCHAR(50),");
                 sql.AppendLine("kmTroca VARCHAR(20),");
-            sql.AppendLine("preco VARCHAR(20),");
+                sql.AppendLine("preco VARCHAR(20),");
 
-            cmd = new SQLiteCommand(sql.ToString(), conn);
+                cmd = new SQLiteCommand(sql.ToString(), conn);
 
                 try
                 {
@@ -121,7 +121,7 @@ namespace manutVeiculo
             sql.Clear();
 
 
-        sql.AppendLine("CREATE TABLE IF NOT EXISTS Os(");
+            sql.AppendLine("CREATE TABLE IF NOT EXISTS Os");
             sql.AppendLine("id VARCHAR(10) NOT NULL PRIMARY KEY, ");
             sql.AppendLine("cliente VARCHAR(50) FOREIGN KEY ('id') REFERENCES pessoa, ");
             sql.AppendLine("placa VARCHAR(20) FOREIGN KEY ('placa') REFERENCES veiculo, ");
