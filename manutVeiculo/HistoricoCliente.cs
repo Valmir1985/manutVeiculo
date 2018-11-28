@@ -14,12 +14,13 @@ namespace manutVeiculo
     public partial class HistoricoCliente : Form
     {
         private PessoaDAO pessoadao = new PessoaDAO();
-       // List<Pessoa> lista_pessoa;
+        List<Pessoa> lista_pessoa;
 
     
-        public HistoricoCliente()
+        public HistoricoCliente(List<Pessoa> lista_pessoa)
         {
             InitializeComponent();
+            this.lista_pessoa = lista_pessoa;
             dGViewHistCli.Rows.Clear(); 
             
         }
@@ -40,14 +41,17 @@ namespace manutVeiculo
 
         private void btnConfirma_Click(object sender, EventArgs e)
         {
-            if (!txtCpfHistorico.Text.Equals(""))
-            { 
-                dGViewHistCli.DataSource = pessoadao.FindByCpf(txtCpfHistorico.Text);
+            foreach (Pessoa p in lista_pessoa){
+                if (!txtCpfHistorico.Text.Equals(""))
+                {
+                    dGViewHistCli.Rows.Add(p.Nome, p.Veiculo, p.Veiculo, p.Bairro, p.Cidade);
+                }
+                else
+                {
+                    MessageBox.Show("Digite um CPF válido!");
+                }
             }
-            else
-            {
-                MessageBox.Show("Digite um CPF válido!");
-            }
+           
         }
 
         private void lvHistCliente_SelectedIndexChanged(object sender, EventArgs e)

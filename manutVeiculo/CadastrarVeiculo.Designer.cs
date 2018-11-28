@@ -199,6 +199,7 @@
             this.Controls.Add(this.gpbVeiculo);
             this.Name = "CadastrarVeiculo";
             this.Text = "Cadastro de Veículo";
+            this.Load += new System.EventHandler(this.CadastrarVeiculo_Load);
             this.gpbVeiculo.ResumeLayout(false);
             this.gpbVeiculo.PerformLayout();
             this.ResumeLayout(false);

@@ -40,5 +40,10 @@ namespace manutVeiculo
         {
 
         }
+
+        private void btnConsultarCli_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

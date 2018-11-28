@@ -62,5 +62,10 @@ namespace manutVeiculo
         {
 
         }
+
+        private void CadastrarVeiculo_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
