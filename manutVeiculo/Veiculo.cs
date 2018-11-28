@@ -19,10 +19,11 @@ namespace manutVeiculo
 
         public Veiculo()
         {
-                
+            this.pessoa = new List<Pessoa>();
         }
 
-        public Veiculo(int id, string marca, string modelo, string combustivel, string placa, int kmRodado, int ano, List<Pessoa> pessoa)
+        public Veiculo(int id, string marca, string modelo, string combustivel, 
+            string placa, int kmRodado, int ano, List<Pessoa> pessoa):this()
         {
             this.id = id;
             this.marca = marca;

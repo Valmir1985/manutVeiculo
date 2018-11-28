@@ -108,12 +108,14 @@ namespace manutVeiculo
             if (!validaCpf(txtCpf.Text))
             {
                 MessageBox.Show("CPF inválido!");
+                return;
             }
             else
             {
                 if (txtCpf.Equals("") || txtNome.Text.Equals("") || txtTelefone.Equals("") || txtRua.Equals("") || txtBairro.Text.Equals("") || txtNro.Text.Equals("") || txtCep.Text.Equals("") || txtCidade.Text.Equals("") || txtUf.Text.Equals("") || (rbtnMasc.Checked == false && rbtnFem.Checked == false))
                 {
                     MessageBox.Show("É necessário preencher todos os dados!");
+                    return;
                 }
                 else
                 {
@@ -126,51 +128,48 @@ namespace manutVeiculo
 
                     if (existe)
                     {
-                        MessageBox.Show("CPF já existe no cadastro!","Erro",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        MessageBox.Show("CPF já existe no cadastro!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     else
                     {
                         if (rbtnMasc.Checked) sexo = "masculino";
                         if (rbtnFem.Checked) sexo = "feminino";
-                        p = new Pessoa(0,txtCpf.Text, txtNome.Text, sexo, txtRua.Text, txtBairro.Text, int.Parse(txtNro.Text), txtCep.Text, txtCidade.Text, txtUf.Text,null);
+                        p = new Pessoa(0, txtCpf.Text, txtNome.Text, sexo, txtRua.Text, txtBairro.Text, int.Parse(txtNro.Text), txtCep.Text, txtCidade.Text, txtUf.Text, null);
                         //Não tem telefone na pessoa
                         // Agora foi deu pau  por falta de coluna combustivel
                         // txtTelefone.Text,
 
-                        //Ta ai?
-                        //to sim....não coloquei nada pra não te atropelar...la no combustivel, ta escrito errado
-                        //combustive o certo e combustivel
-
-                        //Tendi... acho que você vai ter que dropar a tabela e começar denovo
-
-                        //tranquilo...é só apagar o arquivo lá, neh?!
-                        //isso
-                        //Aqui deu certo estava faltando passar o id, como é um novo cliente, ai pode passar 0 mesmo que o bd gera um id
-
-                        //tendi....perai
-                        pessoadao.Insert(p);
-                        lista_pessoa = pessoadao.ListAll();
-                        adicionado = true;
-                        txtNome.Text = "";
-                        txtCpf.Text = "";
-                        rbtnMasc.Checked = false;
-                        rbtnFem.Checked = false;
-                        txtTelefone.Text = "";
-                        txtRua.Text = "";
-                        txtBairro.Text = "";
-                        txtNro.Text = "";
-                        txtCep.Text = "";
-                        txtCidade.Text = "";
-                        txtUf.Text = "";
-                        Close();
-                        existe = false;
+                        try
+                        {
+                            pessoadao.Insert(p);
+                            lista_pessoa = pessoadao.ListAll();
+                            adicionado = true;
+                            txtNome.Text = "";
+                            txtCpf.Text = "";
+                            rbtnMasc.Checked = false;
+                            rbtnFem.Checked = false;
+                            txtTelefone.Text = "";
+                            txtRua.Text = "";
+                            txtBairro.Text = "";
+                            txtNro.Text = "";
+                            txtCep.Text = "";
+                            txtCidade.Text = "";
+                            txtUf.Text = "";
+                            Close();
+                            existe = false;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            return;
+                        }
                     }
                 }
             }
             var cadastraVeiculo = new CadastrarVeiculo(p);
             cadastraVeiculo.ShowDialog();
-  
+
         }
     }
 }

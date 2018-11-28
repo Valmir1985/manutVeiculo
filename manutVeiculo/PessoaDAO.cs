@@ -16,7 +16,8 @@ namespace manutVeiculo
         public void Insert(Pessoa p)
         {
             Database manutVeiculo = Database.GetInstance();
-            string qry = string.Format("INSERT INTO pessoa (id, cpf, nome, sexo, rua, bairro, numero, cep, cidade, uf) VALUE ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}',)", p.Id, p.Nome, p.Cpf, p.Sexo.ToString(), p.Rua, p.Bairro, p.Numero, p.Cep, p.Cidade, p.Uf);
+            string qry = "INSERT INTO pessoa ( cpf, nome, sexo, rua, bairro, numero, cep, cidade, uf)" +
+                $" VALUES ('{p.Cpf}','{p.Nome}','{p.Sexo}','{p.Rua}','{p.Bairro}',{p.Numero},'{p.Cep}','{ p.Cidade}','{p.Uf}')";
             manutVeiculo.ExecuteSQL(qry);
         }
 
@@ -51,7 +52,7 @@ namespace manutVeiculo
                 p.Sexo = dr.GetString(3);
                 p.Rua = dr.GetString(4);
                 p.Bairro = dr.GetString(5);
-                p.Numero = dr.GetInt16(6);
+                p.Numero = dr.GetInt32(6);
                 p.Cep = dr.GetString(7);
                 p.Cidade = dr.GetString(8);
                 p.Uf = dr.GetString(9);
@@ -65,17 +66,20 @@ namespace manutVeiculo
                 comm = new SQLiteCommand(qry, conexao);
                 dr = comm.ExecuteReader();
 
+                //Aqui vai precisar remapiar as colunas ele está pegando a placa no lugar do kmrodado
+                //blz...quer que ja faz?
+                //vou te mostra um outro jeito
 
                 while (dr.Read())
                 {
                     var v = new Veiculo();
-                    v.Id = dr.GetInt16(0);
-                    v.Marca = dr.GetString(1);
-                    v.Modelo = dr.GetString(2);
-                    v.Combustivel = dr.GetString(3);
-                    v.Placa = dr.GetString(4);
-                    v.KmRodado = dr.GetInt16(5);
-                    v.Ano = dr.GetInt16(6);
+                    v.Id =int.Parse( dr["id"].ToString());
+                    v.Marca = dr["marca"].ToString();
+                    v.Modelo = dr["modelo"].ToString();
+                    v.Combustivel = dr["combustivel"].ToString();
+                    v.Placa = dr["placa"].ToString();
+                    v.KmRodado = int.Parse(dr["kmRodado"].ToString());
+                    v.Ano = int.Parse(dr["ano"].ToString());
                     p.Veiculo.Add(v);
                 }
             }            

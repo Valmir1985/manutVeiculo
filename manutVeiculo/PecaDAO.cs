@@ -15,7 +15,7 @@ namespace manutVeiculo
             public void Insert(Peca pc)
             {
                 Database manutVeiculo = Database.GetInstance();
-                string qry = string.Format("INSERT INTO peca (id, marca ,pecaServico, modelo, kmTroca, preco) VALUE ('{0}','{1}','{2}','{3}','{4}','{5}')", pc.Id, pc.Marca, pc.PecaServico, pc.Modelo, pc.KmTroca, pc.Preco);
+                string qry = string.Format("INSERT INTO peca (id, marca ,pecaServico, modelo, kmTroca, preco) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}')", pc.Id, pc.Marca, pc.PecaServico, pc.Modelo, pc.KmTroca, pc.Preco);
                 manutVeiculo.ExecuteSQL(qry);
             }
 

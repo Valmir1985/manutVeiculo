@@ -34,6 +34,8 @@ namespace manutVeiculo
             lista_veiculo = veiculodao.ListAll();
             btnCadastrar.Visible = true;
             this.pessoa = pessoa;
+            lista_pessoa = new List<Pessoa>();
+            lista_pessoa.Add(pessoa);
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
@@ -44,16 +46,22 @@ namespace manutVeiculo
             }
             else
             {
-                v = new Veiculo(0, txtMarca.Text, txtModelo.Text, txtCombustivel.Text, txtPlaca.Text, int.Parse(txtKmRodado.Text), int.Parse(txtAno.Text), lista_pessoa);
-                veiculodao.Insert(v);
-                lista_veiculo = veiculodao.ListAll();
-                adicionado = true;
-                txtMarca.Text = "";
-                txtModelo.Text = "";
-                txtCombustivel.Text = "";
-                txtPlaca.Text = "";
-                txtKmRodado.Text = "";
-                Close();
+                try
+                {                        
+                    v = new Veiculo(0, txtMarca.Text, txtModelo.Text, txtCombustivel.Text, txtPlaca.Text, int.Parse(txtKmRodado.Text), int.Parse(txtAno.Text), lista_pessoa);
+                    veiculodao.Insert(v);
+                    lista_veiculo = veiculodao.ListAll();
+                    adicionado = true;
+                    txtMarca.Text = "";
+                    txtModelo.Text = "";
+                    txtCombustivel.Text = "";
+                    txtPlaca.Text = "";
+                    txtKmRodado.Text = "";
+                    Close();
+                }catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message,"Erro",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                }
             }
 
             }

@@ -15,7 +15,7 @@ namespace manutVeiculo
         public void Insert(Veiculo v)
         {
             Database manutVeiculo = Database.GetInstance();
-            string qry = string.Format("INSERT INTO veiculo (id, marca, modelo, combustivel, placa, kmRodado, ano) VALUE ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", v.Id, v.Marca, v.Modelo, v.Combustivel, v.Placa, v.KmRodado, v.Ano);
+            string qry = string.Format("INSERT INTO veiculo ( marca, modelo, combustivel, placa, kmRodado, ano,idCliente) VALUES ('{0}','{1}','{2}','{3}',{4},{5},'{6}')", v.Marca, v.Modelo, v.Combustivel, v.Placa, v.KmRodado, v.Ano, v.Pessoa.First().Id);
             manutVeiculo.ExecuteSQL(qry);
         }
 
@@ -31,7 +31,7 @@ namespace manutVeiculo
         {
             Veiculo v = null;
             SQLiteConnection conexao = Database.GetInstance().GetConnection();
-            
+
             if (conexao.State != System.Data.ConnectionState.Open)
             {
                 conexao.Open();
@@ -62,20 +62,19 @@ namespace manutVeiculo
                 comm = new SQLiteCommand(qry, conexao);
                 dr = comm.ExecuteReader();
 
-
                 while (dr.Read())
                 {
                     var p = new Pessoa();
-                    p.Id = dr.GetInt16(0);
-                    p.Cpf = dr.GetString(1);
-                    p.Nome = dr.GetString(2);
-                    p.Sexo = dr.GetString(3);
-                    p.Rua = dr.GetString(4);
-                    p.Bairro = dr.GetString(5);
-                    p.Numero = dr.GetInt16(6);
-                    p.Cep = dr.GetString(7);
-                    p.Cidade = dr.GetString(8);
-                    p.Uf = dr.GetString(9);
+                    p.Id = int.Parse(dr["id"].ToString());
+                    p.Cpf = dr["cpf"].ToString();
+                    p.Nome = dr["nome"].ToString();
+                    p.Sexo = dr["sexo"].ToString();
+                    p.Rua = dr["rua"].ToString();
+                    p.Bairro = dr["bairro"].ToString();
+                    p.Numero = int.Parse(dr["numero"].ToString());
+                    p.Cep = dr["cep"].ToString();
+                    p.Cidade = dr["cidade"].ToString();
+                    p.Uf = dr["uf"].ToString();
                     vc.Pessoa.Add(p);
                 }
             }
@@ -84,14 +83,14 @@ namespace manutVeiculo
             return veiculo;
         }
 
-       /* public void Update(Veiculo v)
-        {
-            Database manutVeiculo = Database.GetInstance();
+        /* public void Update(Veiculo v)
+         {
+             Database manutVeiculo = Database.GetInstance();
 
-            string qry = string.Format("UPDATE Veiculo SET id='{0}',marca='{2}',modelo='{3}',combustivel='{4}',placa='{5}',kmRodado='{6}',ano='{7}'" + "WHERE id='{1}'", v.Marca, v.Modelo, v.Combustivel, v.Placa, v.KmRodado, v.Ano);
+             string qry = string.Format("UPDATE Veiculo SET id='{0}',marca='{2}',modelo='{3}',combustivel='{4}',placa='{5}',kmRodado='{6}',ano='{7}'" + "WHERE id='{1}'", v.Marca, v.Modelo, v.Combustivel, v.Placa, v.KmRodado, v.Ano);
 
-            manutVeiculo.ExecuteSQL(qry);
-        }*/
+             manutVeiculo.ExecuteSQL(qry);
+         }*/
 
         public void Delete(int id)
         {
@@ -102,20 +101,20 @@ namespace manutVeiculo
 
         public List<Veiculo> ListAll()
         {
-            string qry = string.Format("SELECT id,marca,modelo,combustive,placa,kmRodado,ano FROM Veiculo;");
+            string qry = string.Format("SELECT id,marca,modelo,combustivel,placa,kmRodado,ano FROM Veiculo;");
             return Read(qry);
         }
 
-         public List<Veiculo> FindByPlaca(string placa)
+        public List<Veiculo> FindByPlaca(string placa)
         {
-             string qry;
+            string qry;
 
-             if (placa != "")
-                 qry = string.Format("SELECT id, marca,modelo,combustivel,placa,kmRodado,ano FROM Veiculo WHERE nome LIKE '%{0}%'", placa);
-             else
-                 qry = string.Format("SELECT id,cpf,nome,sexo,rua,bairro,numero,cep,cidade,uf FROM Pessoa");
-             
-             return Read(qry);
-         }
+            if (placa != "")
+                qry = string.Format("SELECT id, marca,modelo,combustivel,placa,kmRodado,ano FROM Veiculo WHERE nome LIKE '%{0}%'", placa);
+            else
+                qry = string.Format("SELECT id,cpf,nome,sexo,rua,bairro,numero,cep,cidade,uf FROM Pessoa");
+
+            return Read(qry);
+        }
     }
 }

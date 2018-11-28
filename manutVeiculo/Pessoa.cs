@@ -23,10 +23,12 @@ namespace manutVeiculo
 
         public Pessoa()
         {
-
+            this.veiculo = new List<Veiculo>();
         }
 
-        public Pessoa(int id, string cpf, string nome, string sexo, string rua, string bairro, int numero, string cep, string cidade, string uf, List<Veiculo> veiculo)
+        public Pessoa(int id, string cpf, string nome, string sexo, string rua, 
+            string bairro, int numero, string cep, string cidade, string uf,
+            List<Veiculo> veiculo):this()
         {
             this.id = id;
             this.cpf = cpf;
@@ -40,10 +42,7 @@ namespace manutVeiculo
             this.uf = uf;
             this.veiculo = veiculo;
 
-            if(this.veiculo == null)
-            {
-                this.veiculo = new List<Veiculo>();
-            }
+            
         }
 
         public int Id { get => id; set => id = value; }
