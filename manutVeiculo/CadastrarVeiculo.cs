@@ -14,6 +14,7 @@ namespace manutVeiculo
     {
         private VeiculoDAO veiculodao = new VeiculoDAO();
         List<Veiculo> lista_veiculo;
+        List<Pessoa> lista_pessoa;
         private Veiculo v;
         private bool adicionado = false;
         private Pessoa pessoa;
@@ -43,7 +44,7 @@ namespace manutVeiculo
             }
             else
             {
-                v = new Veiculo(0, txtMarca.Text, txtModelo.Text, txtCombustivel.Text, txtPlaca.Text, int.Parse(txtKmRodado.Text), int.Parse(txtAno.Text), pessoa);
+                v = new Veiculo(0, txtMarca.Text, txtModelo.Text, txtCombustivel.Text, txtPlaca.Text, int.Parse(txtKmRodado.Text), int.Parse(txtAno.Text), lista_pessoa);
                 veiculodao.Insert(v);
                 lista_veiculo = veiculodao.ListAll();
                 adicionado = true;
