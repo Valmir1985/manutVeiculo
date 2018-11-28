@@ -45,5 +45,16 @@ namespace manutVeiculo
         {
 
         }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            //CadastrarCliente cadastrarCliente = new CadastrarCliente(grid_pacientes.CurrentRow.Cells[2].Value.ToString());
+            //cadastrarCliente.ShowDialog();
+            //if (cadastrarCliente.adicionou())
+            //{
+            //    grid_pacientes.DataSource = pessoaDAO.ListAll();
+            //    MessageBox.Show("Cadastro Alterado com sucesso!");
+            //}
+        }
     }
 }

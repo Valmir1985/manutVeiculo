@@ -66,6 +66,7 @@ namespace manutVeiculo
             sql.AppendLine("[id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, ");
             sql.AppendLine("[cpf] VARCHAR(20) NOT NULL, ");
             sql.AppendLine("[nome] VARCHAR(100), ");
+            sql.AppendLine("[telefone] INTEGER, ");
             sql.AppendLine("[sexo] VARCHAR(1), ");
             sql.AppendLine("[rua] VARCHAR(100), ");
             sql.AppendLine("[bairro] VARCHAR(50), ");

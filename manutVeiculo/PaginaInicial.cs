@@ -62,8 +62,9 @@ namespace manutVeiculo
 
         private void button1_Click(object sender, EventArgs e)
         {
+            var cadastrarCliente = new CadastrarCliente();
             //var cadastrarVeiculo = new CadastrarVeiculo();
-            //cadastrarVeiculo.ShowDialog();
+            cadastrarCliente.ShowDialog();
         }
 
         private void button7_Click(object sender, EventArgs e)

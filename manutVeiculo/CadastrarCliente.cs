@@ -132,9 +132,9 @@ namespace manutVeiculo
                     {
                         if (rbtnMasc.Checked) sexo = "masculino";
                         if (rbtnFem.Checked) sexo = "feminino";
-                        //p = new Pessoa(txtCpf.Text, txtNome.Text, sexo, txtTelefone.Text, txtRua.Text, txtBairro.Text, txtNro.Text, txtCep.Text, txtCidade.Text, txtUf.Text);
-                        //pessoadao.Insert(p);
-                        //lista_pessoa = pessoadao.ListAll();
+                        p = new Pessoa(int.Parse(txtCpf.Text), txtNome.Text, sexo, txtTelefone.Text, txtRua.Text, txtBairro.Text, int.Parse(txtNro.Text), txtCep.Text, txtCidade.Text, txtUf.Text, null);
+                        pessoadao.Insert(p);
+                        lista_pessoa = pessoadao.ListAll();
                         adicionado = true;
                         txtNome.Text = "";
                         txtCpf.Text = "";
