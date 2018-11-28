@@ -37,7 +37,7 @@ namespace manutVeiculo
                 conexao.Open();
             }
 
-            SQLiteCommand comm = new SQLiteCommand(qry, conexao);
+            SQLiteCommand comm = new SQLiteCommand(qry,conexao);
             SQLiteDataReader dr = comm.ExecuteReader();
 
             List<Pessoa> pessoa = new List<Pessoa>();

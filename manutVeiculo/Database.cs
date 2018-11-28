@@ -14,8 +14,9 @@ namespace manutVeiculo
     
             private static SQLiteConnection conexao;
             private static Database instance;
-            private const string URL = "Data Source=manutVeiculo.db";
-            private Database()
+        //private const string URL = "Data Source=manutVeiculo.db";
+        private const string URL = "File: C:/Test/manutVeiculo.sqlite";
+        private Database()
             {
                 if (!File.Exists("manutVeiculo.db"))
                 {

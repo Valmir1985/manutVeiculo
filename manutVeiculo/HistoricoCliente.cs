@@ -13,16 +13,17 @@ namespace manutVeiculo
 {
     public partial class HistoricoCliente : Form
     {
-        private PessoaDAO pessoadao = new PessoaDAO();
-        List<Pessoa> lista_pessoa;
+       // private PessoaDAO pessoadao = new PessoaDAO();
+        List<Pessoa> lista_pessoa = new List<Pessoa>();
 
+       
     
-        public HistoricoCliente(List<Pessoa> lista_pessoa)
+        public HistoricoCliente()
         {
             InitializeComponent();
-            this.lista_pessoa = lista_pessoa;
-            dGViewHistCli.Rows.Clear(); 
-            
+            //this.lista_pessoa = lista_pessoa;
+            //dGViewHistCli.Rows.Clear(); 
+
         }
 
 
