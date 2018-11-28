@@ -152,6 +152,9 @@ namespace manutVeiculo
                     }
                 }
             }
+            var cadastraVeiculo = new CadastrarVeiculo(p);
+            cadastraVeiculo.ShowDialog();
+  
         }
     }
 }
