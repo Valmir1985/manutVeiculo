@@ -15,7 +15,7 @@ namespace manutVeiculo
     {
         private PecaDAO pecadao = new PecaDAO();
         List<Peca> lista_peca;
-       // private Peca pc;
+        private Peca pc;
         private bool adicionado = false;
 
         public bool adicionou()
@@ -26,9 +26,10 @@ namespace manutVeiculo
         {
             InitializeComponent();
             txtMarca.Text = "";
-            txtPeca.Text = "";
+            txtPecaServico.Text = "";
             txtModelo.Text = "";
             txtKmTroca.Text = "";
+            txtPreco.Text = "";
             lista_peca = pecadao.ListAll();
             btnCadastrar.Visible = true;
         }
@@ -54,19 +55,39 @@ namespace manutVeiculo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (txtMarca.Equals("") || txtPeca.Text.Equals("") || txtModelo.Equals("") || txtKmTroca.Equals(""))
+            if (txtMarca.Equals("") || txtPecaServico.Text.Equals("") || txtModelo.Equals("") || txtKmTroca.Equals("") || txtPreco.Equals(""))
             {
                 MessageBox.Show("É necessário preencher todos os dados!");
             }
             else
             {
-                adicionado = true;
-                txtMarca.Text = "";
-                txtPeca.Text = "";
-                txtModelo.Text = "";
-                txtKmTroca.Text = "";
-                Close();
+                pc = new Peca(0, txtMarca.Text, txtPecaServico.Text, txtModelo.Text, txtKmTroca.Text, float.Parse(txtPreco.Text));
+
+                try
+                {
+                    pecadao.Insert(pc);
+                    lista_peca = pecadao.ListAll();
+                    adicionado = true;
+                    txtMarca.Text = "";
+                    txtPecaServico.Text = "";
+                    txtModelo.Text = "";
+                    txtKmTroca.Text = "";
+                    txtPreco.Text = "";
+                    Close();
+                }
+                catch(Exception ex){
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+                    
+                
+
             }
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

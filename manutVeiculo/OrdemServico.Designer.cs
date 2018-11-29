@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gpbOs = new System.Windows.Forms.GroupBox();
+            this.dGViewHistVeiculo = new System.Windows.Forms.DataGridView();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnFinaliza = new System.Windows.Forms.Button();
             this.btnVisualizar = new System.Windows.Forms.Button();
@@ -36,7 +37,6 @@
             this.lbOs = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnFinalizar = new System.Windows.Forms.Button();
-            this.dGViewHistVeiculo = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +60,23 @@
             this.gpbOs.TabIndex = 1;
             this.gpbOs.TabStop = false;
             this.gpbOs.Text = "Ordem de Serviço";
+            // 
+            // dGViewHistVeiculo
+            // 
+            this.dGViewHistVeiculo.AllowUserToAddRows = false;
+            this.dGViewHistVeiculo.AllowUserToDeleteRows = false;
+            this.dGViewHistVeiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGViewHistVeiculo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.columnProprietario,
+            this.columnData1});
+            this.dGViewHistVeiculo.Location = new System.Drawing.Point(25, 87);
+            this.dGViewHistVeiculo.Name = "dGViewHistVeiculo";
+            this.dGViewHistVeiculo.ReadOnly = true;
+            this.dGViewHistVeiculo.Size = new System.Drawing.Size(715, 408);
+            this.dGViewHistVeiculo.TabIndex = 11;
             // 
             // btnCancel
             // 
@@ -125,26 +142,9 @@
             this.btnFinalizar.Text = "Finalizar";
             this.btnFinalizar.UseVisualStyleBackColor = true;
             // 
-            // dGViewHistVeiculo
-            // 
-            this.dGViewHistVeiculo.AllowUserToAddRows = false;
-            this.dGViewHistVeiculo.AllowUserToDeleteRows = false;
-            this.dGViewHistVeiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dGViewHistVeiculo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.columnProprietario,
-            this.columnData1});
-            this.dGViewHistVeiculo.Location = new System.Drawing.Point(25, 87);
-            this.dGViewHistVeiculo.Name = "dGViewHistVeiculo";
-            this.dGViewHistVeiculo.ReadOnly = true;
-            this.dGViewHistVeiculo.Size = new System.Drawing.Size(715, 408);
-            this.dGViewHistVeiculo.TabIndex = 11;
-            // 
             // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Troca";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Trocar";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Width = 50;

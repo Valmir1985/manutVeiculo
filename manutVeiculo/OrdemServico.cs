@@ -13,6 +13,9 @@ namespace manutVeiculo
 {
     public partial class OrdemServico : Form
     {
+
+        List<Os> lista_os = new List<Os>();
+
         public OrdemServico()
         {
             InitializeComponent();
@@ -46,7 +49,21 @@ namespace manutVeiculo
 
         private void btnVisualizar_Click(object sender, EventArgs e)
         {
-
+            dGViewHistVeiculo.Rows.Clear();
+            if (string.IsNullOrEmpty(txtOs.Text.Trim()))
+            {
+                MessageBox.Show("Digite o número de uma OS para consultar", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            foreach (Os os in lista_os)
+            {
+                if (os.Id.Equals(txtOs.Text))
+                {
+                  
+                   dGViewHistVeiculo.Rows.Add(os.Peca, os.Km, os.Valor, DateTime.Today.ToString("dd/MM/yyyy"));
+                  
+                }
+            }
         }
     }
 }

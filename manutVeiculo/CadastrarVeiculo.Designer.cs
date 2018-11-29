@@ -74,6 +74,7 @@
             "",
             "Gasolina",
             "Etanol",
+            "Flex",
             "Diesel"});
             this.txtCombustivel.Location = new System.Drawing.Point(95, 67);
             this.txtCombustivel.Name = "txtCombustivel";

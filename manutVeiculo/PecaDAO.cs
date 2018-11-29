@@ -15,7 +15,8 @@ namespace manutVeiculo
             public void Insert(Peca pc)
             {
                 Database manutVeiculo = Database.GetInstance();
-                string qry = string.Format("INSERT INTO peca (id, marca ,pecaServico, modelo, kmTroca, preco) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}')", pc.Id, pc.Marca, pc.PecaServico, pc.Modelo, pc.KmTroca, pc.Preco);
+                string qry = "INSERT INTO peca (marca , pecaServico, modelo, kmTroca, preco)"+
+                    $" VALUES ('{pc.Marca}','{pc.PecaServico}','{pc.Modelo}','{pc.KmTroca}','{pc.Preco}')";
                 manutVeiculo.ExecuteSQL(qry);
             }
 
@@ -44,14 +45,14 @@ namespace manutVeiculo
                 while (dr.Read())
                 {
                     pc = new Peca();
-                    pc.Id = dr.GetInt16(0);
-                    pc.Marca = dr.GetString(1);
-                    pc.PecaServico = dr.GetString(2);
-                    pc.Modelo = dr.GetString(3);
-                    pc.KmTroca = dr.GetInt16(4);
-                    pc.Preco = dr.GetFloat(5);
+                    pc.Id = int.Parse(dr["id"].ToString());
+                    pc.Marca = dr["marca"].ToString();
+                    pc.PecaServico = dr["pecaServico"].ToString();
+                    pc.Modelo = dr["modelo"].ToString(); ;
+                    pc.KmTroca = dr["kmTroca"].ToString();
+                    pc.Preco = float.Parse(dr["preco"].ToString());
 
-                }
+            }
                 dr.Close();
                 conexao.Close();
                 return peca;

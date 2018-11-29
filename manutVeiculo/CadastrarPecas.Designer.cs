@@ -34,11 +34,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtMarca = new System.Windows.Forms.TextBox();
             this.txtModelo = new System.Windows.Forms.TextBox();
-            this.txtPeca = new System.Windows.Forms.TextBox();
+            this.txtPecaServico = new System.Windows.Forms.TextBox();
             this.txtKmTroca = new System.Windows.Forms.TextBox();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.panelPeca = new System.Windows.Forms.Panel();
+            this.txtPreco = new System.Windows.Forms.TextBox();
+            this.lblPreco = new System.Windows.Forms.Label();
             this.panelPeca.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +57,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(297, 21);
+            this.label2.Location = new System.Drawing.Point(197, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 13);
             this.label2.TabIndex = 1;
@@ -73,7 +75,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(297, 89);
+            this.label4.Location = new System.Drawing.Point(201, 89);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 13);
             this.label4.TabIndex = 3;
@@ -83,28 +85,28 @@
             // 
             this.txtMarca.Location = new System.Drawing.Point(31, 37);
             this.txtMarca.Name = "txtMarca";
-            this.txtMarca.Size = new System.Drawing.Size(184, 20);
+            this.txtMarca.Size = new System.Drawing.Size(117, 20);
             this.txtMarca.TabIndex = 4;
             // 
             // txtModelo
             // 
             this.txtModelo.Location = new System.Drawing.Point(31, 105);
             this.txtModelo.Name = "txtModelo";
-            this.txtModelo.Size = new System.Drawing.Size(184, 20);
+            this.txtModelo.Size = new System.Drawing.Size(117, 20);
             this.txtModelo.TabIndex = 5;
             // 
-            // txtPeca
+            // txtPecaServico
             // 
-            this.txtPeca.Location = new System.Drawing.Point(300, 37);
-            this.txtPeca.Name = "txtPeca";
-            this.txtPeca.Size = new System.Drawing.Size(194, 20);
-            this.txtPeca.TabIndex = 6;
+            this.txtPecaServico.Location = new System.Drawing.Point(200, 37);
+            this.txtPecaServico.Name = "txtPecaServico";
+            this.txtPecaServico.Size = new System.Drawing.Size(294, 20);
+            this.txtPecaServico.TabIndex = 6;
             // 
             // txtKmTroca
             // 
-            this.txtKmTroca.Location = new System.Drawing.Point(300, 105);
+            this.txtKmTroca.Location = new System.Drawing.Point(200, 105);
             this.txtKmTroca.Name = "txtKmTroca";
-            this.txtKmTroca.Size = new System.Drawing.Size(194, 20);
+            this.txtKmTroca.Size = new System.Drawing.Size(130, 20);
             this.txtKmTroca.TabIndex = 7;
             // 
             // btnCadastrar
@@ -129,8 +131,10 @@
             // 
             // panelPeca
             // 
+            this.panelPeca.Controls.Add(this.txtPreco);
+            this.panelPeca.Controls.Add(this.lblPreco);
             this.panelPeca.Controls.Add(this.txtKmTroca);
-            this.panelPeca.Controls.Add(this.txtPeca);
+            this.panelPeca.Controls.Add(this.txtPecaServico);
             this.panelPeca.Controls.Add(this.txtModelo);
             this.panelPeca.Controls.Add(this.txtMarca);
             this.panelPeca.Controls.Add(this.label4);
@@ -141,6 +145,23 @@
             this.panelPeca.Name = "panelPeca";
             this.panelPeca.Size = new System.Drawing.Size(533, 144);
             this.panelPeca.TabIndex = 10;
+            // 
+            // txtPreco
+            // 
+            this.txtPreco.Location = new System.Drawing.Point(383, 104);
+            this.txtPreco.Name = "txtPreco";
+            this.txtPreco.Size = new System.Drawing.Size(111, 20);
+            this.txtPreco.TabIndex = 9;
+            // 
+            // lblPreco
+            // 
+            this.lblPreco.AutoSize = true;
+            this.lblPreco.Location = new System.Drawing.Point(380, 89);
+            this.lblPreco.Name = "lblPreco";
+            this.lblPreco.Size = new System.Drawing.Size(35, 13);
+            this.lblPreco.TabIndex = 8;
+            this.lblPreco.Text = "Preço";
+            this.lblPreco.Click += new System.EventHandler(this.label5_Click);
             // 
             // CadastrarPecas
             // 
@@ -167,10 +188,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtMarca;
         private System.Windows.Forms.TextBox txtModelo;
-        private System.Windows.Forms.TextBox txtPeca;
+        private System.Windows.Forms.TextBox txtPecaServico;
         private System.Windows.Forms.TextBox txtKmTroca;
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Panel panelPeca;
+        private System.Windows.Forms.TextBox txtPreco;
+        private System.Windows.Forms.Label lblPreco;
     }
 }

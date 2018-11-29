@@ -19,11 +19,6 @@ namespace manutVeiculo
         private static Database instance;
         private const string URL = "Data Source=manutVeiculo.db; foreign keys = true;";
 
-        ///private const string URL = "File: C:/Test/manutVeiculo.sqlite";
-        ///
-
-
-
         private Database()
         {
             if (!File.Exists("manutVeiculo.db"))
@@ -93,7 +88,7 @@ namespace manutVeiculo
             sql.AppendLine("[marca] VARCHAR(50), ");
             sql.AppendLine("[modelo] VARCHAR(50), ");
             sql.AppendLine("[combustivel] VARCHAR(20), ");
-            sql.AppendLine("[placa] VARCHAR(50) , ");
+            sql.AppendLine("[placa] VARCHAR(50), ");
             sql.AppendLine("[kmRodado] INTEGER, ");
             sql.AppendLine("[ano] INTEGER, ");
             sql.AppendLine("FOREIGN KEY(idCliente) REFERENCES pessoa(id));");
@@ -112,7 +107,7 @@ namespace manutVeiculo
             sql.Clear();
 
             sql.AppendLine("CREATE TABLE IF NOT EXISTS peca(");
-            sql.AppendLine("id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,");
+            sql.AppendLine("id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, ");
             sql.AppendLine("marca VARCHAR(50),");
             sql.AppendLine("pecaServico VARCHAR(100),");
             sql.AppendLine("modelo VARCHAR(50),");

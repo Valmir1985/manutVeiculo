@@ -135,11 +135,9 @@ namespace manutVeiculo
                     {
                         if (rbtnMasc.Checked) sexo = "masculino";
                         if (rbtnFem.Checked) sexo = "feminino";
-                        p = new Pessoa(0, txtCpf.Text, txtNome.Text, sexo, txtRua.Text, txtBairro.Text, int.Parse(txtNro.Text), txtCep.Text, txtCidade.Text, txtUf.Text, null);
-                        //Não tem telefone na pessoa
-                        // Agora foi deu pau  por falta de coluna combustivel
-                        // txtTelefone.Text,
 
+                        p = new Pessoa(0, txtCpf.Text, txtNome.Text, sexo, txtRua.Text, txtBairro.Text, int.Parse(txtNro.Text), txtCep.Text, txtCidade.Text, txtUf.Text, null);
+                        
                         try
                         {
                             pessoadao.Insert(p);

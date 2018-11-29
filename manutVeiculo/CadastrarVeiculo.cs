@@ -68,6 +68,15 @@ namespace manutVeiculo
 
         private void btnCancelarAdd_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Deseja sair sem salvar?", "Confirmação",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                //
+            }
+            else
+            {
+                this.Close();
+            }
 
         }
 
