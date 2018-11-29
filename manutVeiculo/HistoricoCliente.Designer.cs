@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.gpbHistCliente = new System.Windows.Forms.GroupBox();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnConfirma = new System.Windows.Forms.Button();
-            this.txtCpfHistorico = new System.Windows.Forms.TextBox();
-            this.lbCpfHistorico = new System.Windows.Forms.Label();
             this.dGViewHistCli = new System.Windows.Forms.DataGridView();
             this.columnNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnVeiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPlaca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnKm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnData = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnConfirma = new System.Windows.Forms.Button();
+            this.txtCpfHistorico = new System.Windows.Forms.TextBox();
+            this.lbCpfHistorico = new System.Windows.Forms.Label();
             this.gpbHistCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGViewHistCli)).BeginInit();
             this.SuspendLayout();
@@ -56,42 +56,6 @@
             this.gpbHistCliente.TabIndex = 0;
             this.gpbHistCliente.TabStop = false;
             this.gpbHistCliente.Text = "Histórico Cliente";
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(478, 72);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(84, 35);
-            this.btnCancelar.TabIndex = 5;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnConfirma
-            // 
-            this.btnConfirma.Location = new System.Drawing.Point(185, 72);
-            this.btnConfirma.Name = "btnConfirma";
-            this.btnConfirma.Size = new System.Drawing.Size(84, 35);
-            this.btnConfirma.TabIndex = 4;
-            this.btnConfirma.Text = "Confirmar";
-            this.btnConfirma.UseVisualStyleBackColor = true;
-            this.btnConfirma.Click += new System.EventHandler(this.btnConfirma_Click);
-            // 
-            // txtCpfHistorico
-            // 
-            this.txtCpfHistorico.Location = new System.Drawing.Point(315, 37);
-            this.txtCpfHistorico.Name = "txtCpfHistorico";
-            this.txtCpfHistorico.Size = new System.Drawing.Size(127, 20);
-            this.txtCpfHistorico.TabIndex = 3;
-            // 
-            // lbCpfHistorico
-            // 
-            this.lbCpfHistorico.AutoSize = true;
-            this.lbCpfHistorico.Location = new System.Drawing.Point(364, 21);
-            this.lbCpfHistorico.Name = "lbCpfHistorico";
-            this.lbCpfHistorico.Size = new System.Drawing.Size(27, 13);
-            this.lbCpfHistorico.TabIndex = 0;
-            this.lbCpfHistorico.Text = "CPF";
             // 
             // dGViewHistCli
             // 
@@ -145,6 +109,42 @@
             this.columnData.ReadOnly = true;
             this.columnData.Width = 127;
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(478, 72);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(84, 35);
+            this.btnCancelar.TabIndex = 5;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnConfirma
+            // 
+            this.btnConfirma.Location = new System.Drawing.Point(185, 72);
+            this.btnConfirma.Name = "btnConfirma";
+            this.btnConfirma.Size = new System.Drawing.Size(84, 35);
+            this.btnConfirma.TabIndex = 4;
+            this.btnConfirma.Text = "Confirmar";
+            this.btnConfirma.UseVisualStyleBackColor = true;
+            this.btnConfirma.Click += new System.EventHandler(this.btnConfirma_Click);
+            // 
+            // txtCpfHistorico
+            // 
+            this.txtCpfHistorico.Location = new System.Drawing.Point(315, 37);
+            this.txtCpfHistorico.Name = "txtCpfHistorico";
+            this.txtCpfHistorico.Size = new System.Drawing.Size(127, 20);
+            this.txtCpfHistorico.TabIndex = 3;
+            // 
+            // lbCpfHistorico
+            // 
+            this.lbCpfHistorico.AutoSize = true;
+            this.lbCpfHistorico.Location = new System.Drawing.Point(364, 21);
+            this.lbCpfHistorico.Name = "lbCpfHistorico";
+            this.lbCpfHistorico.Size = new System.Drawing.Size(27, 13);
+            this.lbCpfHistorico.TabIndex = 0;
+            this.lbCpfHistorico.Text = "CPF";
+            // 
             // HistoricoCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -154,6 +154,7 @@
             this.MaximizeBox = false;
             this.Name = "HistoricoCliente";
             this.Text = "Histórico de Clientes";
+            this.Load += new System.EventHandler(this.HistoricoCliente_Load);
             this.gpbHistCliente.ResumeLayout(false);
             this.gpbHistCliente.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGViewHistCli)).EndInit();

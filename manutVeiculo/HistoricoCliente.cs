@@ -13,11 +13,11 @@ namespace manutVeiculo
 {
     public partial class HistoricoCliente : Form
     {
-       // private PessoaDAO pessoadao = new PessoaDAO();
+        // private PessoaDAO pessoadao = new PessoaDAO();
         List<Pessoa> lista_pessoa = new List<Pessoa>();
 
-       
-    
+
+
         public HistoricoCliente()
         {
             InitializeComponent();
@@ -42,22 +42,34 @@ namespace manutVeiculo
 
         private void btnConfirma_Click(object sender, EventArgs e)
         {
-            foreach (Pessoa p in lista_pessoa){
-                if (!txtCpfHistorico.Text.Equals(""))
+
+            dGViewHistCli.Rows.Clear();
+            if (string.IsNullOrEmpty(txtCpfHistorico.Text.Trim()))
+            {
+                MessageBox.Show("Digite um cpf para consultar", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            foreach (Pessoa p in lista_pessoa)
+            {
+                if (p.Cpf.StartsWith(txtCpfHistorico.Text))
                 {
-                    dGViewHistCli.Rows.Add(p.Nome, p.Veiculo, p.Veiculo, p.Bairro, p.Cidade);
-                }
-                else
-                {
-                    MessageBox.Show("Digite um CPF válido!");
+                    foreach (var veiculo in p.Veiculo)
+                    {
+                        dGViewHistCli.Rows.Add(p.Nome, veiculo.Modelo, veiculo.Placa, veiculo.KmRodado, DateTime.Today.ToString("dd/MM/yyyy"));
+                    }
                 }
             }
-           
+
         }
 
         private void lvHistCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void HistoricoCliente_Load(object sender, EventArgs e)
+        {
+            lista_pessoa = new PessoaDAO().ListAll();
         }
     }
 }
