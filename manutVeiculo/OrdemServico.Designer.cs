@@ -30,6 +30,11 @@
         {
             this.gpbOs = new System.Windows.Forms.GroupBox();
             this.dGViewHistVeiculo = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnProprietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnData1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnFinaliza = new System.Windows.Forms.Button();
             this.btnVisualizar = new System.Windows.Forms.Button();
@@ -37,11 +42,6 @@
             this.lbOs = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnFinalizar = new System.Windows.Forms.Button();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnProprietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnData1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gpbOs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGViewHistVeiculo)).BeginInit();
             this.SuspendLayout();
@@ -77,6 +77,41 @@
             this.dGViewHistVeiculo.ReadOnly = true;
             this.dGViewHistVeiculo.Size = new System.Drawing.Size(715, 408);
             this.dGViewHistVeiculo.TabIndex = 11;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Trocar";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Peça";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 220;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Km";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 140;
+            // 
+            // columnProprietario
+            // 
+            this.columnProprietario.HeaderText = "Valor";
+            this.columnProprietario.Name = "columnProprietario";
+            this.columnProprietario.ReadOnly = true;
+            this.columnProprietario.Width = 140;
+            // 
+            // columnData1
+            // 
+            this.columnData1.HeaderText = "Data";
+            this.columnData1.Name = "columnData1";
+            this.columnData1.ReadOnly = true;
+            this.columnData1.Width = 122;
             // 
             // btnCancel
             // 
@@ -142,41 +177,6 @@
             this.btnFinalizar.Text = "Finalizar";
             this.btnFinalizar.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Trocar";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Peça";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 220;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Km";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 140;
-            // 
-            // columnProprietario
-            // 
-            this.columnProprietario.HeaderText = "Valor";
-            this.columnProprietario.Name = "columnProprietario";
-            this.columnProprietario.ReadOnly = true;
-            this.columnProprietario.Width = 140;
-            // 
-            // columnData1
-            // 
-            this.columnData1.HeaderText = "Data";
-            this.columnData1.Name = "columnData1";
-            this.columnData1.ReadOnly = true;
-            this.columnData1.Width = 122;
-            // 
             // OrdemServico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -188,6 +188,7 @@
             this.MaximizeBox = false;
             this.Name = "OrdemServico";
             this.Text = "Ordem de Serviço";
+            this.Load += new System.EventHandler(this.OrdemServico_Load);
             this.gpbOs.ResumeLayout(false);
             this.gpbOs.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGViewHistVeiculo)).EndInit();

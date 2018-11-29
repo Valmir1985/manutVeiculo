@@ -17,6 +17,12 @@ namespace manutVeiculo
         private int km;
         private DateTime data;
 
+        public Os(int id, string cliente, string placa, bool status, string peca, string valor, int km)
+            :this(id,cliente,placa,status,peca,valor,km,DateTime.Now)
+        {
+
+        }
+
         public Os(int id, string cliente, string placa, bool status, string peca, string valor, int km, DateTime data)
         {
             this.id = id;

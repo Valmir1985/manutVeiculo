@@ -31,7 +31,6 @@ namespace manutVeiculo
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
             var form2 = new CadastrarCliente();
             form2.ShowDialog();
         }

@@ -19,6 +19,8 @@ namespace manutVeiculo
         private static Database instance;
         private const string URL = "Data Source=manutVeiculo.db; foreign keys = true;";
 
+        public int LastId { get; private set; }
+
         private Database()
         {
             if (!File.Exists("manutVeiculo.db"))
@@ -47,6 +49,7 @@ namespace manutVeiculo
             }
             SQLiteCommand comm = new SQLiteCommand(qry, conexao);
             comm.ExecuteNonQuery();
+            LastId = (int)conexao.LastInsertRowId;
             conexao.Close();
         }
         private void CreateDB()
@@ -54,7 +57,7 @@ namespace manutVeiculo
             SQLiteConnection.CreateFile("manutVeiculo.db");
             SQLiteConnection conn = new SQLiteConnection(URL);
             conn.Open();
-
+            
             StringBuilder sql = new StringBuilder();
 
             sql.AppendLine("CREATE TABLE IF NOT EXISTS pessoa (");

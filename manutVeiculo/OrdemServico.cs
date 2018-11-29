@@ -65,5 +65,10 @@ namespace manutVeiculo
                 }
             }
         }
+
+        private void OrdemServico_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

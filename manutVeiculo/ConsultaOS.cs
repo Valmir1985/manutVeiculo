@@ -13,7 +13,7 @@ namespace manutVeiculo
 {
     public partial class ConsultarOS : Form
     {
-        List<ConsultOs> lista_os = new List<ConsultOs>;
+        List<ConsultOs> lista_os = new List<ConsultOs>();
      
 
         public ConsultarOS()
@@ -37,7 +37,7 @@ namespace manutVeiculo
             }
             foreach (ConsultOs os in lista_os)
             {
-                if (os.NumeroOs.Equals(txtOS.Text) || os.Placa.StartsWith(txtOS.Text)
+                if (os.NumeroOs.Equals(txtOS.Text) || os.Placa.StartsWith(txtOS.Text))
                 {
                     foreach (var pessoa in os.Pessoa)
                     {

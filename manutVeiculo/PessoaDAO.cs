@@ -19,6 +19,7 @@ namespace manutVeiculo
             string qry = "INSERT INTO pessoa ( cpf, nome, sexo, rua, bairro, numero, cep, cidade, uf)" +
                 $" VALUES ('{p.Cpf}','{p.Nome}','{p.Sexo}','{p.Rua}','{p.Bairro}',{p.Numero},'{p.Cep}','{ p.Cidade}','{p.Uf}')";
             manutVeiculo.ExecuteSQL(qry);
+            p.Id = manutVeiculo.LastId;
         }
 
         public Pessoa getById(string id)
@@ -82,7 +83,7 @@ namespace manutVeiculo
                     v.Ano = int.Parse(dr["ano"].ToString());
                     p.Veiculo.Add(v);
                 }
-            }            
+            }
 
             dr.Close();
             conexao.Close();
