@@ -78,6 +78,7 @@
     <Compile Include="ConsultOs.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Os.cs" />
+    <Compile Include="OsDAO.cs" />
     <Compile Include="Peca.cs" />
     <Compile Include="PecaDAO.cs" />
     <Compile Include="Pessoa.cs" />

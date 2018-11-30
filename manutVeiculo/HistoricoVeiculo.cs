@@ -13,7 +13,7 @@ namespace manutVeiculo
 {
     public partial class HistoricoVeiculo : Form
     {
-        //List<Veiculo> lista_veiculo = new List<Veiculo>();
+        List<Veiculo> lista_veiculo = new List<Veiculo>();
 
         public HistoricoVeiculo()
         {
@@ -50,6 +50,34 @@ namespace manutVeiculo
 
         private void button1_Click(object sender, EventArgs e)
         {
+            dGViewHistVeiculo.Rows.Clear();
+            if (string.IsNullOrEmpty(txtPlacaHistorico.Text.Trim()))
+            {
+                MessageBox.Show("Digite um cpf para consultar", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            foreach (Veiculo v in lista_veiculo)
+            {
+                if (v.Placa.StartsWith(txtPlacaHistorico.Text))
+                {
+                    dGViewHistVeiculo.Rows.Add(v.Marca, v.KmRodado, DateTime.Today.ToString("dd/MM/yyyy"), v.Modelo);
+                    //if (v.Pessoa.Count > 0)
+                    //{
+                    //    foreach (var pessoa in v.Pessoa)
+                    //    {
+                    //        dGViewHistVeiculo.Rows.Add(v.Marca,v.KmRodado, DateTime.Today.ToString("dd/MM/yyyy"), pessoa.Nome);
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    dGViewHistVeiculo.Rows.Add("", "", "", DateTime.Today.ToString("dd/MM/yyyy"),"");
+                    //}
+                }
+            }
+
+
+
             //dGViewHistVeiculo.Rows.Clear();
             //if (string.IsNullOrEmpty(txtPlacaHistorico.Text.Trim()))
             //{
