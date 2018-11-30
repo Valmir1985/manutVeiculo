@@ -10,8 +10,11 @@ using System.Data;
 
 namespace manutVeiculo
 {
-    class VeiculoDAO
+    public class VeiculoDAO
     {
+        public VeiculoDAO()
+        {
+        }
         public void Insert(Veiculo v)
         {
             Database manutVeiculo = Database.GetInstance();
