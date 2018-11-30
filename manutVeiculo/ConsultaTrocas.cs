@@ -50,7 +50,11 @@ namespace manutVeiculo
         {
             var form11 = new ConsultaCliente();
             form11.ShowDialog();
-            //this.Close();
+        }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

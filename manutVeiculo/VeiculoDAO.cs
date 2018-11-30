@@ -18,7 +18,6 @@ namespace manutVeiculo
         public void Insert(Veiculo v)
         {
             Database manutVeiculo = Database.GetInstance();
-            //string qry = string.Format("INSERT INTO veiculo ( marca, modelo, combustivel, placa, kmRodado, ano,idCliente) VALUES ('{0}','{1}','{2}','{3}',{4},{5},'{6}')", v.Marca, v.Modelo, v.Combustivel, v.Placa, v.KmRodado, v.Ano, v.Pessoa.First().Id);
             string qry = "INSERT INTO veiculo ( marca, modelo, combustivel, placa, kmRodado, ano, idCliente )" +
                $" VALUES ('{v.Marca}','{v.Modelo}','{v.Combustivel}','{v.Placa}','{v.KmRodado}',{v.Ano},{v.Pessoa.First().Id})";
             manutVeiculo.ExecuteSQL(qry);
@@ -62,7 +61,7 @@ namespace manutVeiculo
 
             foreach (Veiculo vc in veiculo)
             {
-                qry = string.Format("SELECT * FROM pessoa WHERE id ='{0}'", vc.Id);
+                qry = string.Format("SELECT * FROM pessoa WHERE id ='{0}'", vc.Pessoa);
 
                 comm = new SQLiteCommand(qry, conexao);
                 dr = comm.ExecuteReader();

@@ -29,23 +29,23 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtPesqAno = new System.Windows.Forms.TextBox();
+            this.txtAno = new System.Windows.Forms.TextBox();
             this.lbAno = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnConsultar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtKmAtual = new System.Windows.Forms.TextBox();
+            this.cmbModelo = new System.Windows.Forms.ComboBox();
+            this.cmbMarca = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.dGViewConsultaTrocas = new System.Windows.Forms.DataGridView();
             this.columnPeca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnKm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGViewConsultaTrocas)).BeginInit();
@@ -53,16 +53,16 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtPesqAno);
+            this.groupBox1.Controls.Add(this.txtAno);
             this.groupBox1.Controls.Add(this.lbAno);
             this.groupBox1.Controls.Add(this.btnCancelar);
             this.groupBox1.Controls.Add(this.btnConsultar);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.txtKmAtual);
+            this.groupBox1.Controls.Add(this.cmbModelo);
+            this.groupBox1.Controls.Add(this.cmbMarca);
             this.groupBox1.Location = new System.Drawing.Point(26, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(752, 143);
@@ -70,12 +70,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pesquisa";
             // 
-            // txtPesqAno
+            // txtAno
             // 
-            this.txtPesqAno.Location = new System.Drawing.Point(404, 57);
-            this.txtPesqAno.Name = "txtPesqAno";
-            this.txtPesqAno.Size = new System.Drawing.Size(145, 20);
-            this.txtPesqAno.TabIndex = 25;
+            this.txtAno.Location = new System.Drawing.Point(404, 57);
+            this.txtAno.Name = "txtAno";
+            this.txtAno.Size = new System.Drawing.Size(145, 20);
+            this.txtAno.TabIndex = 25;
             // 
             // lbAno
             // 
@@ -104,6 +104,7 @@
             this.btnConsultar.TabIndex = 21;
             this.btnConsultar.Text = "Consultar";
             this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // label3
             // 
@@ -132,37 +133,49 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Marca";
             // 
-            // textBox1
+            // txtKmAtual
             // 
-            this.textBox1.Location = new System.Drawing.Point(582, 56);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(145, 20);
-            this.textBox1.TabIndex = 17;
+            this.txtKmAtual.Location = new System.Drawing.Point(582, 56);
+            this.txtKmAtual.Name = "txtKmAtual";
+            this.txtKmAtual.Size = new System.Drawing.Size(145, 20);
+            this.txtKmAtual.TabIndex = 17;
             // 
-            // comboBox2
+            // cmbModelo
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(212, 56);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(155, 21);
-            this.comboBox2.TabIndex = 16;
+            this.cmbModelo.FormattingEnabled = true;
+            this.cmbModelo.Items.AddRange(new object[] {
+            "",
+            "Celta",
+            "Civic",
+            "Corola",
+            "Corsa",
+            "Fiesta",
+            "Fox",
+            "Fusca",
+            "Gol",
+            "Hb20",
+            "Siena"});
+            this.cmbModelo.Location = new System.Drawing.Point(212, 56);
+            this.cmbModelo.Name = "cmbModelo";
+            this.cmbModelo.Size = new System.Drawing.Size(155, 21);
+            this.cmbModelo.TabIndex = 16;
             // 
-            // comboBox1
+            // cmbMarca
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cmbMarca.FormattingEnabled = true;
+            this.cmbMarca.Items.AddRange(new object[] {
             "",
             "Chevrolet",
             "Ford",
-            "Volkswagen",
             "Fiat",
-            "Renault",
             "Honda",
-            "Peugeot"});
-            this.comboBox1.Location = new System.Drawing.Point(21, 56);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(155, 21);
-            this.comboBox1.TabIndex = 15;
+            "Renault",
+            "Peugeot",
+            "Volkswagen"});
+            this.cmbMarca.Location = new System.Drawing.Point(21, 56);
+            this.cmbMarca.Name = "cmbMarca";
+            this.cmbMarca.Size = new System.Drawing.Size(155, 21);
+            this.cmbMarca.TabIndex = 15;
             // 
             // groupBox2
             // 
@@ -173,25 +186,6 @@
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Relatório";
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(188, 547);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(124, 35);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Imprimir";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(486, 547);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(124, 35);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Gerar O.S.";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // dGViewConsultaTrocas
             // 
@@ -229,6 +223,25 @@
             this.columnStatus.ReadOnly = true;
             this.columnStatus.Width = 240;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(188, 547);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(124, 35);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Imprimir";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(486, 547);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(124, 35);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "Gerar O.S.";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // ConsultaTrocas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -258,13 +271,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtKmAtual;
+        private System.Windows.Forms.ComboBox cmbModelo;
+        private System.Windows.Forms.ComboBox cmbMarca;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox txtPesqAno;
+        private System.Windows.Forms.TextBox txtAno;
         private System.Windows.Forms.Label lbAno;
         private System.Windows.Forms.DataGridView dGViewConsultaTrocas;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPeca;
