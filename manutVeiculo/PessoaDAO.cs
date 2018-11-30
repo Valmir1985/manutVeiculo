@@ -67,9 +67,6 @@ namespace manutVeiculo
                 comm = new SQLiteCommand(qry, conexao);
                 dr = comm.ExecuteReader();
 
-                //Aqui vai precisar remapiar as colunas ele está pegando a placa no lugar do kmrodado
-                //blz...quer que ja faz?
-                //vou te mostra um outro jeito
 
                 while (dr.Read())
                 {

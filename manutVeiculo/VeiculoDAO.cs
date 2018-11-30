@@ -77,7 +77,7 @@ namespace manutVeiculo
                     p.Cep = dr["cep"].ToString();
                     p.Cidade = dr["cidade"].ToString();
                     p.Uf = dr["uf"].ToString();
-                    vc.Pessoa.Add(p);
+                    v.Pessoa.Add(p);
                 }
             }
             dr.Close();
@@ -103,7 +103,7 @@ namespace manutVeiculo
 
         public List<Veiculo> ListAll()
         {
-            string qry = string.Format("SELECT id,marca,modelo,combustivel,placa,kmRodado,ano FROM Veiculo;");
+            string qry = string.Format("SELECT id,marca,modelo,combustivel,placa,kmRodado,ano FROM veiculo;");
             return Read(qry);
         }
 
@@ -112,9 +112,9 @@ namespace manutVeiculo
             string qry;
 
             if (placa != "")
-                qry = string.Format("SELECT id, marca,modelo,combustivel,placa,kmRodado,ano FROM Veiculo WHERE nome LIKE '%{0}%'", placa);
+                qry = string.Format("SELECT id, marca,modelo,combustivel,placa,kmRodado,ano FROM veiculo WHERE placa LIKE '%{0}%'", placa);
             else
-                qry = string.Format("SELECT id,cpf,nome,sexo,rua,bairro,numero,cep,cidade,uf FROM Pessoa");
+                qry = string.Format("SELECT id, marca,modelo,combustivel,placa,kmRodado,ano FROM veiculo");
 
             return Read(qry);
         }

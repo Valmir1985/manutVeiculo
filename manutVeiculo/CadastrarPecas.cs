@@ -79,8 +79,8 @@ namespace manutVeiculo
                     MessageBox.Show(ex.Message);
                     return;
                 }
-                    
-                
+
+                MessageBox.Show("Peça cadastrada com sucesso");
 
             }
         }
