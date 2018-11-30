@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPlacaHistorico = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.gbHistVeiculo = new System.Windows.Forms.GroupBox();
@@ -52,12 +52,12 @@
             this.label1.Text = "Placa";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBox1
+            // txtPlacaHistorico
             // 
-            this.textBox1.Location = new System.Drawing.Point(308, 43);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(124, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtPlacaHistorico.Location = new System.Drawing.Point(308, 43);
+            this.txtPlacaHistorico.Name = "txtPlacaHistorico";
+            this.txtPlacaHistorico.Size = new System.Drawing.Size(124, 20);
+            this.txtPlacaHistorico.TabIndex = 1;
             // 
             // button1
             // 
@@ -84,7 +84,7 @@
             this.gbHistVeiculo.Controls.Add(this.dGViewHistVeiculo);
             this.gbHistVeiculo.Controls.Add(this.button2);
             this.gbHistVeiculo.Controls.Add(this.button1);
-            this.gbHistVeiculo.Controls.Add(this.textBox1);
+            this.gbHistVeiculo.Controls.Add(this.txtPlacaHistorico);
             this.gbHistVeiculo.Controls.Add(this.label1);
             this.gbHistVeiculo.Location = new System.Drawing.Point(21, 14);
             this.gbHistVeiculo.Name = "gbHistVeiculo";
@@ -92,6 +92,7 @@
             this.gbHistVeiculo.TabIndex = 5;
             this.gbHistVeiculo.TabStop = false;
             this.gbHistVeiculo.Text = "Histórico do Veículo";
+            this.gbHistVeiculo.Enter += new System.EventHandler(this.gbHistVeiculo_Enter);
             // 
             // dGViewHistVeiculo
             // 
@@ -156,7 +157,7 @@
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPlacaHistorico;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox gbHistVeiculo;

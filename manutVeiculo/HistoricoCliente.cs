@@ -44,11 +44,12 @@ namespace manutVeiculo
         {
 
             dGViewHistCli.Rows.Clear();
-            if (string.IsNullOrEmpty(txtCpfHistorico.Text.Trim()))
+             if (string.IsNullOrEmpty(txtCpfHistorico.Text.Trim()))
             {
                 MessageBox.Show("Digite um cpf para consultar", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+           
             foreach (Pessoa p in lista_pessoa)
             {
                 if (p.Cpf.StartsWith(txtCpfHistorico.Text))
@@ -77,6 +78,11 @@ namespace manutVeiculo
         private void HistoricoCliente_Load(object sender, EventArgs e)
         {
             lista_pessoa = new PessoaDAO().ListAll();
+        }
+
+        private void gpbHistCliente_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

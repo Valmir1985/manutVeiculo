@@ -56,6 +56,7 @@
             this.gpbHistCliente.TabIndex = 0;
             this.gpbHistCliente.TabStop = false;
             this.gpbHistCliente.Text = "Histórico Cliente";
+            this.gpbHistCliente.Enter += new System.EventHandler(this.gpbHistCliente_Enter);
             // 
             // dGViewHistCli
             // 

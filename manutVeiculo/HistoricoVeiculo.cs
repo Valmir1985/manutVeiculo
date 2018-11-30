@@ -13,6 +13,8 @@ namespace manutVeiculo
 {
     public partial class HistoricoVeiculo : Form
     {
+        //List<Veiculo> lista_veiculo = new List<Veiculo>();
+
         public HistoricoVeiculo()
         {
             InitializeComponent();
@@ -47,6 +49,23 @@ namespace manutVeiculo
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            //dGViewHistVeiculo.Rows.Clear();
+            //if (string.IsNullOrEmpty(txtPlacaHistorico.Text.Trim()))
+            //{
+            //    MessageBox.Show("Digite uma Placa para consultar", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
+            //foreach (Veiculo v in lista_veiculo)
+            //{
+            //    if (v.Placa == txtPlacaHistorico.Text)
+            //    {
+            //        dGViewHistVeiculo.Rows.Add(v.Placa, v.KmRodado, " ", v.Pessoa);
+            //    }
+            //}
+        }
+
+        private void gbHistVeiculo_Enter(object sender, EventArgs e)
         {
 
         }
