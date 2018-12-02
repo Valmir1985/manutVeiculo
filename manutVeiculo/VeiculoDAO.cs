@@ -14,6 +14,7 @@ namespace manutVeiculo
     {
         public VeiculoDAO()
         {
+
         }
         public void Insert(Veiculo v)
         {

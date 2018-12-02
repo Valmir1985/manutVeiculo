@@ -13,6 +13,8 @@ namespace manutVeiculo
 {
     public partial class HistoricoVeiculo : Form
     {
+        Veiculo v = new Veiculo();
+        Pessoa p = new Pessoa();
         List<Veiculo> lista_veiculo = new List<Veiculo>();
 
         public HistoricoVeiculo()
@@ -50,36 +52,18 @@ namespace manutVeiculo
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             dGViewHistVeiculo.Rows.Clear();
             if (string.IsNullOrEmpty(txtPlacaHistorico.Text.Trim()))
             {
-                MessageBox.Show("Digite uma placa para consultar", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Digite uma Placa para consultar", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-           
-            foreach (Veiculo v in lista_veiculo)
+            else if (txtPlacaHistorico.Text.Equals("4455"))
             {
-                MessageBox.Show("Entrou no for", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                if (v.Placa.StartsWith(txtPlacaHistorico.Text))
-                {
-                    MessageBox.Show("Entrou no if", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    dGViewHistVeiculo.Rows.Add(v.Marca, v.KmRodado, DateTime.Today.ToString("dd/MM/yyyy"), v.Modelo);
-                    //if (v.Pessoa.Count > 0)
-                    //{
-                    //    foreach (var pessoa in v.Pessoa)
-                    //    {
-                    //        dGViewHistVeiculo.Rows.Add(v.Marca, v.KmRodado, DateTime.Today.ToString("dd/MM/yyyy"), pessoa.Nome);
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    dGViewHistVeiculo.Rows.Add("", "", "", DateTime.Today.ToString("dd/MM/yyyy"), "");
-                    //}
-                }
-
+                dGViewHistVeiculo.Rows.Add(v.Placa, v.KmRodado, v.Placa, v.Placa);
+                MessageBox.Show("funcionaaaaa");
             }
-
-            MessageBox.Show("saiu no for");
 
             //dGViewHistVeiculo.Rows.Clear();
             //if (string.IsNullOrEmpty(txtPlacaHistorico.Text.Trim()))
@@ -94,13 +78,53 @@ namespace manutVeiculo
             //        dGViewHistVeiculo.Rows.Add(v.Placa, v.KmRodado, " ", v.Pessoa);
             //    }
             //}
-        }
 
-        private void HistoricoVeiculo_Load(object sender, EventArgs e)
-        {
-            lista_veiculo = new VeiculoDAO().ListAll();
-        }
+            //dGViewHistVeiculo.Rows.Clear();
+            //if (string.IsNullOrEmpty(txtPlacaHistorico.Text.Trim()))
+            //{
+            //    MessageBox.Show("Digite uma placa para consultar", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
 
+            //foreach (Veiculo v in lista_veiculo)
+            //{
+            //    MessageBox.Show("Entrou no for", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    if (v.Placa.StartsWith(txtPlacaHistorico.Text))
+            //    {
+            //        MessageBox.Show("Entrou no if", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //        dGViewHistVeiculo.Rows.Add(v.Marca, v.KmRodado, DateTime.Today.ToString("dd/MM/yyyy"), v.Modelo);
+            //        if (v.Pessoa.Count > 0)
+            //        {
+            //            foreach (var pessoa in v.Pessoa)
+            //            {
+            //                dGViewHistVeiculo.Rows.Add(v.Marca, v.KmRodado, DateTime.Today.ToString("dd/MM/yyyy"), pessoa.Nome);
+            //            }
+            //        }
+            //        else
+            //        {
+            //            dGViewHistVeiculo.Rows.Add("", "", "", DateTime.Today.ToString("dd/MM/yyyy"), "");
+            //        }
+            //    }
+
+            //}
+
+
+            //dGViewHistVeiculo.Rows.Clear();
+            //if (string.IsNullOrEmpty(txtPlacaHistorico.Text.Trim()))
+            //{
+            //    MessageBox.Show("Digite uma Placa para consultar", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
+            //foreach (Veiculo v in lista_veiculo)
+            //{
+            //    if (v.Placa == txtPlacaHistorico.Text)
+            //    {
+            //        dGViewHistVeiculo.Rows.Add(v.Placa, v.KmRodado, " ", v.Pessoa);
+            //    }
+            //}
+
+
+        }
         private void gbHistVeiculo_Enter(object sender, EventArgs e)
         {
 
