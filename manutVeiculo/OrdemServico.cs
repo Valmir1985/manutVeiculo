@@ -59,9 +59,8 @@ namespace manutVeiculo
             {
                 if (os.Id.Equals(txtOs.Text))
                 {
-                  
-                   dGViewHistVeiculo.Rows.Add(os.Peca, os.Km, os.Valor, DateTime.Today.ToString("dd/MM/yyyy"));
-                  
+                    dGViewHistVeiculo.Rows.Add(os.Peca, os.Km, os.Valor, DateTime.Today.ToString("dd/MM/yyyy"));
+                                      
                 }
             }
         }

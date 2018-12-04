@@ -169,5 +169,10 @@ namespace manutVeiculo
             cadastraVeiculo.ShowDialog();
 
         }
+
+        private void CadastrarCliente_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

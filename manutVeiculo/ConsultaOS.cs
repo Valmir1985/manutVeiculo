@@ -37,12 +37,14 @@ namespace manutVeiculo
             }
             foreach (ConsultOs os in lista_os)
             {
+                MessageBox.Show("For");
                 if (os.NumeroOs.Equals(txtOS.Text) || os.Placa.StartsWith(txtOS.Text))
                 {
-                    foreach (var pessoa in os.Pessoa)
-                    {
-                        dGViewConsultaOS.Rows.Add(os.NumeroOs, pessoa.Nome, os.Placa, os.Status);
-                    }
+                    MessageBox.Show("if");
+                    //foreach (var pessoa in os.Pessoa)
+                    // {
+                    dGViewConsultaOS.Rows.Add(os.NumeroOs, os.Pessoa, os.Placa, os.Status);
+                   // }
                         
                 }
             }

@@ -44,13 +44,13 @@
             this.txtBairro = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lbBairro = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
             this.lbNovoNome = new System.Windows.Forms.Label();
             this.gpbInfoPessoal = new System.Windows.Forms.GroupBox();
             this.rbtnFem = new System.Windows.Forms.RadioButton();
             this.gpbEndereco = new System.Windows.Forms.GroupBox();
             this.btnConsultarCli = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtCpf = new System.Windows.Forms.TextBox();
             this.lbNovoCpf = new System.Windows.Forms.Label();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.btnAtualizar = new System.Windows.Forms.Button();
@@ -201,13 +201,13 @@
             this.lbBairro.TabIndex = 1;
             this.lbBairro.Text = "Bairro: ";
             // 
-            // textBox1
+            // txtNome
             // 
-            this.textBox1.Location = new System.Drawing.Point(53, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(517, 20);
-            this.textBox1.TabIndex = 5;
+            this.txtNome.Location = new System.Drawing.Point(53, 29);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.ReadOnly = true;
+            this.txtNome.Size = new System.Drawing.Size(517, 20);
+            this.txtNome.TabIndex = 5;
             // 
             // lbNovoNome
             // 
@@ -223,7 +223,7 @@
             this.gpbInfoPessoal.Controls.Add(this.rbtnMasc);
             this.gpbInfoPessoal.Controls.Add(this.rbtnFem);
             this.gpbInfoPessoal.Controls.Add(this.lbSexo);
-            this.gpbInfoPessoal.Controls.Add(this.textBox1);
+            this.gpbInfoPessoal.Controls.Add(this.txtNome);
             this.gpbInfoPessoal.Controls.Add(this.lbNovoNome);
             this.gpbInfoPessoal.Enabled = false;
             this.gpbInfoPessoal.Location = new System.Drawing.Point(21, 123);
@@ -277,12 +277,12 @@
             this.btnConsultarCli.UseVisualStyleBackColor = true;
             this.btnConsultarCli.Click += new System.EventHandler(this.btnConsultarCli_Click);
             // 
-            // textBox2
+            // txtCpf
             // 
-            this.textBox2.Location = new System.Drawing.Point(303, 25);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(158, 20);
-            this.textBox2.TabIndex = 17;
+            this.txtCpf.Location = new System.Drawing.Point(303, 25);
+            this.txtCpf.Name = "txtCpf";
+            this.txtCpf.Size = new System.Drawing.Size(158, 20);
+            this.txtCpf.TabIndex = 17;
             // 
             // lbNovoCpf
             // 
@@ -333,7 +333,7 @@
             this.gbConsultaCliente.Controls.Add(this.btnAtualizar);
             this.gbConsultaCliente.Controls.Add(this.btnConfirm);
             this.gbConsultaCliente.Controls.Add(this.btnConsultarCli);
-            this.gbConsultaCliente.Controls.Add(this.textBox2);
+            this.gbConsultaCliente.Controls.Add(this.txtCpf);
             this.gbConsultaCliente.Controls.Add(this.lbNovoCpf);
             this.gbConsultaCliente.Location = new System.Drawing.Point(20, 14);
             this.gbConsultaCliente.Name = "gbConsultaCliente";
@@ -380,13 +380,13 @@
         private System.Windows.Forms.TextBox txtBairro;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbBairro;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label lbNovoNome;
         private System.Windows.Forms.GroupBox gpbInfoPessoal;
         private System.Windows.Forms.RadioButton rbtnFem;
         private System.Windows.Forms.GroupBox gpbEndereco;
         private System.Windows.Forms.Button btnConsultarCli;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtCpf;
         private System.Windows.Forms.Label lbNovoCpf;
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.Button btnAtualizar;

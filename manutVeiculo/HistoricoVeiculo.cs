@@ -59,11 +59,15 @@ namespace manutVeiculo
                 MessageBox.Show("Digite uma Placa para consultar", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+
             else if (txtPlacaHistorico.Text.Equals("4455"))
             {
                 dGViewHistVeiculo.Rows.Add(v.Placa, v.KmRodado, v.Placa, v.Placa);
                 MessageBox.Show("funcionaaaaa");
             }
+
+
 
             //dGViewHistVeiculo.Rows.Clear();
             //if (string.IsNullOrEmpty(txtPlacaHistorico.Text.Trim()))

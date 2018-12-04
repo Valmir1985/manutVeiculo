@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtAno = new System.Windows.Forms.TextBox();
             this.lbAno = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnConsultar = new System.Windows.Forms.Button();
@@ -46,6 +45,7 @@
             this.columnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.cmbAno = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGViewConsultaTrocas)).BeginInit();
@@ -53,7 +53,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtAno);
+            this.groupBox1.Controls.Add(this.cmbAno);
             this.groupBox1.Controls.Add(this.lbAno);
             this.groupBox1.Controls.Add(this.btnCancelar);
             this.groupBox1.Controls.Add(this.btnConsultar);
@@ -69,13 +69,6 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pesquisa";
-            // 
-            // txtAno
-            // 
-            this.txtAno.Location = new System.Drawing.Point(404, 57);
-            this.txtAno.Name = "txtAno";
-            this.txtAno.Size = new System.Drawing.Size(145, 20);
-            this.txtAno.TabIndex = 25;
             // 
             // lbAno
             // 
@@ -242,6 +235,29 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // cmbAno
+            // 
+            this.cmbAno.FormattingEnabled = true;
+            this.cmbAno.Items.AddRange(new object[] {
+            "",
+            "2000",
+            "2001",
+            "2002",
+            "2003",
+            "2004",
+            "2005",
+            "2006",
+            "2007",
+            "2008",
+            "2010",
+            "2011",
+            "2012",
+            "2013"});
+            this.cmbAno.Location = new System.Drawing.Point(404, 55);
+            this.cmbAno.Name = "cmbAno";
+            this.cmbAno.Size = new System.Drawing.Size(135, 21);
+            this.cmbAno.TabIndex = 25;
+            // 
             // ConsultaTrocas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,11 +293,11 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox txtAno;
         private System.Windows.Forms.Label lbAno;
         private System.Windows.Forms.DataGridView dGViewConsultaTrocas;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPeca;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnKm;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnStatus;
+        private System.Windows.Forms.ComboBox cmbAno;
     }
 }
