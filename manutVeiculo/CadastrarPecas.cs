@@ -57,7 +57,7 @@ namespace manutVeiculo
         {
             if (txtMarca.Equals("") || txtPecaServico.Text.Equals("") || txtModelo.Equals("") || txtKmTroca.Equals("") || txtPreco.Equals(""))
             {
-                MessageBox.Show("É necessário preencher todos os dados!");
+                MessageBox.Show("É necessário preencher todos os campos!");
             }
             else
             {
@@ -86,6 +86,11 @@ namespace manutVeiculo
         }
 
         private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CadastrarPecas_Load(object sender, EventArgs e)
         {
 
         }

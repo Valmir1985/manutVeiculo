@@ -18,9 +18,22 @@ namespace manutVeiculo
             InitializeComponent();
         }
 
-        private void Form10_Load(object sender, EventArgs e)
+        private void btnConsultaTroca_Click(object sender, EventArgs e)
         {
+            var consultaTroca = new ConsultaTrocas();
+            consultaTroca.ShowDialog();
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var cadastrarCliente = new CadastrarCliente();
+            cadastrarCliente.ShowDialog();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            var consultaOS = new ConsultarOS();
+            consultaOS.ShowDialog();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -29,28 +42,10 @@ namespace manutVeiculo
             form6.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            var form2 = new CadastrarCliente();
-            form2.ShowDialog();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            var form3 = new OrdemServico();
-            form3.ShowDialog();
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
             var form4 = new HistoricoCliente();
             form4.ShowDialog();
-        }
-
-        private void btnConsultaTroca_Click(object sender, EventArgs e)
-        {
-            var consultaTroca = new ConsultaTrocas();
-            consultaTroca.ShowDialog();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -59,17 +54,15 @@ namespace manutVeiculo
             form9.ShowDialog();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)
         {
-            var cadastrarCliente = new CadastrarCliente();
-            //var cadastrarVeiculo = new CadastrarVeiculo();
-            cadastrarCliente.ShowDialog();
+            var form3 = new OrdemServico();
+            form3.ShowDialog();
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void Form10_Load(object sender, EventArgs e)
         {
-            var consultaOS = new ConsultarOS();
-            consultaOS.ShowDialog();
+
         }
     }
     

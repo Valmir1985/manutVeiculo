@@ -13,8 +13,6 @@ namespace manutVeiculo
 {
     public partial class HistoricoVeiculo : Form
     {
-        Veiculo v = new Veiculo();
-        Pessoa p = new Pessoa();
         List<Veiculo> lista_veiculo = new List<Veiculo>();
 
         public HistoricoVeiculo()
@@ -42,7 +40,7 @@ namespace manutVeiculo
             if (MessageBox.Show("Deseja cancelar essa operação?", "Confirmação",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
-                //
+ 
             }
             else
             {
@@ -60,14 +58,29 @@ namespace manutVeiculo
                 return;
             }
 
-
-            else if (txtPlacaHistorico.Text.Equals("4455"))
+            foreach (Veiculo v in lista_veiculo)
             {
-                dGViewHistVeiculo.Rows.Add(v.Placa, v.KmRodado, v.Placa, v.Placa);
-                MessageBox.Show("funcionaaaaa");
+                MessageBox.Show("Entrou 1");
+                if (v.Placa.Equals(txtPlacaHistorico))
+                {
+                    MessageBox.Show("Entrou 2");
+                    if (v.Pessoa.Count > 0)
+                    {
+                        foreach (var pessoa in v.Pessoa)
+                        {
+                            dGViewHistVeiculo.Rows.Add(v.Placa, v.KmRodado, v.Placa, v.Placa);
+                        }
+                    }
+                    
+                }
             }
 
 
+            //else if (txtPlacaHistorico.Text.Equals("4455"))
+            //{
+            //    dGViewHistVeiculo.Rows.Add(v.Placa, v.KmRodado, v.Placa, v.Placa);
+            //    MessageBox.Show("funcionaaaaa");
+            //}
 
             //dGViewHistVeiculo.Rows.Clear();
             //if (string.IsNullOrEmpty(txtPlacaHistorico.Text.Trim()))
@@ -128,6 +141,11 @@ namespace manutVeiculo
             //}
 
 
+        }
+
+        private void HistoricoVeiculo_Load(object sender, EventArgs e)
+        {
+            lista_veiculo = new VeiculoDAO().ListAll();
         }
         private void gbHistVeiculo_Enter(object sender, EventArgs e)
         {

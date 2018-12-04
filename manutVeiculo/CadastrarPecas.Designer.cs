@@ -174,6 +174,7 @@
             this.MaximizeBox = false;
             this.Name = "CadastrarPecas";
             this.Text = "Cadastro de Peças";
+            this.Load += new System.EventHandler(this.CadastrarPecas_Load);
             this.panelPeca.ResumeLayout(false);
             this.panelPeca.PerformLayout();
             this.ResumeLayout(false);

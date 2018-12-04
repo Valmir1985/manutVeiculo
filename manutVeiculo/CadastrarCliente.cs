@@ -16,10 +16,12 @@ namespace manutVeiculo
     {
         private PessoaDAO pessoadao = new PessoaDAO();
         List<Pessoa> lista_pessoa;
+        //List<Veiculo> lista_veiculo;
         private Pessoa p;
         private string sexo;
         private bool adicionado = false;
         private bool existe = false;
+        private Veiculo veiculo;
 
         public bool adicionou()
         {
@@ -41,7 +43,15 @@ namespace manutVeiculo
             txtUf.Text = "";
             lista_pessoa = pessoadao.ListAll();
             btnCadastrar.Visible = true;
+            //this.veiculo = veiculo;
+            //lista_veiculo = new List<Veiculo>();
+            //lista_veiculo.Add(veiculo);
         }
+
+        //public CadastrarCliente()
+        //{
+
+        //}
 
         public bool validaCpf(string cpf)
         {
@@ -93,7 +103,7 @@ namespace manutVeiculo
             if (MessageBox.Show("Deseja sair sem salvar?", "Confirmação",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
-                //
+               //
             }
             else
             {
@@ -120,11 +130,6 @@ namespace manutVeiculo
                 else
                 {
 
-                    //foreach (Pessoa p in lista_pessoa)
-                    //    if (txtCpf.Text.Equals(p.cpf))
-                    //{
-                    //        existe = true;
-                    //}
 
                     if (existe)
                     {
@@ -136,7 +141,7 @@ namespace manutVeiculo
                         if (rbtnMasc.Checked) sexo = "masculino";
                         if (rbtnFem.Checked) sexo = "feminino";
 
-                        p = new Pessoa(0, txtCpf.Text, txtNome.Text, sexo, txtRua.Text, txtBairro.Text, int.Parse(txtNro.Text), txtCep.Text, txtCidade.Text, txtUf.Text, null);
+                        p = new Pessoa(0, txtCpf.Text, txtNome.Text, sexo, txtRua.Text, txtBairro.Text, int.Parse(txtNro.Text), txtCep.Text, txtCidade.Text, txtUf.Text, null /*lista_veiculo*/);
                         
                         try
                         {
@@ -157,8 +162,7 @@ namespace manutVeiculo
                             Close();
                             existe = false;
                         }
-                        catch (Exception ex)
-                        {
+                        catch (Exception ex){
                             MessageBox.Show(ex.Message);
                             return;
                         }

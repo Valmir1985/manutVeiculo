@@ -22,6 +22,7 @@ namespace manutVeiculo
             string qry = "INSERT INTO veiculo ( marca, modelo, combustivel, placa, kmRodado, ano, idCliente )" +
                $" VALUES ('{v.Marca}','{v.Modelo}','{v.Combustivel}','{v.Placa}','{v.KmRodado}',{v.Ano},{v.Pessoa.First().Id})";
             manutVeiculo.ExecuteSQL(qry);
+            v.Id = manutVeiculo.LastId;
         }
 
 
@@ -88,14 +89,14 @@ namespace manutVeiculo
             return veiculo;
         }
 
-        /* public void Update(Veiculo v)
-         {
-             Database manutVeiculo = Database.GetInstance();
+        public void Update(Veiculo v)
+        {
+            Database manutVeiculo = Database.GetInstance();
 
-             string qry = string.Format("UPDATE Veiculo SET id='{0}',marca='{2}',modelo='{3}',combustivel='{4}',placa='{5}',kmRodado='{6}',ano='{7}'" + "WHERE id='{1}'", v.Marca, v.Modelo, v.Combustivel, v.Placa, v.KmRodado, v.Ano);
+            string qry = string.Format("UPDATE Veiculo SET id='{0}',marca='{1}',modelo='{2}',combustivel='{3}',placa='{4}',kmRodado='{5}',ano='{6}'" + "WHERE id='{0}'", v.Marca, v.Modelo, v.Combustivel, v.Placa, v.KmRodado, v.Ano);
 
-             manutVeiculo.ExecuteSQL(qry);
-         }*/
+            manutVeiculo.ExecuteSQL(qry);
+        }
 
         public void Delete(int id)
         {

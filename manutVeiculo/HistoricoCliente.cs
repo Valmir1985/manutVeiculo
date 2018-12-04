@@ -13,17 +13,11 @@ namespace manutVeiculo
 {
     public partial class HistoricoCliente : Form
     {
-        // private PessoaDAO pessoadao = new PessoaDAO();
         List<Pessoa> lista_pessoa = new List<Pessoa>();
-
-
 
         public HistoricoCliente()
         {
             InitializeComponent();
-            //this.lista_pessoa = lista_pessoa;
-            //dGViewHistCli.Rows.Clear(); 
-
         }
 
 
@@ -32,7 +26,7 @@ namespace manutVeiculo
             if (MessageBox.Show("Deseja cancelar essa operação?", "Confirmação",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
-                //
+                
             }
             else
             {

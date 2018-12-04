@@ -17,6 +17,7 @@ namespace manutVeiculo
         List<Pessoa> lista_pessoa;
         private Veiculo v;
         private bool adicionado = false;
+        //private bool existe = false;
         private Pessoa pessoa;
 
         public bool adicionou()
@@ -38,34 +39,6 @@ namespace manutVeiculo
             lista_pessoa.Add(pessoa);
         }
 
-        private void btnCadastrar_Click(object sender, EventArgs e)
-        {
-            if (txtMarca.Equals("") || txtModelo.Text.Equals("") || txtCombustivel.Equals("") || txtPlaca.Equals("") || txtKmRodado.Text.Equals("")) 
-            {
-                MessageBox.Show("É necessário preencher todos os dados!");
-            }
-            else
-            {
-                try
-                {                        
-                    v = new Veiculo(0, txtMarca.Text, txtModelo.Text, txtCombustivel.Text, txtPlaca.Text, int.Parse(txtKmRodado.Text), int.Parse(txtAno.Text), lista_pessoa);
-                    veiculodao.Insert(v);
-                    lista_veiculo = veiculodao.ListAll();
-                    adicionado = true;
-                    txtMarca.Text = "";
-                    txtModelo.Text = "";
-                    txtCombustivel.Text = "";
-                    txtPlaca.Text = "";
-                    txtKmRodado.Text = "";
-                    Close();
-                }catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message,"Erro",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                }
-            }
-
-            }
-
         private void btnCancelarAdd_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja sair sem salvar?", "Confirmação",
@@ -78,6 +51,36 @@ namespace manutVeiculo
                 this.Close();
             }
 
+        }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            if (txtMarca.Equals("") || txtModelo.Text.Equals("") || txtCombustivel.Equals("") || txtPlaca.Equals("") || txtKmRodado.Text.Equals(""))
+            {
+                MessageBox.Show("É necessário preencher todos os dados!");
+            }
+            else
+            {
+                v = new Veiculo(0, txtMarca.Text, txtModelo.Text, txtCombustivel.Text, txtPlaca.Text, int.Parse(txtKmRodado.Text), int.Parse(txtAno.Text), lista_pessoa);
+
+                try
+                {
+                    veiculodao.Insert(v);
+                    lista_veiculo = veiculodao.ListAll();
+                    adicionado = true;
+                    txtMarca.Text = "";
+                    txtModelo.Text = "";
+                    txtCombustivel.Text = "";
+                    txtPlaca.Text = "";
+                    txtKmRodado.Text = "";
+                    Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
         }
 
         private void CadastrarVeiculo_Load(object sender, EventArgs e)
