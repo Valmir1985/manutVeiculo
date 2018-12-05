@@ -23,6 +23,8 @@ namespace manutVeiculo
         private bool existe = false;
         private Veiculo veiculo;
 
+        public Pessoa Pessoa { get; internal set; }
+
         public bool adicionou()
         {
             return adicionado;
@@ -103,7 +105,7 @@ namespace manutVeiculo
             if (MessageBox.Show("Deseja sair sem salvar?", "Confirmação",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
-               //
+                //
             }
             else
             {
@@ -159,10 +161,14 @@ namespace manutVeiculo
                             txtCep.Text = "";
                             txtCidade.Text = "";
                             txtUf.Text = "";
+
+                            Pessoa = p;
+
                             Close();
                             existe = false;
                         }
-                        catch (Exception ex){
+                        catch (Exception ex)
+                        {
                             MessageBox.Show(ex.Message);
                             return;
                         }

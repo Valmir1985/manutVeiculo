@@ -22,7 +22,7 @@ namespace manutVeiculo
 
         private void Form9_Load(object sender, EventArgs e)
         {
-
+            lista_veiculo = new VeiculoDAO().ListAll();
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -40,7 +40,7 @@ namespace manutVeiculo
             if (MessageBox.Show("Deseja cancelar essa operação?", "Confirmação",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
- 
+
             }
             else
             {
@@ -60,18 +60,18 @@ namespace manutVeiculo
 
             foreach (Veiculo v in lista_veiculo)
             {
-                MessageBox.Show("Entrou 1");
-                if (v.Placa.Equals(txtPlacaHistorico))
+                //MessageBox.Show("Entrou 1");
+                if (v.Placa == txtPlacaHistorico.Text)
                 {
-                    MessageBox.Show("Entrou 2");
+                    //MessageBox.Show("Entrou 2");
                     if (v.Pessoa.Count > 0)
                     {
                         foreach (var pessoa in v.Pessoa)
                         {
-                            dGViewHistVeiculo.Rows.Add(v.Placa, v.KmRodado, v.Placa, v.Placa);
+                            dGViewHistVeiculo.Rows.Add(v.Placa, v.KmRodado, v.Placa, pessoa.Nome);
                         }
                     }
-                    
+
                 }
             }
 
@@ -145,7 +145,7 @@ namespace manutVeiculo
 
         private void HistoricoVeiculo_Load(object sender, EventArgs e)
         {
-            lista_veiculo = new VeiculoDAO().ListAll();
+
         }
         private void gbHistVeiculo_Enter(object sender, EventArgs e)
         {

@@ -12,9 +12,16 @@ namespace manutVeiculo
         public void Insert(Os os)
         {
             Database manutVeiculo = Database.GetInstance();
-            string qry = "INSERT INTO os (cliente, placa, status, peca, valor, km, data)" +
-                $" VALUES ('{os.Pessoa.First().Id}','{os.Placa}','{os.Status}','{os.Peca}','{os.Valor}','{os.Km}', '{os.Km}')";
+            string qry = "INSERT INTO os (cliente, placa, status, valor, km, data)" +
+                $" VALUES ('{os.Pessoa.First().Id}','{os.Placa}','{os.Status}','{os.Valor}','{os.Km}', '{os.Km}')";
             manutVeiculo.ExecuteSQL(qry);
+            os.Id = manutVeiculo.LastId;
+
+            foreach (var item in os.Peca)
+            {
+                qry = $"INSERT INTO os_peca (os_id,peca_id) VALUES ('{os.Id}','{item.Id}')";
+                manutVeiculo.ExecuteSQL(qry);
+            }
         }
 
         public Os getById(string id)
@@ -45,11 +52,34 @@ namespace manutVeiculo
                 os.Id = int.Parse(dr["id"].ToString());
                 os.Placa = dr["placa"].ToString();
                 os.Status = bool.Parse(dr["status"].ToString());
-                os.Peca = dr["peca"].ToString(); ;
+                //os.Peca = dr["peca"].ToString(); ;
                 os.Valor = dr["valor"].ToString();
                 os.Km = int.Parse(dr["km"].ToString());
                 oss.Add(os);
             }
+
+            qry = "select os_id,peca_id from os_peca where os_id=" + os.Id;
+            comm = new SQLiteCommand(qry, conexao);
+            dr = comm.ExecuteReader();
+            List<string> pecasId = new List<string>();
+            while (dr.Read())
+            {
+                pecasId.Add(dr["peca_id"].ToString());
+            }
+
+            foreach (var item in pecasId)
+            {
+                qry = "select * from peca where id=" + item;
+                comm = new SQLiteCommand(qry, conexao);
+                dr = comm.ExecuteReader();
+
+                var peca = new Peca();
+
+
+                os.Peca.Add(peca);
+            }
+            
+
             dr.Close();
             conexao.Close();
             return oss;

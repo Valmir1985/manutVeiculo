@@ -41,6 +41,8 @@
             this.panelPeca = new System.Windows.Forms.Panel();
             this.txtPreco = new System.Windows.Forms.TextBox();
             this.lblPreco = new System.Windows.Forms.Label();
+            this.txtAno = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panelPeca.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,7 +101,7 @@
             // 
             this.txtPecaServico.Location = new System.Drawing.Point(200, 37);
             this.txtPecaServico.Name = "txtPecaServico";
-            this.txtPecaServico.Size = new System.Drawing.Size(294, 20);
+            this.txtPecaServico.Size = new System.Drawing.Size(186, 20);
             this.txtPecaServico.TabIndex = 6;
             // 
             // txtKmTroca
@@ -131,6 +133,8 @@
             // 
             // panelPeca
             // 
+            this.panelPeca.Controls.Add(this.label5);
+            this.panelPeca.Controls.Add(this.txtAno);
             this.panelPeca.Controls.Add(this.txtPreco);
             this.panelPeca.Controls.Add(this.lblPreco);
             this.panelPeca.Controls.Add(this.txtKmTroca);
@@ -162,6 +166,22 @@
             this.lblPreco.TabIndex = 8;
             this.lblPreco.Text = "Preço";
             this.lblPreco.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // txtAno
+            // 
+            this.txtAno.Location = new System.Drawing.Point(413, 37);
+            this.txtAno.Name = "txtAno";
+            this.txtAno.Size = new System.Drawing.Size(81, 20);
+            this.txtAno.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(410, 21);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(26, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Ano";
             // 
             // CadastrarPecas
             // 
@@ -196,5 +216,7 @@
         private System.Windows.Forms.Panel panelPeca;
         private System.Windows.Forms.TextBox txtPreco;
         private System.Windows.Forms.Label lblPreco;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtAno;
     }
 }

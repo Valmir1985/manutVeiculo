@@ -115,7 +115,9 @@ namespace manutVeiculo
             sql.AppendLine("pecaServico VARCHAR(100),");
             sql.AppendLine("modelo VARCHAR(50),");
             sql.AppendLine("kmTroca VARCHAR(20),");
+            sql.AppendLine("ano INTEGER,");
             sql.AppendLine("preco FLOAT);");
+
 
             cmd = new SQLiteCommand(sql.ToString(), conn);
 

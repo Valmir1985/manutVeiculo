@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace manutVeiculo
 {
-    class Peca
+   public class Peca
     {
         private int id;
         private String marca;
@@ -14,12 +14,13 @@ namespace manutVeiculo
         private String modelo;
         private String kmTroca;
         private float preco;
+        private int ano;
 
         public Peca()
         {
         }
 
-        public Peca(int id, string marca, string pecaServico, string modelo,string kmTroca, float preco)
+        public Peca(int id, string marca, string pecaServico, string modelo,string kmTroca, float preco, int ano)
         {
             this.Id = id;
             this.Marca = marca;
@@ -27,6 +28,7 @@ namespace manutVeiculo
             this.Modelo = modelo;
             this.KmTroca = kmTroca;
             this.preco = preco;
+            this.ano = ano;
         }
 
         public int Id { get => id; set => id = value; }
@@ -35,5 +37,6 @@ namespace manutVeiculo
         public string Modelo { get => modelo; set => modelo = value; }
         public string KmTroca { get => kmTroca; set => kmTroca = value; }
         public float Preco { get => preco; set => preco = value; }
+        public int Ano { get => ano; set => ano = value; }
     }
 }

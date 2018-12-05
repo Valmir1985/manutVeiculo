@@ -18,13 +18,23 @@ namespace manutVeiculo
         OsDAO osdao = new OsDAO();
         List<Os> lista_os = new List<Os>();
         Os oss = new Os();
+        private List<Peca> pecas;
 
-        public ConsultaCliente(){ }
-            
-
-        public ConsultaCliente(Os os)
+        private ConsultaCliente()
         {
             InitializeComponent();
+            lista_pessoa = pessoaDao.ListAll();
+        }
+
+        public ConsultaCliente(List<Peca> pecas) : this()
+        {
+            this.pecas = pecas;
+        }
+
+
+        public ConsultaCliente(Os os) : this()
+        {
+
             txtCpf.Text = "";
             txtNome.Text = "";
             txtRua.Text = "";
@@ -33,11 +43,11 @@ namespace manutVeiculo
             txtCep.Text = "";
             txtCidade.Text = "";
             txtUf.Text = "";
-            lista_pessoa = pessoaDao.ListAll();
+
             this.oss = os;
             lista_os = new List<Os>();
             lista_os.Add(os);
-            
+
         }
 
         private void btnCancelCli_Click(object sender, EventArgs e)
@@ -58,15 +68,17 @@ namespace manutVeiculo
             try
             {
                 var ordem = new Os();
+                ordem.Peca = pecas;
                 osdao.Insert(ordem);
-                lista_os = osdao.ListAll(); 
+                lista_os = osdao.ListAll();
                 // preciso vincular esse cliente a OS..como fazer?
                 // quando entra nessa tela, ele traz o numero da OS e apos confirmar os dados do cliente, tem q juntas esses dois objetos
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
+
 
         }
 
@@ -85,36 +97,52 @@ namespace manutVeiculo
                 MessageBox.Show("Digite um cpf!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            bool encontrou = false;
             foreach (Pessoa p in lista_pessoa)
             {
                 if (p.Cpf.StartsWith(txtCpf.Text))
                 {
-                    gpbInfoPessoal.Enabled = true;
-                    gpbEndereco.Enabled = true;
+                    CarregarForm(p);
+                    encontrou = true;
+                    break;
+                }
 
-                    txtNome.Text = p.Nome;
-                    txtRua.Text = p.Rua;
-                    txtNro.Text = p.Numero.ToString();
-                    txtBairro.Text = p.Bairro;
-                    txtCep.Text = p.Cep;
-                    txtCidade.Text = p.Cidade;
-                    txtUf.Text = p.Uf;
+            }
+            if (!encontrou)
+            {
+                DialogResult confirm = MessageBox.Show("CPF não encontrado! Deseja cadastrar novo cliente?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+                if (confirm.ToString().ToUpper() == "YES")
+                {
+                    var cadastrocliente = new CadastrarCliente();
+                    cadastrocliente.ShowDialog();
+
+                    var p = cadastrocliente.Pessoa;
+
+                    CarregarForm(p);
                 }
                 else
                 {
-                   DialogResult confirm =  MessageBox.Show("CPF não encontrado! Deseja cadastrar novo cliente?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
-                   if (confirm.ToString().ToUpper() == "YES")
-                    {
-                        var cadastrocliente = new CadastrarCliente();
-                        cadastrocliente.ShowDialog();
-                    }
-                    else
-                    {
-                        this.Close();
-                    }
+                    this.Close();
                 }
             }
+        }
+
+        private void CarregarForm(Pessoa p)
+        {
+            gpbInfoPessoal.Enabled =
+                gpbEndereco.Enabled =
+                btnAtualizar.Enabled =
+                btnConfirm.Enabled = true;
+
+            rbtnFem.Checked = p.Sexo == "feminino";
+            rbtnMasc.Checked = p.Sexo == "masculino";
+            txtNome.Text = p.Nome;
+            txtRua.Text = p.Rua;
+            txtNro.Text = p.Numero.ToString();
+            txtBairro.Text = p.Bairro;
+            txtCep.Text = p.Cep;
+            txtCidade.Text = p.Cidade;
+            txtUf.Text = p.Uf;
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)

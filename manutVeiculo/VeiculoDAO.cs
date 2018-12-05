@@ -58,12 +58,13 @@ namespace manutVeiculo
                 v.Placa = dr.GetString(4);
                 v.KmRodado = dr.GetInt16(5);
                 v.Ano = dr.GetInt16(6);
+                
                 veiculo.Add(v);
             }
 
             foreach (Veiculo vc in veiculo)
             {
-                qry = string.Format("SELECT * FROM pessoa WHERE id ='{0}'", vc.Pessoa);
+                qry = string.Format("SELECT p.* FROM pessoa p INNER JOIN veiculo v ON p.id = v.idCliente WHERE v.id = {0}", vc.Id);
 
                 comm = new SQLiteCommand(qry, conexao);
                 dr = comm.ExecuteReader();
@@ -81,7 +82,7 @@ namespace manutVeiculo
                     p.Cep = dr["cep"].ToString();
                     p.Cidade = dr["cidade"].ToString();
                     p.Uf = dr["uf"].ToString();
-                    v.Pessoa.Add(p);
+                    vc.Pessoa.Add(p);
                 }
             }
             dr.Close();
