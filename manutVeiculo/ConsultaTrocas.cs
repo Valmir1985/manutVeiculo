@@ -100,10 +100,8 @@ namespace manutVeiculo
             lista_peca_selecionada.Clear();
             foreach (Peca p in lista_peca)
             {
-                //MessageBox.Show("for peca");
-                if (p.Marca == cmbMarca.Text && p.Modelo == cmbModelo.Text && p.Ano == int.Parse(cmbAno.Text) && p.KmTroca == txtKmAtual.Text)       //cmbMarca.Text.Equals("Chevrolet") && cmbModelo.Text.Equals("Corsa") && cmbAno.Text.Equals("2004") && txtKmAtual.Text.Equals("12000"))
+                if (p.Marca == cmbMarca.Text && p.Modelo == cmbModelo.Text && p.Ano == int.Parse(cmbAno.Text) && p.KmTroca >= int.Parse(txtKmAtual.Text))
                 {
-                    //MessageBox.Show("if");
                     dGViewConsultaTrocas.Rows.Add(p.PecaServico, p.KmTroca, p.Preco);
                     lista_peca_selecionada.Add(p);
 

@@ -61,7 +61,7 @@ namespace manutVeiculo
             }
             else
             {
-                pc = new Peca(0, txtMarca.Text, txtPecaServico.Text, txtModelo.Text, txtKmTroca.Text, float.Parse(txtPreco.Text), int.Parse(txtAno.Text));
+                pc = new Peca(0, txtMarca.Text, txtPecaServico.Text, txtModelo.Text, int.Parse(txtKmTroca.Text), float.Parse(txtPreco.Text), int.Parse(txtAno.Text));
 
                 try
                 {

@@ -12,7 +12,7 @@ namespace manutVeiculo
         private String marca;
         private String pecaServico;
         private String modelo;
-        private String kmTroca;
+        private int kmTroca;
         private float preco;
         private int ano;
 
@@ -20,7 +20,7 @@ namespace manutVeiculo
         {
         }
 
-        public Peca(int id, string marca, string pecaServico, string modelo,string kmTroca, float preco, int ano)
+        public Peca(int id, string marca, string pecaServico, string modelo,int kmTroca, float preco, int ano)
         {
             this.Id = id;
             this.Marca = marca;
@@ -35,7 +35,7 @@ namespace manutVeiculo
         public string Marca { get => marca; set => marca = value; }
         public string PecaServico { get => pecaServico; set => pecaServico = value; }
         public string Modelo { get => modelo; set => modelo = value; }
-        public string KmTroca { get => kmTroca; set => kmTroca = value; }
+        public int KmTroca { get => kmTroca; set => kmTroca = value; }
         public float Preco { get => preco; set => preco = value; }
         public int Ano { get => ano; set => ano = value; }
     }

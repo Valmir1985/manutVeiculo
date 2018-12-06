@@ -95,6 +95,16 @@ namespace manutVeiculo
             manutVeiculo.ExecuteSQL(qry);
         }
 
+        public string Fechar(Os id)
+        {
+            Database manutVeiculo = Database.GetInstance();
+
+            string qry = string.Format("UPDATE os SET status='true'" + " WHERE id='{0}'", id);
+
+            return = manutVeiculo.ExecuteSQL(qry);
+            
+        }
+
         public void Delete(int id)
         {
             //Database manutVeic = Database.GetInstance();

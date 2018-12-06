@@ -114,7 +114,7 @@ namespace manutVeiculo
             sql.AppendLine("marca VARCHAR(50),");
             sql.AppendLine("pecaServico VARCHAR(100),");
             sql.AppendLine("modelo VARCHAR(50),");
-            sql.AppendLine("kmTroca VARCHAR(20),");
+            sql.AppendLine("kmTroca INTEGER,");
             sql.AppendLine("ano INTEGER,");
             sql.AppendLine("preco FLOAT);");
 
@@ -164,6 +164,26 @@ namespace manutVeiculo
             sql.AppendLine("status BOOLEAN,");
             sql.AppendLine("FOREIGN KEY (cliente) REFERENCES pessoa (id),");
             sql.AppendLine("FOREIGN KEY (numeroOs) REFERENCES os (id));");
+
+            cmd = new SQLiteCommand(sql.ToString(), conn);
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao criar banco de dados: " + ex.Message);
+            }
+
+            sql.Clear();
+
+            sql.AppendLine("CREATE TABLE IF NOT EXISTS OsPeca(");
+            sql.AppendLine("idOs INTEGER NOT NULL, ");
+            sql.AppendLine("idPeca INTEGER NOT NULL,");
+            sql.AppendLine("FOREIGN KEY (idOs) REFERENCES os (id),");
+            sql.AppendLine("FOREIGN KEY (idPeca) REFERENCES peca (id));");
+
 
             cmd = new SQLiteCommand(sql.ToString(), conn);
 

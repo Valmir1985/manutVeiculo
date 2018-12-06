@@ -68,11 +68,13 @@ namespace manutVeiculo
             try
             {
                 var ordem = new Os();
-                ordem.Peca = pecas;
-                osdao.Insert(ordem);
+                //ordem.Peca = pecas;
+                //ordem.Km = ;
+                //ordem.Status = true;
+                //ordem.Placa -  
+
+               // osdao.Insert(ordem);
                 lista_os = osdao.ListAll();
-                // preciso vincular esse cliente a OS..como fazer?
-                // quando entra nessa tela, ele traz o numero da OS e apos confirmar os dados do cliente, tem q juntas esses dois objetos
             }
             catch (Exception ex)
             {

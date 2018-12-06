@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbAno = new System.Windows.Forms.ComboBox();
             this.lbAno = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnConsultar = new System.Windows.Forms.Button();
@@ -40,12 +41,11 @@
             this.cmbMarca = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dGViewConsultaTrocas = new System.Windows.Forms.DataGridView();
-            this.columnPeca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnKm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.cmbAno = new System.Windows.Forms.ComboBox();
+            this.columnPeca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnKm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnPreco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGViewConsultaTrocas)).BeginInit();
@@ -69,6 +69,29 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pesquisa";
+            // 
+            // cmbAno
+            // 
+            this.cmbAno.FormattingEnabled = true;
+            this.cmbAno.Items.AddRange(new object[] {
+            "",
+            "2000",
+            "2001",
+            "2002",
+            "2003",
+            "2004",
+            "2005",
+            "2006",
+            "2007",
+            "2008",
+            "2010",
+            "2011",
+            "2012",
+            "2013"});
+            this.cmbAno.Location = new System.Drawing.Point(404, 55);
+            this.cmbAno.Name = "cmbAno";
+            this.cmbAno.Size = new System.Drawing.Size(135, 21);
+            this.cmbAno.TabIndex = 25;
             // 
             // lbAno
             // 
@@ -188,33 +211,12 @@
             this.dGViewConsultaTrocas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnPeca,
             this.columnKm,
-            this.columnStatus});
+            this.columnPreco});
             this.dGViewConsultaTrocas.Location = new System.Drawing.Point(17, 19);
             this.dGViewConsultaTrocas.Name = "dGViewConsultaTrocas";
             this.dGViewConsultaTrocas.ReadOnly = true;
             this.dGViewConsultaTrocas.Size = new System.Drawing.Size(720, 310);
             this.dGViewConsultaTrocas.TabIndex = 1;
-            // 
-            // columnPeca
-            // 
-            this.columnPeca.HeaderText = "Peça";
-            this.columnPeca.Name = "columnPeca";
-            this.columnPeca.ReadOnly = true;
-            this.columnPeca.Width = 238;
-            // 
-            // columnKm
-            // 
-            this.columnKm.HeaderText = "Km";
-            this.columnKm.Name = "columnKm";
-            this.columnKm.ReadOnly = true;
-            this.columnKm.Width = 198;
-            // 
-            // columnStatus
-            // 
-            this.columnStatus.HeaderText = "Status";
-            this.columnStatus.Name = "columnStatus";
-            this.columnStatus.ReadOnly = true;
-            this.columnStatus.Width = 240;
             // 
             // button3
             // 
@@ -235,28 +237,26 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // cmbAno
+            // columnPeca
             // 
-            this.cmbAno.FormattingEnabled = true;
-            this.cmbAno.Items.AddRange(new object[] {
-            "",
-            "2000",
-            "2001",
-            "2002",
-            "2003",
-            "2004",
-            "2005",
-            "2006",
-            "2007",
-            "2008",
-            "2010",
-            "2011",
-            "2012",
-            "2013"});
-            this.cmbAno.Location = new System.Drawing.Point(404, 55);
-            this.cmbAno.Name = "cmbAno";
-            this.cmbAno.Size = new System.Drawing.Size(135, 21);
-            this.cmbAno.TabIndex = 25;
+            this.columnPeca.HeaderText = "Peça";
+            this.columnPeca.Name = "columnPeca";
+            this.columnPeca.ReadOnly = true;
+            this.columnPeca.Width = 238;
+            // 
+            // columnKm
+            // 
+            this.columnKm.HeaderText = "Km";
+            this.columnKm.Name = "columnKm";
+            this.columnKm.ReadOnly = true;
+            this.columnKm.Width = 198;
+            // 
+            // columnPreco
+            // 
+            this.columnPreco.HeaderText = "Preço";
+            this.columnPreco.Name = "columnPreco";
+            this.columnPreco.ReadOnly = true;
+            this.columnPreco.Width = 240;
             // 
             // ConsultaTrocas
             // 
@@ -295,9 +295,9 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label lbAno;
         private System.Windows.Forms.DataGridView dGViewConsultaTrocas;
+        private System.Windows.Forms.ComboBox cmbAno;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPeca;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnKm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnStatus;
-        private System.Windows.Forms.ComboBox cmbAno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnPreco;
     }
 }

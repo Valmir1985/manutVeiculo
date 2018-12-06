@@ -50,7 +50,7 @@ namespace manutVeiculo
                 pc.PecaServico = dr["pecaServico"].ToString();
                 pc.Ano = int.Parse(dr["ano"].ToString());
                 pc.Modelo = dr["modelo"].ToString(); ;
-                pc.KmTroca = dr["kmTroca"].ToString();
+                pc.KmTroca = int.Parse(dr["kmTroca"].ToString());
                 pc.Preco = float.Parse(dr["preco"].ToString());
                 peca.Add(pc);
             }
