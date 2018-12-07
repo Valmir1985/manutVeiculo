@@ -28,47 +28,78 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbAno = new System.Windows.Forms.ComboBox();
+            this.lbAno = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnConsultar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtKmAtual = new System.Windows.Forms.TextBox();
+            this.cmbModelo = new System.Windows.Forms.ComboBox();
+            this.cmbMarca = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.Peças = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Km = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button3 = new System.Windows.Forms.Button();
+            this.dGViewConsultaTrocas = new System.Windows.Forms.DataGridView();
+            this.columnPeca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnKm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnPreco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button4 = new System.Windows.Forms.Button();
-            this.lbAno = new System.Windows.Forms.Label();
-            this.txtPesqAno = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGViewConsultaTrocas)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtPesqAno);
+            this.groupBox1.Controls.Add(this.cmbAno);
             this.groupBox1.Controls.Add(this.lbAno);
             this.groupBox1.Controls.Add(this.btnCancelar);
             this.groupBox1.Controls.Add(this.btnConsultar);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.txtKmAtual);
+            this.groupBox1.Controls.Add(this.cmbModelo);
+            this.groupBox1.Controls.Add(this.cmbMarca);
             this.groupBox1.Location = new System.Drawing.Point(26, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(752, 143);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pesquisa";
+            // 
+            // cmbAno
+            // 
+            this.cmbAno.FormattingEnabled = true;
+            this.cmbAno.Items.AddRange(new object[] {
+            "",
+            "2000",
+            "2001",
+            "2002",
+            "2003",
+            "2004",
+            "2005",
+            "2006",
+            "2007",
+            "2008",
+            "2010",
+            "2011",
+            "2012",
+            "2013"});
+            this.cmbAno.Location = new System.Drawing.Point(404, 55);
+            this.cmbAno.Name = "cmbAno";
+            this.cmbAno.Size = new System.Drawing.Size(135, 21);
+            this.cmbAno.TabIndex = 25;
+            // 
+            // lbAno
+            // 
+            this.lbAno.AutoSize = true;
+            this.lbAno.Location = new System.Drawing.Point(401, 40);
+            this.lbAno.Name = "lbAno";
+            this.lbAno.Size = new System.Drawing.Size(26, 13);
+            this.lbAno.TabIndex = 24;
+            this.lbAno.Text = "Ano";
             // 
             // btnCancelar
             // 
@@ -88,6 +119,7 @@
             this.btnConsultar.TabIndex = 21;
             this.btnConsultar.Text = "Consultar";
             this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // label3
             // 
@@ -116,41 +148,53 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Marca";
             // 
-            // textBox1
+            // txtKmAtual
             // 
-            this.textBox1.Location = new System.Drawing.Point(582, 56);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(145, 20);
-            this.textBox1.TabIndex = 17;
+            this.txtKmAtual.Location = new System.Drawing.Point(582, 56);
+            this.txtKmAtual.Name = "txtKmAtual";
+            this.txtKmAtual.Size = new System.Drawing.Size(145, 20);
+            this.txtKmAtual.TabIndex = 17;
             // 
-            // comboBox2
+            // cmbModelo
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(212, 56);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(155, 21);
-            this.comboBox2.TabIndex = 16;
+            this.cmbModelo.FormattingEnabled = true;
+            this.cmbModelo.Items.AddRange(new object[] {
+            "",
+            "Celta",
+            "Civic",
+            "Corola",
+            "Corsa",
+            "Fiesta",
+            "Fox",
+            "Fusca",
+            "Gol",
+            "Hb20",
+            "Siena"});
+            this.cmbModelo.Location = new System.Drawing.Point(212, 56);
+            this.cmbModelo.Name = "cmbModelo";
+            this.cmbModelo.Size = new System.Drawing.Size(155, 21);
+            this.cmbModelo.TabIndex = 16;
             // 
-            // comboBox1
+            // cmbMarca
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cmbMarca.FormattingEnabled = true;
+            this.cmbMarca.Items.AddRange(new object[] {
             "",
             "Chevrolet",
             "Ford",
-            "Volkswagen",
             "Fiat",
-            "Renault",
             "Honda",
-            "Peugeot"});
-            this.comboBox1.Location = new System.Drawing.Point(21, 56);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(155, 21);
-            this.comboBox1.TabIndex = 15;
+            "Renault",
+            "Peugeot",
+            "Volkswagen"});
+            this.cmbMarca.Location = new System.Drawing.Point(21, 56);
+            this.cmbMarca.Name = "cmbMarca";
+            this.cmbMarca.Size = new System.Drawing.Size(155, 21);
+            this.cmbMarca.TabIndex = 15;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.listView1);
+            this.groupBox2.Controls.Add(this.dGViewConsultaTrocas);
             this.groupBox2.Location = new System.Drawing.Point(26, 176);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(752, 347);
@@ -158,49 +202,45 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Relatório";
             // 
-            // listView1
+            // dGViewConsultaTrocas
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Peças,
-            this.Km,
-            this.Status});
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
-            this.listView1.Location = new System.Drawing.Point(17, 19);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(720, 310);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.dGViewConsultaTrocas.AllowUserToAddRows = false;
+            this.dGViewConsultaTrocas.AllowUserToDeleteRows = false;
+            this.dGViewConsultaTrocas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGViewConsultaTrocas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.columnPeca,
+            this.columnKm,
+            this.columnPreco});
+            this.dGViewConsultaTrocas.Location = new System.Drawing.Point(17, 19);
+            this.dGViewConsultaTrocas.Name = "dGViewConsultaTrocas";
+            this.dGViewConsultaTrocas.ReadOnly = true;
+            this.dGViewConsultaTrocas.Size = new System.Drawing.Size(720, 310);
+            this.dGViewConsultaTrocas.TabIndex = 1;
             // 
-            // Peças
+            // columnPeca
             // 
-            this.Peças.Text = "Peças";
-            this.Peças.Width = 279;
+            this.columnPeca.HeaderText = "Peça";
+            this.columnPeca.Name = "columnPeca";
+            this.columnPeca.ReadOnly = true;
+            this.columnPeca.Width = 238;
             // 
-            // Km
+            // columnKm
             // 
-            this.Km.Text = "Km";
-            this.Km.Width = 198;
+            this.columnKm.HeaderText = "Km";
+            this.columnKm.Name = "columnKm";
+            this.columnKm.ReadOnly = true;
+            this.columnKm.Width = 198;
             // 
-            // Status
+            // columnPreco
             // 
-            this.Status.Text = "Status";
-            this.Status.Width = 239;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(188, 547);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(124, 35);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Imprimir";
-            this.button3.UseVisualStyleBackColor = true;
+            this.columnPreco.HeaderText = "Preço";
+            this.columnPreco.Name = "columnPreco";
+            this.columnPreco.ReadOnly = true;
+            this.columnPreco.Width = 240;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(486, 547);
+            this.button4.Location = new System.Drawing.Point(341, 547);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(124, 35);
             this.button4.TabIndex = 4;
@@ -208,38 +248,22 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // lbAno
-            // 
-            this.lbAno.AutoSize = true;
-            this.lbAno.Location = new System.Drawing.Point(401, 40);
-            this.lbAno.Name = "lbAno";
-            this.lbAno.Size = new System.Drawing.Size(26, 13);
-            this.lbAno.TabIndex = 24;
-            this.lbAno.Text = "Ano";
-            // 
-            // txtPesqAno
-            // 
-            this.txtPesqAno.Location = new System.Drawing.Point(404, 57);
-            this.txtPesqAno.Name = "txtPesqAno";
-            this.txtPesqAno.Size = new System.Drawing.Size(145, 20);
-            this.txtPesqAno.TabIndex = 25;
-            // 
-            // Form7
+            // ConsultaTrocas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 594);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
-            this.Name = "Form7";
+            this.Name = "ConsultaTrocas";
             this.Text = "Consulta de Trocas";
             this.Load += new System.EventHandler(this.Form7_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dGViewConsultaTrocas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -252,17 +276,16 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtKmAtual;
+        private System.Windows.Forms.ComboBox cmbModelo;
+        private System.Windows.Forms.ComboBox cmbMarca;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ColumnHeader Peças;
-        private System.Windows.Forms.ColumnHeader Km;
-        private System.Windows.Forms.ColumnHeader Status;
-        private System.Windows.Forms.TextBox txtPesqAno;
         private System.Windows.Forms.Label lbAno;
+        private System.Windows.Forms.DataGridView dGViewConsultaTrocas;
+        private System.Windows.Forms.ComboBox cmbAno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnPeca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnKm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnPreco;
     }
 }

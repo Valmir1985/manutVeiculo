@@ -75,6 +75,12 @@
     <Compile Include="ConsultaOS.Designer.cs">
       <DependentUpon>ConsultaOS.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConsultOs.cs" />
+    <Compile Include="Database.cs" />
+    <Compile Include="Os.cs" />
+    <Compile Include="OsDAO.cs" />
+    <Compile Include="Peca.cs" />
+    <Compile Include="PecaDAO.cs" />
     <Compile Include="Pessoa.cs" />
     <Compile Include="PaginaInicial.cs">
       <SubType>Form</SubType>
@@ -128,6 +134,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Veiculo.cs" />
+    <Compile Include="VeiculoDAO.cs" />
     <EmbeddedResource Include="CadastrarVeiculo.resx">
       <DependentUpon>CadastrarVeiculo.cs</DependentUpon>
     </EmbeddedResource>

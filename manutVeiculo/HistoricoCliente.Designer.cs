@@ -29,22 +29,23 @@
         private void InitializeComponent()
         {
             this.gpbHistCliente = new System.Windows.Forms.GroupBox();
-            this.lvHistCliente = new System.Windows.Forms.ListView();
-            this.columnNome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnVeiculo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnPlaca = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnKm = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnData = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.dGViewHistCli = new System.Windows.Forms.DataGridView();
+            this.columnNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnVeiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnPlaca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnKm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnData = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnConfirma = new System.Windows.Forms.Button();
             this.txtCpfHistorico = new System.Windows.Forms.TextBox();
             this.lbCpfHistorico = new System.Windows.Forms.Label();
             this.gpbHistCliente.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGViewHistCli)).BeginInit();
             this.SuspendLayout();
             // 
             // gpbHistCliente
             // 
-            this.gpbHistCliente.Controls.Add(this.lvHistCliente);
+            this.gpbHistCliente.Controls.Add(this.dGViewHistCli);
             this.gpbHistCliente.Controls.Add(this.btnCancelar);
             this.gpbHistCliente.Controls.Add(this.btnConfirma);
             this.gpbHistCliente.Controls.Add(this.txtCpfHistorico);
@@ -55,46 +56,59 @@
             this.gpbHistCliente.TabIndex = 0;
             this.gpbHistCliente.TabStop = false;
             this.gpbHistCliente.Text = "Histórico Cliente";
+            this.gpbHistCliente.Enter += new System.EventHandler(this.gpbHistCliente_Enter);
             // 
-            // lvHistCliente
+            // dGViewHistCli
             // 
-            this.lvHistCliente.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.dGViewHistCli.AllowUserToAddRows = false;
+            this.dGViewHistCli.AllowUserToDeleteRows = false;
+            this.dGViewHistCli.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGViewHistCli.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnNome,
             this.columnVeiculo,
             this.columnPlaca,
             this.columnKm,
             this.columnData});
-            this.lvHistCliente.Location = new System.Drawing.Point(25, 123);
-            this.lvHistCliente.Name = "lvHistCliente";
-            this.lvHistCliente.Size = new System.Drawing.Size(715, 427);
-            this.lvHistCliente.TabIndex = 6;
-            this.lvHistCliente.UseCompatibleStateImageBehavior = false;
-            this.lvHistCliente.View = System.Windows.Forms.View.Details;
+            this.dGViewHistCli.Location = new System.Drawing.Point(25, 126);
+            this.dGViewHistCli.Name = "dGViewHistCli";
+            this.dGViewHistCli.ReadOnly = true;
+            this.dGViewHistCli.Size = new System.Drawing.Size(715, 424);
+            this.dGViewHistCli.TabIndex = 7;
             // 
             // columnNome
             // 
-            this.columnNome.Text = "Nome";
-            this.columnNome.Width = 234;
+            this.columnNome.HeaderText = "Nome";
+            this.columnNome.Name = "columnNome";
+            this.columnNome.ReadOnly = true;
+            this.columnNome.Width = 190;
             // 
             // columnVeiculo
             // 
-            this.columnVeiculo.Text = "Veiculo";
-            this.columnVeiculo.Width = 147;
+            this.columnVeiculo.HeaderText = "Veículo";
+            this.columnVeiculo.Name = "columnVeiculo";
+            this.columnVeiculo.ReadOnly = true;
+            this.columnVeiculo.Width = 150;
             // 
             // columnPlaca
             // 
-            this.columnPlaca.Text = "Placa";
-            this.columnPlaca.Width = 109;
+            this.columnPlaca.HeaderText = "Placa";
+            this.columnPlaca.Name = "columnPlaca";
+            this.columnPlaca.ReadOnly = true;
+            this.columnPlaca.Width = 110;
             // 
             // columnKm
             // 
-            this.columnKm.Text = "Km";
-            this.columnKm.Width = 94;
+            this.columnKm.HeaderText = "Km";
+            this.columnKm.Name = "columnKm";
+            this.columnKm.ReadOnly = true;
+            this.columnKm.Width = 95;
             // 
             // columnData
             // 
-            this.columnData.Text = "Data";
-            this.columnData.Width = 126;
+            this.columnData.HeaderText = "Data";
+            this.columnData.Name = "columnData";
+            this.columnData.ReadOnly = true;
+            this.columnData.Width = 127;
             // 
             // btnCancelar
             // 
@@ -114,6 +128,7 @@
             this.btnConfirma.TabIndex = 4;
             this.btnConfirma.Text = "Confirmar";
             this.btnConfirma.UseVisualStyleBackColor = true;
+            this.btnConfirma.Click += new System.EventHandler(this.btnConfirma_Click);
             // 
             // txtCpfHistorico
             // 
@@ -131,17 +146,19 @@
             this.lbCpfHistorico.TabIndex = 0;
             this.lbCpfHistorico.Text = "CPF";
             // 
-            // Form4
+            // HistoricoCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 594);
             this.Controls.Add(this.gpbHistCliente);
             this.MaximizeBox = false;
-            this.Name = "Form4";
+            this.Name = "HistoricoCliente";
             this.Text = "Histórico de Clientes";
+            this.Load += new System.EventHandler(this.HistoricoCliente_Load);
             this.gpbHistCliente.ResumeLayout(false);
             this.gpbHistCliente.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGViewHistCli)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -153,11 +170,11 @@
         private System.Windows.Forms.Button btnConfirma;
         private System.Windows.Forms.TextBox txtCpfHistorico;
         private System.Windows.Forms.Label lbCpfHistorico;
-        private System.Windows.Forms.ListView lvHistCliente;
-        private System.Windows.Forms.ColumnHeader columnNome;
-        private System.Windows.Forms.ColumnHeader columnVeiculo;
-        private System.Windows.Forms.ColumnHeader columnPlaca;
-        private System.Windows.Forms.ColumnHeader columnKm;
-        private System.Windows.Forms.ColumnHeader columnData;
+        private System.Windows.Forms.DataGridView dGViewHistCli;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnNome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnVeiculo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnPlaca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnKm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnData;
     }
 }

@@ -303,6 +303,7 @@
             this.MaximizeBox = false;
             this.Name = "CadastrarCliente";
             this.Text = "Cadastro de Clientes";
+            this.Load += new System.EventHandler(this.CadastrarCliente_Load);
             this.gpbInfoPessoal.ResumeLayout(false);
             this.gpbInfoPessoal.PerformLayout();
             this.gpbEndereco.ResumeLayout(false);

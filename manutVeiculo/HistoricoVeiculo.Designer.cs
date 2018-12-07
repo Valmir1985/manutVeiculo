@@ -28,53 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.peca = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.km = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.data = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.proprietario = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPlacaHistorico = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.gbHistVeiculo = new System.Windows.Forms.GroupBox();
+            this.dGViewHistVeiculo = new System.Windows.Forms.DataGridView();
+            this.columnProprietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnPlaca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnKm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnPeca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbHistVeiculo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGViewHistVeiculo)).BeginInit();
             this.SuspendLayout();
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.peca,
-            this.km,
-            this.data,
-            this.proprietario});
-            this.listView1.Location = new System.Drawing.Point(26, 136);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(703, 407);
-            this.listView1.TabIndex = 4;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
-            // 
-            // peca
-            // 
-            this.peca.Text = "Peça";
-            this.peca.Width = 189;
-            // 
-            // km
-            // 
-            this.km.Text = "Km";
-            this.km.Width = 139;
-            // 
-            // data
-            // 
-            this.data.Text = "Data";
-            this.data.Width = 134;
-            // 
-            // proprietario
-            // 
-            this.proprietario.Text = "Proprietário";
-            this.proprietario.Width = 235;
             // 
             // label1
             // 
@@ -86,12 +52,12 @@
             this.label1.Text = "Placa";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBox1
+            // txtPlacaHistorico
             // 
-            this.textBox1.Location = new System.Drawing.Point(308, 43);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(124, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtPlacaHistorico.Location = new System.Drawing.Point(308, 43);
+            this.txtPlacaHistorico.Name = "txtPlacaHistorico";
+            this.txtPlacaHistorico.Size = new System.Drawing.Size(124, 20);
+            this.txtPlacaHistorico.TabIndex = 1;
             // 
             // button1
             // 
@@ -101,6 +67,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Consultar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -114,10 +81,10 @@
             // 
             // gbHistVeiculo
             // 
+            this.gbHistVeiculo.Controls.Add(this.dGViewHistVeiculo);
             this.gbHistVeiculo.Controls.Add(this.button2);
-            this.gbHistVeiculo.Controls.Add(this.listView1);
             this.gbHistVeiculo.Controls.Add(this.button1);
-            this.gbHistVeiculo.Controls.Add(this.textBox1);
+            this.gbHistVeiculo.Controls.Add(this.txtPlacaHistorico);
             this.gbHistVeiculo.Controls.Add(this.label1);
             this.gbHistVeiculo.Location = new System.Drawing.Point(21, 14);
             this.gbHistVeiculo.Name = "gbHistVeiculo";
@@ -125,6 +92,51 @@
             this.gbHistVeiculo.TabIndex = 5;
             this.gbHistVeiculo.TabStop = false;
             this.gbHistVeiculo.Text = "Histórico do Veículo";
+            this.gbHistVeiculo.Enter += new System.EventHandler(this.gbHistVeiculo_Enter);
+            // 
+            // dGViewHistVeiculo
+            // 
+            this.dGViewHistVeiculo.AllowUserToAddRows = false;
+            this.dGViewHistVeiculo.AllowUserToDeleteRows = false;
+            this.dGViewHistVeiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGViewHistVeiculo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.columnProprietario,
+            this.columnPlaca,
+            this.columnKm,
+            this.columnPeca});
+            this.dGViewHistVeiculo.Location = new System.Drawing.Point(26, 141);
+            this.dGViewHistVeiculo.Name = "dGViewHistVeiculo";
+            this.dGViewHistVeiculo.ReadOnly = true;
+            this.dGViewHistVeiculo.Size = new System.Drawing.Size(703, 402);
+            this.dGViewHistVeiculo.TabIndex = 5;
+            // 
+            // columnProprietario
+            // 
+            this.columnProprietario.HeaderText = "Proprietario";
+            this.columnProprietario.Name = "columnProprietario";
+            this.columnProprietario.ReadOnly = true;
+            this.columnProprietario.Width = 240;
+            // 
+            // columnPlaca
+            // 
+            this.columnPlaca.HeaderText = "Placa";
+            this.columnPlaca.Name = "columnPlaca";
+            this.columnPlaca.ReadOnly = true;
+            this.columnPlaca.Width = 130;
+            // 
+            // columnKm
+            // 
+            this.columnKm.HeaderText = "Km";
+            this.columnKm.Name = "columnKm";
+            this.columnKm.ReadOnly = true;
+            this.columnKm.Width = 140;
+            // 
+            // columnPeca
+            // 
+            this.columnPeca.HeaderText = "Peça";
+            this.columnPeca.Name = "columnPeca";
+            this.columnPeca.ReadOnly = true;
+            this.columnPeca.Width = 150;
             // 
             // HistoricoVeiculo
             // 
@@ -138,20 +150,21 @@
             this.Load += new System.EventHandler(this.Form9_Load);
             this.gbHistVeiculo.ResumeLayout(false);
             this.gbHistVeiculo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGViewHistVeiculo)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader peca;
-        private System.Windows.Forms.ColumnHeader km;
-        private System.Windows.Forms.ColumnHeader data;
-        private System.Windows.Forms.ColumnHeader proprietario;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPlacaHistorico;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox gbHistVeiculo;
+        private System.Windows.Forms.DataGridView dGViewHistVeiculo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnProprietario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnPlaca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnKm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnPeca;
     }
 }

@@ -15,14 +15,15 @@ namespace manutVeiculo
     public partial class CadastrarCliente : Form
     {
         private PessoaDAO pessoadao = new PessoaDAO();
-        private VeiculoDAO veiculodao = new VeiculoDAO();
         List<Pessoa> lista_pessoa;
-        List<Veiculo> lista_veiculo;
+        //List<Veiculo> lista_veiculo;
         private Pessoa p;
         private string sexo;
         private bool adicionado = false;
-        private bool existe = false;//teste teste
-        private int hello;
+        private bool existe = false;
+        private Veiculo veiculo;
+
+        public Pessoa Pessoa { get; internal set; }
 
         public bool adicionou()
         {
@@ -31,27 +32,28 @@ namespace manutVeiculo
         public CadastrarCliente()
         {
             InitializeComponent();
-            //this.Text = "Adicionar Cliente";
             txtCpf.Text = "";
             txtNome.Text = "";
             rbtnMasc.Checked = false;
             rbtnFem.Checked = false;
             txtTelefone.Text = "";
-            txtCep.Text = "";
-            txtBairro.Text = "";
             txtRua.Text = "";
+            txtBairro.Text = "";
+            txtNro.Text = "";
+            txtCep.Text = "";
             txtCidade.Text = "";
             txtUf.Text = "";
-            txtNro.Text = "";
-            txtCor.Text = "";
-            txtPlaca.Text = "";
-            txtKmRodado.Text = "";
-            txtAno.Text = "";
-            txtMarca.Text = "";
-            lista_veiculo = veiculodao.ListAll();
             lista_pessoa = pessoadao.ListAll();
             btnCadastrar.Visible = true;
+            //this.veiculo = veiculo;
+            //lista_veiculo = new List<Veiculo>();
+            //lista_veiculo.Add(veiculo);
         }
+
+        //public CadastrarCliente()
+        //{
+
+        //}
 
         public bool validaCpf(string cpf)
         {
@@ -96,11 +98,11 @@ namespace manutVeiculo
 
             return cpf.EndsWith(Digito);
         }
-       
+
 
         private void btnCancelarAdd_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja sair sem salvar?", "Confirmação", 
+            if (MessageBox.Show("Deseja sair sem salvar?", "Confirmação",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 //
@@ -109,7 +111,7 @@ namespace manutVeiculo
             {
                 this.Close();
             }
-            
+
         }
 
 
@@ -118,48 +120,69 @@ namespace manutVeiculo
             if (!validaCpf(txtCpf.Text))
             {
                 MessageBox.Show("CPF inválido!");
+                return;
             }
             else
             {
                 if (txtCpf.Equals("") || txtNome.Text.Equals("") || txtTelefone.Equals("") || txtRua.Equals("") || txtBairro.Text.Equals("") || txtNro.Text.Equals("") || txtCep.Text.Equals("") || txtCidade.Text.Equals("") || txtUf.Text.Equals("") || (rbtnMasc.Checked == false && rbtnFem.Checked == false))
                 {
                     MessageBox.Show("É necessário preencher todos os dados!");
+                    return;
                 }
                 else
                 {
-                    
-                    foreach (Pessoa p in lista_pessoa)
-                        if (txtCpf.Text.Equals(p.cpf))
-                    {
-                            existe = true;
-                    }
-                    
+
+
                     if (existe)
                     {
-                        MessageBox.Show("CPF já existe no cadastro!");
+                        MessageBox.Show("CPF já existe no cadastro!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
                     else
                     {
                         if (rbtnMasc.Checked) sexo = "masculino";
                         if (rbtnFem.Checked) sexo = "feminino";
-                        p = new Pessoa(txtCpf.Text, txtNome.Text, sexo, txtTelefone.Text, txtRua.Text, txtBairro.Text, txtNro.Text, txtCep.Text, txtCidade.Text, txtUf.Text);
-                        pessoadao.Insert(p);
-                        lista_pessoa = pessoadao.ListAll();
-                        adicionado = true;
-                        txtNome.Text = "";
-                        txtCpf.Text = "";
-                        rbtnMasc.Checked = false;
-                        rbtnFem.Checked = false;
-                        txtTelefone.Text = "";
-                        txtRua.Text = "";
-                        txtBairro.Text = "";
-                        txtNro.Text = "";                        
-                        txtCep.Text = "";
-                        txtCidade.Text = "";
-                        txtUf.Text = "";
-                        Close();
-                        existe = false;
+
+                        p = new Pessoa(0, txtCpf.Text, txtNome.Text, sexo, txtRua.Text, txtBairro.Text, int.Parse(txtNro.Text), txtCep.Text, txtCidade.Text, txtUf.Text, null /*lista_veiculo*/);
+                        
+                        try
+                        {
+                            pessoadao.Insert(p);
+                            lista_pessoa = pessoadao.ListAll();
+                            adicionado = true;
+                            txtNome.Text = "";
+                            txtCpf.Text = "";
+                            rbtnMasc.Checked = false;
+                            rbtnFem.Checked = false;
+                            txtTelefone.Text = "";
+                            txtRua.Text = "";
+                            txtBairro.Text = "";
+                            txtNro.Text = "";
+                            txtCep.Text = "";
+                            txtCidade.Text = "";
+                            txtUf.Text = "";
+
+                            Pessoa = p;
+
+                            Close();
+                            existe = false;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            return;
+                        }
                     }
                 }
-    
+            }
+            var cadastraVeiculo = new CadastrarVeiculo(p);
+            cadastraVeiculo.ShowDialog();
+
+        }
+
+        private void CadastrarCliente_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

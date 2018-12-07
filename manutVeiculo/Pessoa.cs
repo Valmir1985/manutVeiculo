@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace manutVeiculo
 {
-    class Pessoa
+    public class Pessoa
     {
         private int id;
         private String cpf;
@@ -18,9 +18,17 @@ namespace manutVeiculo
         private String cep;
         private String cidade;
         private String uf;
-        private Veiculo veiculo;
+        List<Veiculo> veiculo;
 
-        public Pessoa(int id, string cpf, string nome, string sexo, string rua, string bairro, int numero, string cep, string cidade, string uf, Veiculo veiculo)
+
+        public Pessoa()
+        {
+            this.veiculo = new List<Veiculo>();
+        }
+
+        public Pessoa(int id, string cpf, string nome, string sexo, string rua,
+            string bairro, int numero, string cep, string cidade, string uf,
+            List<Veiculo> veiculo) : this()
         {
             this.id = id;
             this.cpf = cpf;
@@ -32,7 +40,10 @@ namespace manutVeiculo
             this.cep = cep;
             this.cidade = cidade;
             this.uf = uf;
-            this.veiculo = veiculo;
+            if (veiculo != null)
+                this.veiculo = veiculo;
+
+
         }
 
         public int Id { get => id; set => id = value; }
@@ -45,7 +56,7 @@ namespace manutVeiculo
         public string Cep { get => cep; set => cep = value; }
         public string Cidade { get => cidade; set => cidade = value; }
         public string Uf { get => uf; set => uf = value; }
-        internal Veiculo Veiculo { get => veiculo; set => veiculo = value; }
+        public List<Veiculo> Veiculo { get => veiculo; set => veiculo = value; }
     }
 }
 
