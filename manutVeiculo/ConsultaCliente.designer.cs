@@ -371,12 +371,7 @@
             this.gpbV.Controls.Add(this.lbPlaca);
             this.gpbV.Controls.Add(this.lbModelo);
             this.gpbV.Controls.Add(this.lbMarca);
-<<<<<<< Updated upstream
             this.gpbV.Location = new System.Drawing.Point(65, 406);
-=======
-            this.gpbV.Enabled = false;
-            this.gpbV.Location = new System.Drawing.Point(74, 404);
->>>>>>> Stashed changes
             this.gpbV.Name = "gpbV";
             this.gpbV.Size = new System.Drawing.Size(588, 169);
             this.gpbV.TabIndex = 25;

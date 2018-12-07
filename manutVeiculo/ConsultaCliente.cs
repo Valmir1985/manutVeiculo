@@ -92,7 +92,7 @@ namespace manutVeiculo
                 veiculoAtual.KmRodado = int.Parse(txtKmRodado.Text);
                 ordem.Placa = veiculoAtual.Placa;
                 ordem.Data = DateTime.Today;
-                ordem.Pessoa = veiculoAtual.Pessoa;
+                ordem.Pessoa.Add(pessoa);
                 
                 osdao.Insert(ordem);
                 lista_os = osdao.ListAll();

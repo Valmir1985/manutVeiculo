@@ -9,12 +9,34 @@ namespace manutVeiculo
 {
     class OsDAO
     {
-        Pessoa pessoa = new Pessoa();
+        //Pessoa pessoa = new Pessoa();
         public void Insert(Os os)
         {
             Database manutVeiculo = Database.GetInstance();
-            string qry = "INSERT INTO os (cliente, placa, valor, km, data)" +
-                $" VALUES ('{os.Pessoa.First().Id}','{os.Placa}','{os.Valor}','{os.Km}', '{os.Km}')";
+            Pessoa pessoa = os.Pessoa.First();
+            string qry = "";
+            // É necessário fazer a inclusão de um novo veiculo antes de criar a OS
+            foreach (var veiculo in pessoa.Veiculo)
+            {
+                if (veiculo.Id == 0)
+                {
+                    qry = "INSERT INTO veiculo ( marca, modelo, combustivel, placa, kmRodado, ano, idCliente)" +
+                            $" VALUES ('{veiculo.Marca}','{veiculo.Modelo}','{veiculo.Combustivel}','{veiculo.Placa}','{veiculo.KmRodado}',{veiculo.Ano},{veiculo.Pessoa.First().Id})";
+
+
+                    manutVeiculo.ExecuteSQL(qry);
+                    veiculo.Id = manutVeiculo.LastId;
+                }
+                else
+                {
+                    qry = string.Format("UPDATE veiculo SET marca='{1}',modelo='{2}',combustivel='{3}',placa='{4}',kmRodado='{5}',ano='{6}'" + " WHERE id='{0}'", veiculo.Id, veiculo.Marca, veiculo.Modelo, veiculo.Combustivel, veiculo.Placa, veiculo.KmRodado, veiculo.Ano);
+
+                    manutVeiculo.ExecuteSQL(qry);
+                }
+            }
+
+            qry = "INSERT INTO os (cliente, placa, valor, km, data)" +
+                $" VALUES ('{pessoa.Id}','{os.Placa}','{os.Valor}','{os.Km}', '{os.Km}')";
             manutVeiculo.ExecuteSQL(qry);
             os.Id = manutVeiculo.LastId;
 
@@ -24,27 +46,7 @@ namespace manutVeiculo
                 manutVeiculo.ExecuteSQL(qry);
             }
 
-           // foreach (var pessoa in os.Pessoa)
-           // {
-                foreach (var veiculo in pessoa.Veiculo)
-                {
-                    if (veiculo.Id == 0)
-                    {
-                        qry = "INSERT INTO veiculo ( marca, modelo, combustivel, placa, kmRodado, ano, idCliente)" +
-                                $" VALUES ('{veiculo.Marca}','{veiculo.Modelo}','{veiculo.Combustivel}','{veiculo.Placa}','{veiculo.KmRodado}',{veiculo.Ano},{veiculo.Pessoa.First().Id})";
-                        
-
-                        manutVeiculo.ExecuteSQL(qry);
-                        veiculo.Id = manutVeiculo.LastId;
-                    }
-                    else
-                    {
-                        qry = string.Format("UPDATE veiculo SET id='{0}',marca='{1}',modelo='{2}',combustivel='{3}',placa='{4}',kmRodado='{5}',ano='{6}'" + "WHERE id='{0}'", veiculo.Marca, veiculo.Modelo, veiculo.Combustivel, veiculo.Placa, veiculo.KmRodado, veiculo.Ano);
-
-                        manutVeiculo.ExecuteSQL(qry);
-                    }
-                }
-           // }
+           
         }
 
         public Os getById(string id)

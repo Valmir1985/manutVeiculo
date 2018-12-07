@@ -23,13 +23,13 @@ namespace manutVeiculo
         }
 
         public Os(int id, string placa, bool status, List<Peca> peca, string valor, int km, List<Pessoa> pessoa)
-            :this(id,placa,status,peca,valor,km,DateTime.Now, pessoa) 
+            : this(id, placa, status, peca, valor, km, DateTime.Now, pessoa)
         {
 
         }
 
         public Os(int id, string placa, bool status, List<Peca> peca, string valor,
-            int km, DateTime data,List<Pessoa> pessoa) : this()
+            int km, DateTime data, List<Pessoa> pessoa) : this()
         {
             this.id = id;
             this.placa = placa;
@@ -38,7 +38,8 @@ namespace manutVeiculo
             this.valor = valor;
             this.km = km;
             this.data = data;
-            this.pessoa = pessoa;
+            if (pessoa != null)
+                this.pessoa = pessoa;
         }
 
         public int Id { get => id; set => id = value; }
