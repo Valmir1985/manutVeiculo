@@ -141,9 +141,9 @@ namespace manutVeiculo
             sql.AppendLine("peca VARCHAR(100), ");
             sql.AppendLine("valor VARCHAR(50), ");
             sql.AppendLine("km INTEGER, ");
-            sql.AppendLine("data DATE,");
-            sql.AppendLine("FOREIGN KEY (cliente) REFERENCES pessoa(id),");
-            sql.AppendLine("FOREIGN KEY (placa) REFERENCES veiculo (placa));");
+            sql.AppendLine("data DATE);");
+            //sql.AppendLine("FOREIGN KEY (cliente) REFERENCES pessoa(id),");
+            //sql.AppendLine("FOREIGN KEY (placa) REFERENCES veiculo (placa));");
 
             cmd = new SQLiteCommand(sql.ToString(), conn);
             try

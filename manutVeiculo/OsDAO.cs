@@ -20,8 +20,8 @@ namespace manutVeiculo
             {
                 if (veiculo.Id == 0)
                 {
-                    qry = "INSERT INTO veiculo ( marca, modelo, combustivel, placa, kmRodado, ano, idCliente)" +
-                            $" VALUES ('{veiculo.Marca}','{veiculo.Modelo}','{veiculo.Combustivel}','{veiculo.Placa}','{veiculo.KmRodado}',{veiculo.Ano},{veiculo.Pessoa.First().Id})";
+                    qry = "INSERT INTO veiculo ( marca, modelo, combustivel, kmRodado, ano, idCliente)" +
+                            $" VALUES ('{veiculo.Marca}','{veiculo.Modelo}','{veiculo.Combustivel}','{veiculo.KmRodado}',{veiculo.Ano},{veiculo.Pessoa.First().Id})";
 
 
                     manutVeiculo.ExecuteSQL(qry);
@@ -29,7 +29,7 @@ namespace manutVeiculo
                 }
                 else
                 {
-                    qry = string.Format("UPDATE veiculo SET marca='{1}',modelo='{2}',combustivel='{3}',placa='{4}',kmRodado='{5}',ano='{6}'" + " WHERE id='{0}'", veiculo.Id, veiculo.Marca, veiculo.Modelo, veiculo.Combustivel, veiculo.Placa, veiculo.KmRodado, veiculo.Ano);
+                    qry = string.Format("UPDATE veiculo SET marca='{1}',modelo='{2}',combustivel='{3}',kmRodado='{4}',ano='{5}'" + " WHERE id='{0}'", veiculo.Id, veiculo.Marca, veiculo.Modelo, veiculo.Combustivel,  veiculo.KmRodado, veiculo.Ano);
 
                     manutVeiculo.ExecuteSQL(qry);
                 }
