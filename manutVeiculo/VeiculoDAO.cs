@@ -94,7 +94,7 @@ namespace manutVeiculo
         {
             Database manutVeiculo = Database.GetInstance();
 
-            string qry = string.Format("UPDATE Veiculo SET id='{0}',marca='{1}',modelo='{2}',combustivel='{3}',placa='{4}',kmRodado='{5}',ano='{6}'" + "WHERE id='{0}'", v.Marca, v.Modelo, v.Combustivel, v.Placa, v.KmRodado, v.Ano);
+            string qry = string.Format("UPDATE veiculo SET id='{0}',marca='{1}',modelo='{2}',combustivel='{3}',placa='{4}',kmRodado='{5}',ano='{6}'" + "WHERE id='{0}'", v.Marca, v.Modelo, v.Combustivel, v.Placa, v.KmRodado, v.Ano);
 
             manutVeiculo.ExecuteSQL(qry);
         }
@@ -102,7 +102,7 @@ namespace manutVeiculo
         public void Delete(int id)
         {
             Database manutVeiculo = Database.GetInstance();
-            string qry = string.Format("DELETE FROM Veiculo WHERE id = '" + id + "'");
+            string qry = string.Format("DELETE FROM veiculo WHERE id = '" + id + "'");
             manutVeiculo.ExecuteSQL(qry);
         }
 

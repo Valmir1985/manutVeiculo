@@ -15,11 +15,13 @@ namespace manutVeiculo
     {
         List<Pessoa> lista_pessoa = new List<Pessoa>();
         PessoaDAO pessoaDao = new PessoaDAO();
+        List<Veiculo> lista_veiculo = new List<Veiculo>();
+        VeiculoDAO veiculodao = new VeiculoDAO();
         OsDAO osdao = new OsDAO();
         List<Os> lista_os = new List<Os>();
         Os oss = new Os();
         private List<Peca> pecas;
-        private string placa;
+        //private string placa;
         private Pessoa pessoa;
         private Veiculo veiculoAtual;
 
@@ -27,12 +29,14 @@ namespace manutVeiculo
         {
             InitializeComponent();
             lista_pessoa = pessoaDao.ListAll();
+            lista_veiculo = veiculodao.ListAll();
         }
+        // public ConsultaCliente(List<Peca> pecas, string placa) : this()
 
-        public ConsultaCliente(List<Peca> pecas, string placa) : this()
+        public ConsultaCliente(List<Peca> pecas) : this()
         {
             this.pecas = pecas;
-            this.placa = placa;
+           // this.placa = placa;
         }
 
 
@@ -78,15 +82,19 @@ namespace manutVeiculo
                 if (veiculoAtual == null)
                 {
                     veiculoAtual = new Veiculo();
+                    veiculoAtual.Marca = txtMarca.Text;
+                    veiculoAtual.Modelo = txtModelo.Text;
+                    veiculoAtual.Combustivel = txtCombustivel.Text;
+                    veiculoAtual.Placa = txtPlaca.Text;
                     veiculoAtual.Ano = int.Parse(txtAno.Text);
-                    // ...
                     pessoa.Veiculo.Add(veiculoAtual);
                 }
                 veiculoAtual.KmRodado = int.Parse(txtKmRodado.Text);
                 ordem.Placa = veiculoAtual.Placa;
-                ///ordem.Valor=
-               // ...
-                 osdao.Insert(ordem);
+                ordem.Data = DateTime.Today;
+                ordem.Pessoa = veiculoAtual.Pessoa;
+                
+                osdao.Insert(ordem);
                 lista_os = osdao.ListAll();
             }
             catch (Exception ex)
@@ -147,6 +155,7 @@ namespace manutVeiculo
             gpbInfoPessoal.Enabled =
                 gpbEndereco.Enabled =
                 btnAtualizar.Enabled =
+                gpbV.Enabled =
                 btnConfirm.Enabled = true;
             pessoa = p;
             if (p != null)
@@ -163,17 +172,26 @@ namespace manutVeiculo
 
                 foreach (var veiculo in p.Veiculo)
                 {
-                    if (veiculo.Ano =lbAno && veiculo.Marca && veiculo.Modelo)
-                    {
+                    //if (veiculo.Modelo.Equals(txtModelo.Text) && veiculo.Marca.Equals(txtMarca.Text) && veiculo.Ano.Equals(txtAno.Text))
+                   // {
                         txtAno.Text = veiculo.Ano.ToString();
-
+                        txtMarca.Text = veiculo.Marca;
+                        txtModelo.Text = veiculo.Modelo;
+                        txtPlaca.Text = veiculo.Placa;
+                        txtKmRodado.Text = veiculo.KmRodado.ToString();
+                        txtCombustivel.Text = veiculo.Combustivel;
                         veiculoAtual = veiculo;
-                    }
+                   // }
                 }
 
                 if (veiculoAtual == null)
                 {
                     txtAno.Enabled = true;
+                    txtMarca.Enabled = true;
+                    txtModelo.Enabled = true;
+                    txtPlaca.Enabled = true;
+                    txtKmRodado.Enabled = true;
+                    txtCombustivel.Enabled = true;
                 }
             }
         }

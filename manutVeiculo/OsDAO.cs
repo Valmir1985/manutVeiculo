@@ -9,6 +9,7 @@ namespace manutVeiculo
 {
     class OsDAO
     {
+        Pessoa pessoa = new Pessoa();
         public void Insert(Os os)
         {
             Database manutVeiculo = Database.GetInstance();
@@ -19,17 +20,17 @@ namespace manutVeiculo
 
             foreach (var item in os.Peca)
             {
-                qry = $"INSERT INTO os_peca (idOs, idPeca) VALUES ('{os.Id}','{item.Id}')";
+                qry = $"INSERT INTO osPeca (idOs, idPeca) VALUES ('{os.Id}','{item.Id}')";
                 manutVeiculo.ExecuteSQL(qry);
             }
 
-            foreach (var pessoa in os.Pessoa)
-            {
+           // foreach (var pessoa in os.Pessoa)
+           // {
                 foreach (var veiculo in pessoa.Veiculo)
                 {
                     if (veiculo.Id == 0)
                     {
-                        qry = "INSERT INTO veiculo ( marca, modelo, combustivel, placa, kmRodado, ano, idCliente )" +
+                        qry = "INSERT INTO veiculo ( marca, modelo, combustivel, placa, kmRodado, ano, idCliente)" +
                                 $" VALUES ('{veiculo.Marca}','{veiculo.Modelo}','{veiculo.Combustivel}','{veiculo.Placa}','{veiculo.KmRodado}',{veiculo.Ano},{veiculo.Pessoa.First().Id})";
                         
 
@@ -38,12 +39,12 @@ namespace manutVeiculo
                     }
                     else
                     {
-                        qry = string.Format("UPDATE Veiculo SET id='{0}',marca='{1}',modelo='{2}',combustivel='{3}',placa='{4}',kmRodado='{5}',ano='{6}'" + "WHERE id='{0}'", veiculo.Marca, veiculo.Modelo, veiculo.Combustivel, veiculo.Placa, veiculo.KmRodado, veiculo.Ano);
+                        qry = string.Format("UPDATE veiculo SET id='{0}',marca='{1}',modelo='{2}',combustivel='{3}',placa='{4}',kmRodado='{5}',ano='{6}'" + "WHERE id='{0}'", veiculo.Marca, veiculo.Modelo, veiculo.Combustivel, veiculo.Placa, veiculo.KmRodado, veiculo.Ano);
 
                         manutVeiculo.ExecuteSQL(qry);
                     }
                 }
-            }
+           // }
         }
 
         public Os getById(string id)
@@ -104,8 +105,7 @@ namespace manutVeiculo
                 peca.Marca = dr["marca"].ToString();
                 peca.Modelo = dr["modelo"].ToString();
                 peca.PecaServico = dr["pecaServico"].ToString();
-                peca.Preco = float.Parse(dr["preco"].ToString());
-                
+                peca.Preco = float.Parse(dr["preco"].ToString());                
 
                 os.Peca.Add(peca);
             }

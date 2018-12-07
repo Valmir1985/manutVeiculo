@@ -273,6 +273,7 @@
             this.gpbEndereco.Controls.Add(this.label3);
             this.gpbEndereco.Controls.Add(this.lbBairro);
             this.gpbEndereco.Controls.Add(this.lbRua);
+            this.gpbEndereco.Enabled = false;
             this.gpbEndereco.Location = new System.Drawing.Point(23, 252);
             this.gpbEndereco.Name = "gpbEndereco";
             this.gpbEndereco.Size = new System.Drawing.Size(681, 134);
@@ -349,7 +350,6 @@
             this.gbConsultaCliente.Controls.Add(this.btnConsultarCli);
             this.gbConsultaCliente.Controls.Add(this.txtCpf);
             this.gbConsultaCliente.Controls.Add(this.lbNovoCpf);
-            this.gbConsultaCliente.Enabled = false;
             this.gbConsultaCliente.Location = new System.Drawing.Point(20, 14);
             this.gbConsultaCliente.Name = "gbConsultaCliente";
             this.gbConsultaCliente.Size = new System.Drawing.Size(726, 653);
@@ -371,7 +371,12 @@
             this.gpbV.Controls.Add(this.lbPlaca);
             this.gpbV.Controls.Add(this.lbModelo);
             this.gpbV.Controls.Add(this.lbMarca);
+<<<<<<< Updated upstream
             this.gpbV.Location = new System.Drawing.Point(65, 406);
+=======
+            this.gpbV.Enabled = false;
+            this.gpbV.Location = new System.Drawing.Point(74, 404);
+>>>>>>> Stashed changes
             this.gpbV.Name = "gpbV";
             this.gpbV.Size = new System.Drawing.Size(588, 169);
             this.gpbV.TabIndex = 25;
@@ -380,7 +385,6 @@
             // 
             // txtCombustivel
             // 
-            this.txtCombustivel.Enabled = false;
             this.txtCombustivel.FormattingEnabled = true;
             this.txtCombustivel.Items.AddRange(new object[] {
             "",
@@ -395,7 +399,6 @@
             // 
             // txtAno
             // 
-            this.txtAno.Enabled = false;
             this.txtAno.Location = new System.Drawing.Point(396, 116);
             this.txtAno.Name = "txtAno";
             this.txtAno.ReadOnly = true;
@@ -404,7 +407,6 @@
             // 
             // txtPlaca
             // 
-            this.txtPlaca.Enabled = false;
             this.txtPlaca.Location = new System.Drawing.Point(396, 68);
             this.txtPlaca.Name = "txtPlaca";
             this.txtPlaca.ReadOnly = true;
@@ -413,7 +415,6 @@
             // 
             // txtKmRodado
             // 
-            this.txtKmRodado.Enabled = false;
             this.txtKmRodado.Location = new System.Drawing.Point(95, 118);
             this.txtKmRodado.Name = "txtKmRodado";
             this.txtKmRodado.ReadOnly = true;
@@ -422,7 +423,6 @@
             // 
             // txtModelo
             // 
-            this.txtModelo.Enabled = false;
             this.txtModelo.Location = new System.Drawing.Point(396, 23);
             this.txtModelo.Name = "txtModelo";
             this.txtModelo.ReadOnly = true;
@@ -431,7 +431,6 @@
             // 
             // txtMarca
             // 
-            this.txtMarca.Enabled = false;
             this.txtMarca.Location = new System.Drawing.Point(95, 23);
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.ReadOnly = true;
