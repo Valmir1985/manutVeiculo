@@ -161,7 +161,7 @@ namespace manutVeiculo
             sql.AppendLine("numeroOs INTEGER NOT NULL PRIMARY KEY,");
             sql.AppendLine("cliente INTEGER,");
             sql.AppendLine("placa VARCHAR(50),");
-            sql.AppendLine("status BOOLEAN,");
+            sql.AppendLine("status BOOLEAN DEFAULT false,");
             sql.AppendLine("FOREIGN KEY (cliente) REFERENCES pessoa (id),");
             sql.AppendLine("FOREIGN KEY (numeroOs) REFERENCES os (id));");
 

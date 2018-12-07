@@ -60,6 +60,7 @@ namespace manutVeiculo
                 if (os.Id.Equals(txtOs.Text))
                 {
                     //OsDAO.Fechar(os.Id);
+                    
                     dGViewHistVeiculo.Rows.Add(os.Peca, os.Km, os.Valor, DateTime.Today.ToString("dd/MM/yyyy"));
                                       
                 }

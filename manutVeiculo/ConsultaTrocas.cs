@@ -90,7 +90,7 @@ namespace manutVeiculo
 
         private void button4_Click(object sender, EventArgs e)
         {
-            var consultacliente = new ConsultaCliente(lista_peca_selecionada);
+            var consultacliente = new ConsultaCliente(lista_peca_selecionada,);
             consultacliente.ShowDialog();
         }
 

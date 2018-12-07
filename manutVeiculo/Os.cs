@@ -10,7 +10,7 @@ namespace manutVeiculo
     {
         private int id;
         private String placa;
-        private bool status;
+        private bool status = false;
         private List<Peca> peca;
         private String valor;
         private int km;

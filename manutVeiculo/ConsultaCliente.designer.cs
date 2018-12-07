@@ -56,9 +56,23 @@
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnCancelCli = new System.Windows.Forms.Button();
             this.gbConsultaCliente = new System.Windows.Forms.GroupBox();
+            this.gpbVeiculo = new System.Windows.Forms.GroupBox();
+            this.txtCombustivel = new System.Windows.Forms.ComboBox();
+            this.txtAno = new System.Windows.Forms.TextBox();
+            this.txtPlaca = new System.Windows.Forms.TextBox();
+            this.txtKmRodado = new System.Windows.Forms.TextBox();
+            this.txtModelo = new System.Windows.Forms.TextBox();
+            this.txtMarca = new System.Windows.Forms.TextBox();
+            this.lbKm = new System.Windows.Forms.Label();
+            this.lbCombustivel = new System.Windows.Forms.Label();
+            this.lbAno = new System.Windows.Forms.Label();
+            this.lbPlaca = new System.Windows.Forms.Label();
+            this.lbModelo = new System.Windows.Forms.Label();
+            this.lbMarca = new System.Windows.Forms.Label();
             this.gpbInfoPessoal.SuspendLayout();
             this.gpbEndereco.SuspendLayout();
             this.gbConsultaCliente.SuspendLayout();
+            this.gpbVeiculo.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbUf
@@ -296,7 +310,7 @@
             // btnConfirm
             // 
             this.btnConfirm.Enabled = false;
-            this.btnConfirm.Location = new System.Drawing.Point(179, 421);
+            this.btnConfirm.Location = new System.Drawing.Point(171, 590);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(84, 35);
             this.btnConfirm.TabIndex = 20;
@@ -307,7 +321,7 @@
             // btnAtualizar
             // 
             this.btnAtualizar.Enabled = false;
-            this.btnAtualizar.Location = new System.Drawing.Point(331, 421);
+            this.btnAtualizar.Location = new System.Drawing.Point(329, 590);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(84, 35);
             this.btnAtualizar.TabIndex = 21;
@@ -317,7 +331,7 @@
             // 
             // btnCancelCli
             // 
-            this.btnCancelCli.Location = new System.Drawing.Point(480, 421);
+            this.btnCancelCli.Location = new System.Drawing.Point(484, 590);
             this.btnCancelCli.Name = "btnCancelCli";
             this.btnCancelCli.Size = new System.Drawing.Size(84, 35);
             this.btnCancelCli.TabIndex = 22;
@@ -327,6 +341,7 @@
             // 
             // gbConsultaCliente
             // 
+            this.gbConsultaCliente.Controls.Add(this.gpbVeiculo);
             this.gbConsultaCliente.Controls.Add(this.btnCancelCli);
             this.gbConsultaCliente.Controls.Add(this.gpbEndereco);
             this.gbConsultaCliente.Controls.Add(this.gpbInfoPessoal);
@@ -337,16 +352,140 @@
             this.gbConsultaCliente.Controls.Add(this.lbNovoCpf);
             this.gbConsultaCliente.Location = new System.Drawing.Point(20, 14);
             this.gbConsultaCliente.Name = "gbConsultaCliente";
-            this.gbConsultaCliente.Size = new System.Drawing.Size(726, 476);
+            this.gbConsultaCliente.Size = new System.Drawing.Size(726, 643);
             this.gbConsultaCliente.TabIndex = 23;
             this.gbConsultaCliente.TabStop = false;
             this.gbConsultaCliente.Text = "Consultar Cliente";
+            // 
+            // gpbVeiculo
+            // 
+            this.gpbVeiculo.Controls.Add(this.txtCombustivel);
+            this.gpbVeiculo.Controls.Add(this.txtAno);
+            this.gpbVeiculo.Controls.Add(this.txtPlaca);
+            this.gpbVeiculo.Controls.Add(this.txtKmRodado);
+            this.gpbVeiculo.Controls.Add(this.txtModelo);
+            this.gpbVeiculo.Controls.Add(this.txtMarca);
+            this.gpbVeiculo.Controls.Add(this.lbKm);
+            this.gpbVeiculo.Controls.Add(this.lbCombustivel);
+            this.gpbVeiculo.Controls.Add(this.lbAno);
+            this.gpbVeiculo.Controls.Add(this.lbPlaca);
+            this.gpbVeiculo.Controls.Add(this.lbModelo);
+            this.gpbVeiculo.Controls.Add(this.lbMarca);
+            this.gpbVeiculo.Location = new System.Drawing.Point(23, 404);
+            this.gpbVeiculo.Name = "gpbVeiculo";
+            this.gpbVeiculo.Size = new System.Drawing.Size(588, 169);
+            this.gpbVeiculo.TabIndex = 23;
+            this.gpbVeiculo.TabStop = false;
+            this.gpbVeiculo.Text = "Informações do Veículo";
+            // 
+            // txtCombustivel
+            // 
+            this.txtCombustivel.FormattingEnabled = true;
+            this.txtCombustivel.Items.AddRange(new object[] {
+            "",
+            "Gasolina",
+            "Etanol",
+            "Flex",
+            "Diesel"});
+            this.txtCombustivel.Location = new System.Drawing.Point(95, 67);
+            this.txtCombustivel.Name = "txtCombustivel";
+            this.txtCombustivel.Size = new System.Drawing.Size(180, 21);
+            this.txtCombustivel.TabIndex = 16;
+            // 
+            // txtAno
+            // 
+            this.txtAno.Location = new System.Drawing.Point(396, 116);
+            this.txtAno.Name = "txtAno";
+            this.txtAno.Size = new System.Drawing.Size(126, 20);
+            this.txtAno.TabIndex = 15;
+            // 
+            // txtPlaca
+            // 
+            this.txtPlaca.Location = new System.Drawing.Point(396, 68);
+            this.txtPlaca.Name = "txtPlaca";
+            this.txtPlaca.Size = new System.Drawing.Size(126, 20);
+            this.txtPlaca.TabIndex = 14;
+            // 
+            // txtKmRodado
+            // 
+            this.txtKmRodado.Location = new System.Drawing.Point(95, 118);
+            this.txtKmRodado.Name = "txtKmRodado";
+            this.txtKmRodado.Size = new System.Drawing.Size(180, 20);
+            this.txtKmRodado.TabIndex = 12;
+            // 
+            // txtModelo
+            // 
+            this.txtModelo.Location = new System.Drawing.Point(396, 23);
+            this.txtModelo.Name = "txtModelo";
+            this.txtModelo.Size = new System.Drawing.Size(126, 20);
+            this.txtModelo.TabIndex = 11;
+            // 
+            // txtMarca
+            // 
+            this.txtMarca.Location = new System.Drawing.Point(95, 23);
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Size = new System.Drawing.Size(180, 20);
+            this.txtMarca.TabIndex = 10;
+            // 
+            // lbKm
+            // 
+            this.lbKm.AutoSize = true;
+            this.lbKm.Location = new System.Drawing.Point(26, 123);
+            this.lbKm.Name = "lbKm";
+            this.lbKm.Size = new System.Drawing.Size(63, 13);
+            this.lbKm.TabIndex = 5;
+            this.lbKm.Text = "Km/rodado:";
+            // 
+            // lbCombustivel
+            // 
+            this.lbCombustivel.AutoSize = true;
+            this.lbCombustivel.Location = new System.Drawing.Point(20, 72);
+            this.lbCombustivel.Name = "lbCombustivel";
+            this.lbCombustivel.Size = new System.Drawing.Size(69, 13);
+            this.lbCombustivel.TabIndex = 4;
+            this.lbCombustivel.Text = "Combustível:";
+            // 
+            // lbAno
+            // 
+            this.lbAno.AutoSize = true;
+            this.lbAno.Location = new System.Drawing.Point(359, 124);
+            this.lbAno.Name = "lbAno";
+            this.lbAno.Size = new System.Drawing.Size(29, 13);
+            this.lbAno.TabIndex = 3;
+            this.lbAno.Text = "Ano:";
+            // 
+            // lbPlaca
+            // 
+            this.lbPlaca.AutoSize = true;
+            this.lbPlaca.Location = new System.Drawing.Point(353, 74);
+            this.lbPlaca.Name = "lbPlaca";
+            this.lbPlaca.Size = new System.Drawing.Size(37, 13);
+            this.lbPlaca.TabIndex = 2;
+            this.lbPlaca.Text = "Placa:";
+            // 
+            // lbModelo
+            // 
+            this.lbModelo.AutoSize = true;
+            this.lbModelo.Location = new System.Drawing.Point(345, 29);
+            this.lbModelo.Name = "lbModelo";
+            this.lbModelo.Size = new System.Drawing.Size(48, 13);
+            this.lbModelo.TabIndex = 1;
+            this.lbModelo.Text = "Modelo: ";
+            // 
+            // lbMarca
+            // 
+            this.lbMarca.AutoSize = true;
+            this.lbMarca.Location = new System.Drawing.Point(46, 29);
+            this.lbMarca.Name = "lbMarca";
+            this.lbMarca.Size = new System.Drawing.Size(40, 13);
+            this.lbMarca.TabIndex = 0;
+            this.lbMarca.Text = "Marca:";
             // 
             // ConsultaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(767, 502);
+            this.ClientSize = new System.Drawing.Size(767, 676);
             this.Controls.Add(this.gbConsultaCliente);
             this.MaximizeBox = false;
             this.Name = "ConsultaCliente";
@@ -358,6 +497,8 @@
             this.gpbEndereco.PerformLayout();
             this.gbConsultaCliente.ResumeLayout(false);
             this.gbConsultaCliente.PerformLayout();
+            this.gpbVeiculo.ResumeLayout(false);
+            this.gpbVeiculo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -392,5 +533,18 @@
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnCancelCli;
         private System.Windows.Forms.GroupBox gbConsultaCliente;
+        private System.Windows.Forms.GroupBox gpbVeiculo;
+        private System.Windows.Forms.ComboBox txtCombustivel;
+        private System.Windows.Forms.TextBox txtAno;
+        private System.Windows.Forms.TextBox txtPlaca;
+        private System.Windows.Forms.TextBox txtKmRodado;
+        private System.Windows.Forms.TextBox txtModelo;
+        private System.Windows.Forms.TextBox txtMarca;
+        private System.Windows.Forms.Label lbKm;
+        private System.Windows.Forms.Label lbCombustivel;
+        private System.Windows.Forms.Label lbAno;
+        private System.Windows.Forms.Label lbPlaca;
+        private System.Windows.Forms.Label lbModelo;
+        private System.Windows.Forms.Label lbMarca;
     }
 }

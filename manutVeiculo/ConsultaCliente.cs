@@ -19,6 +19,9 @@ namespace manutVeiculo
         List<Os> lista_os = new List<Os>();
         Os oss = new Os();
         private List<Peca> pecas;
+        private string placa;
+        private Pessoa pessoa;
+        private Veiculo veiculoAtual;
 
         private ConsultaCliente()
         {
@@ -26,9 +29,10 @@ namespace manutVeiculo
             lista_pessoa = pessoaDao.ListAll();
         }
 
-        public ConsultaCliente(List<Peca> pecas) : this()
+        public ConsultaCliente(List<Peca> pecas, string placa) : this()
         {
             this.pecas = pecas;
+            this.placa = placa;
         }
 
 
@@ -68,12 +72,21 @@ namespace manutVeiculo
             try
             {
                 var ordem = new Os();
-                //ordem.Peca = pecas;
-                //ordem.Km = ;
-                //ordem.Status = true;
-                //ordem.Placa -  
+                ordem.Peca = pecas;
+                ordem.Km = int.Parse(txtKmRodado.Text);
 
-               // osdao.Insert(ordem);
+                if (veiculoAtual == null)
+                {
+                    veiculoAtual = new Veiculo();
+                    veiculoAtual.Ano = int.Parse(txtAno.Text);
+                    // ...
+                    pessoa.Veiculo.Add(veiculoAtual);
+                }
+                veiculoAtual.KmRodado = int.Parse(txtKmRodado.Text);
+                ordem.Placa = veiculoAtual.Placa;
+                ///ordem.Valor=
+               // ...
+                 osdao.Insert(ordem);
                 lista_os = osdao.ListAll();
             }
             catch (Exception ex)
@@ -135,16 +148,34 @@ namespace manutVeiculo
                 gpbEndereco.Enabled =
                 btnAtualizar.Enabled =
                 btnConfirm.Enabled = true;
+            pessoa = p;
+            if (p != null)
+            {
+                rbtnFem.Checked = p.Sexo == "feminino";
+                rbtnMasc.Checked = p.Sexo == "masculino";
+                txtNome.Text = p.Nome;
+                txtRua.Text = p.Rua;
+                txtNro.Text = p.Numero.ToString();
+                txtBairro.Text = p.Bairro;
+                txtCep.Text = p.Cep;
+                txtCidade.Text = p.Cidade;
+                txtUf.Text = p.Uf;
 
-            rbtnFem.Checked = p.Sexo == "feminino";
-            rbtnMasc.Checked = p.Sexo == "masculino";
-            txtNome.Text = p.Nome;
-            txtRua.Text = p.Rua;
-            txtNro.Text = p.Numero.ToString();
-            txtBairro.Text = p.Bairro;
-            txtCep.Text = p.Cep;
-            txtCidade.Text = p.Cidade;
-            txtUf.Text = p.Uf;
+                foreach (var veiculo in p.Veiculo)
+                {
+                    if (veiculo.Ano =lbAno && veiculo.Marca && veiculo.Modelo)
+                    {
+                        txtAno.Text = veiculo.Ano.ToString();
+
+                        veiculoAtual = veiculo;
+                    }
+                }
+
+                if (veiculoAtual == null)
+                {
+                    txtAno.Enabled = true;
+                }
+            }
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
