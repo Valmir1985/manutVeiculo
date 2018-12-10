@@ -137,12 +137,13 @@ namespace manutVeiculo
             sql.AppendLine("id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, ");
             sql.AppendLine("cliente INTEGER, ");
             sql.AppendLine("placa VARCHAR(20), ");
-            sql.AppendLine("status BOOLEAN, ");
-            sql.AppendLine("peca VARCHAR(100), ");
+            sql.AppendLine("status VARCHAR(20), ");
+            sql.AppendLine("idPeca INTEGER, ");
             sql.AppendLine("valor VARCHAR(50), ");
             sql.AppendLine("km INTEGER, ");
-            sql.AppendLine("data DATE);");
-            //sql.AppendLine("FOREIGN KEY (cliente) REFERENCES pessoa(id),");
+            sql.AppendLine("data DATE, ");
+            sql.AppendLine("FOREIGN KEY (cliente) REFERENCES pessoa(id));");
+           // sql.AppendLine("FOREIGN KEY (idPeca) REFERENCES peca(id));");
             //sql.AppendLine("FOREIGN KEY (placa) REFERENCES veiculo (placa));");
 
             cmd = new SQLiteCommand(sql.ToString(), conn);
@@ -161,9 +162,10 @@ namespace manutVeiculo
             sql.AppendLine("numeroOs INTEGER NOT NULL PRIMARY KEY,");
             sql.AppendLine("cliente INTEGER,");
             sql.AppendLine("placa VARCHAR(50),");
-            sql.AppendLine("status BOOLEAN DEFAULT false,");
-            sql.AppendLine("FOREIGN KEY (cliente) REFERENCES pessoa (id),");
-            sql.AppendLine("FOREIGN KEY (numeroOs) REFERENCES os (id));");
+            sql.AppendLine("status VARCHAR(20));");
+            //sql.AppendLine("FOREIGN KEY (cliente) REFERENCES pessoa (id));");
+            // sql.AppendLine("FOREIGN KEY (numeroOs) REFERENCES os (id),");
+
 
             cmd = new SQLiteCommand(sql.ToString(), conn);
 

@@ -15,6 +15,7 @@ namespace manutVeiculo
     {
 
         List<Os> lista_os = new List<Os>();
+        List<Peca> lista_peca = new List<Peca>();
 
         public OrdemServico()
         {
@@ -57,17 +58,27 @@ namespace manutVeiculo
             }
             foreach (Os os in lista_os)
             {
-                if (os.Id.Equals(txtOs.Text))
+                if (os.Id.Equals(int.Parse(txtOs.Text)))
                 {
                     //OsDAO.Fechar(os.Id);
-                    
-                    dGViewHistVeiculo.Rows.Add(os.Peca, os.Km, os.Valor, DateTime.Today.ToString("dd/MM/yyyy"));
-                                      
+                    foreach(Peca pc in lista_peca)
+                    {
+                       dGViewHistVeiculo.Rows.Add(pc.PecaServico, os.Km, pc.Preco, DateTime.Today.ToString("dd/MM/yyyy"));
+                    }
+                    if(os.Status != "fechado")
+                    {
+                      //chamar o metodo Fechar() para atualizar o status da Os
+                    }                       
                 }
             }
         }
 
         private void OrdemServico_Load(object sender, EventArgs e)
+        {
+            lista_os = new OsDAO().ListAll();
+        }
+
+        private void dGViewHistVeiculo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

@@ -14,7 +14,7 @@ namespace manutVeiculo
     public partial class ConsultarOS : Form
     {
         List<ConsultOs> lista_os = new List<ConsultOs>();
-     
+        List<Os> lista_ordem = new List<Os>();
 
         public ConsultarOS()
         {
@@ -35,17 +35,17 @@ namespace manutVeiculo
                 MessageBox.Show("Digite o número de uma OS para consultar", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            foreach (ConsultOs os in lista_os)
+
+            foreach (Os os in lista_ordem)
             {
-                MessageBox.Show("For");
-                if (os.NumeroOs.Equals(txtOS.Text) || os.Placa.StartsWith(txtOS.Text))
+
+                if (os.Id.Equals(int.Parse(txtOS.Text)))//os.NumeroOs.Equals(txtOS.Text)) //|| os.Placa.StartsWith(txtOS.Text))
                 {
-                    MessageBox.Show("if");
-                    //foreach (var pessoa in os.Pessoa)
-                    // {
-                    dGViewConsultaOS.Rows.Add(os.NumeroOs, os.Pessoa, os.Placa, os.Status);
-                   // }
-                        
+                   // foreach (var pessoa in os.)
+                   // {
+                        dGViewConsultaOS.Rows.Add(os.Id, os.Pessoa, os.Placa, os.Status);
+                  //  }
+
                 }
             }
         }
@@ -61,6 +61,12 @@ namespace manutVeiculo
             {
                 this.Close();
             }
+        }
+
+        private void ConsultarOS_Load(object sender, EventArgs e)
+        {
+            lista_ordem = new OsDAO().ListAll();
+         
         }
     }
 }

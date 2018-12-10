@@ -10,8 +10,8 @@ namespace manutVeiculo
     {
         private int id;
         private String placa;
-        private bool status = false;
-        private List<Peca> peca;
+        private string status = "aberto";
+        List<Peca> peca;
         private String valor;
         private int km;
         private DateTime data;
@@ -20,15 +20,16 @@ namespace manutVeiculo
         public Os()
         {
             this.pessoa = new List<Pessoa>();
+            this.peca = new List<Peca>();
         }
 
-        public Os(int id, string placa, bool status, List<Peca> peca, string valor, int km, List<Pessoa> pessoa)
+        public Os(int id, string placa, string status, List<Peca> peca, string valor, int km, List<Pessoa> pessoa)
             : this(id, placa, status, peca, valor, km, DateTime.Now, pessoa)
         {
 
         }
 
-        public Os(int id, string placa, bool status, List<Peca> peca, string valor,
+        public Os(int id, string placa, string status, List<Peca> peca, string valor,
             int km, DateTime data, List<Pessoa> pessoa) : this()
         {
             this.id = id;
@@ -44,7 +45,7 @@ namespace manutVeiculo
 
         public int Id { get => id; set => id = value; }
         public string Placa { get => placa; set => placa = value; }
-        public bool Status { get => status; set => status = value; }
+        public string Status { get => status; set => status = value; }
         public List<Peca> Peca { get => peca; set => peca = value; }
         public string Valor { get => valor; set => valor = value; }
         public int Km { get => km; set => km = value; }

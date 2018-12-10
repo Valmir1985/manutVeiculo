@@ -144,6 +144,7 @@
             this.Controls.Add(this.gbOS);
             this.Name = "ConsultarOS";
             this.Text = "ConsultaOS";
+            this.Load += new System.EventHandler(this.ConsultarOS_Load);
             this.gbOS.ResumeLayout(false);
             this.gbOS.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGViewConsultaOS)).EndInit();

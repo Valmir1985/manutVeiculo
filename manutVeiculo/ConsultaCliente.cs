@@ -17,6 +17,8 @@ namespace manutVeiculo
         PessoaDAO pessoaDao = new PessoaDAO();
         List<Veiculo> lista_veiculo = new List<Veiculo>();
         VeiculoDAO veiculodao = new VeiculoDAO();
+        List<Peca> lista_peca = new List<Peca>();
+        PecaDAO pecadao = new PecaDAO();
         OsDAO osdao = new OsDAO();
         List<Os> lista_os = new List<Os>();
         Os oss = new Os();
@@ -24,12 +26,14 @@ namespace manutVeiculo
         //private string placa;
         private Pessoa pessoa;
         private Veiculo veiculoAtual;
+        private Peca pecaa;
 
         private ConsultaCliente()
         {
             InitializeComponent();
             lista_pessoa = pessoaDao.ListAll();
             lista_veiculo = veiculodao.ListAll();
+            lista_peca = pecadao.ListAll();
         }
         // public ConsultaCliente(List<Peca> pecas, string placa) : this()
 
@@ -93,6 +97,9 @@ namespace manutVeiculo
                 ordem.Placa = veiculoAtual.Placa;
                 ordem.Data = DateTime.Today;
                 ordem.Pessoa.Add(pessoa);
+                ordem.Peca = pecas;
+                
+                
                 
                 osdao.Insert(ordem);
                 lista_os = osdao.ListAll();

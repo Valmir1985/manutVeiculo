@@ -100,11 +100,10 @@ namespace manutVeiculo
             lista_peca_selecionada.Clear();
             foreach (Peca p in lista_peca)
             {
-                if (p.Marca == cmbMarca.Text && p.Modelo == cmbModelo.Text && p.Ano == int.Parse(cmbAno.Text) && p.KmTroca >= int.Parse(txtKmAtual.Text))
+                if (p.Marca == cmbMarca.Text && p.Modelo == cmbModelo.Text && p.Ano == int.Parse(cmbAno.Text) && p.KmTroca <= int.Parse(txtKmAtual.Text))
                 {
                     dGViewConsultaTrocas.Rows.Add(p.PecaServico, p.KmTroca, p.Preco);
                     lista_peca_selecionada.Add(p);
-
                 }
 
             }
