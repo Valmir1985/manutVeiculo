@@ -92,6 +92,7 @@ namespace manutVeiculo
         {
             var consultacliente = new ConsultaCliente(lista_peca_selecionada);
             consultacliente.ShowDialog();
+            //this.Close();
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)

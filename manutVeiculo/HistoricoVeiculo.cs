@@ -14,6 +14,7 @@ namespace manutVeiculo
     public partial class HistoricoVeiculo : Form
     {
         List<Veiculo> lista_veiculo = new List<Veiculo>();
+        Peca peca = new Peca();
 
         public HistoricoVeiculo()
         {
@@ -66,7 +67,7 @@ namespace manutVeiculo
                     {
                         foreach (var pessoa in v.Pessoa)
                         {
-                            dGViewHistVeiculo.Rows.Add(pessoa.Nome, v.Placa, v.KmRodado, v.Placa);
+                            dGViewHistVeiculo.Rows.Add(pessoa.Nome, v.Modelo, v.Placa, v.KmRodado);
                         }
                     }
 

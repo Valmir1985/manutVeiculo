@@ -11,6 +11,7 @@ namespace manutVeiculo
         private int id;
         private String cpf;
         private String nome;
+        private int telefone;
         private String sexo;
         private String rua;
         private String bairro;
@@ -26,13 +27,14 @@ namespace manutVeiculo
             this.veiculo = new List<Veiculo>();
         }
 
-        public Pessoa(int id, string cpf, string nome, string sexo, string rua,
+        public Pessoa(int id, string cpf, string nome, int telefone, string sexo, string rua,
             string bairro, int numero, string cep, string cidade, string uf,
             List<Veiculo> veiculo) : this()
         {
             this.id = id;
             this.cpf = cpf;
             this.nome = nome;
+            this.telefone = telefone;
             this.sexo = sexo;
             this.rua = rua;
             this.bairro = bairro;
@@ -57,6 +59,7 @@ namespace manutVeiculo
         public string Cidade { get => cidade; set => cidade = value; }
         public string Uf { get => uf; set => uf = value; }
         public List<Veiculo> Veiculo { get => veiculo; set => veiculo = value; }
+        public int Telefone { get => telefone; set => telefone = value; }
     }
 }
 

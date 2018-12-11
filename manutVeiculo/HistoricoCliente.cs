@@ -48,17 +48,17 @@ namespace manutVeiculo
             {
                 if (p.Cpf.StartsWith(txtCpfHistorico.Text))
                 {
-                    if (p.Veiculo.Count > 0)
-                    {
+                    //if (p.Veiculo.Count > 0)
+                   // {
                         foreach (var veiculo in p.Veiculo)
                         {
                             dGViewHistCli.Rows.Add(p.Nome, veiculo.Modelo, veiculo.Placa, veiculo.KmRodado, DateTime.Today.ToString("dd/MM/yyyy"));
                         }
-                    }
-                    else
-                    {
-                        dGViewHistCli.Rows.Add(p.Nome, "", "", "", DateTime.Today.ToString("dd/MM/yyyy"));
-                    }
+                    //}
+                    //else
+                    //{
+                    //    dGViewHistCli.Rows.Add(p.Nome, "", "", "", DateTime.Today.ToString("dd/MM/yyyy"));
+                    //}
                 }
             }
 

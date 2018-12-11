@@ -96,9 +96,8 @@ namespace manutVeiculo
                 veiculoAtual.KmRodado = int.Parse(txtKmRodado.Text);
                 ordem.Placa = veiculoAtual.Placa;
                 ordem.Data = DateTime.Today;
-                ordem.Pessoa.Add(pessoa);
-                ordem.Peca = pecas;
-                
+                ordem.Pessoa =pessoa;
+               // ordem.Peca = pecas;
                 
                 
                 osdao.Insert(ordem);
@@ -108,7 +107,8 @@ namespace manutVeiculo
             {
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            MessageBox.Show("Ordem de serviço registrada com sucesso!");
+            this.Close();
 
         }
 
@@ -170,6 +170,7 @@ namespace manutVeiculo
                 rbtnFem.Checked = p.Sexo == "feminino";
                 rbtnMasc.Checked = p.Sexo == "masculino";
                 txtNome.Text = p.Nome;
+                txtTelefone.Text = p.Telefone.ToString();
                 txtRua.Text = p.Rua;
                 txtNro.Text = p.Numero.ToString();
                 txtBairro.Text = p.Bairro;

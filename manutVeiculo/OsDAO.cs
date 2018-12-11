@@ -14,7 +14,7 @@ namespace manutVeiculo
         public void Insert(Os os)
         {
             Database manutVeiculo = Database.GetInstance();
-            Pessoa pessoa = os.Pessoa.First();
+            Pessoa pessoa = os.Pessoa;
             Peca peca = os.Peca.First();
             ConsultarOS consultaOs = new ConsultarOS();
             string qry = "";
@@ -121,7 +121,30 @@ namespace manutVeiculo
 
                     os.Peca.Add(peca);
                 }
+            
+                qry = string.Format("SELECT p.* FROM pessoa p INNER JOIN os o ON p.id = o.cliente WHERE o.id = {0}", item.Id);
+                comm = new SQLiteCommand(qry, conexao);
+                dr = comm.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    var pessoa = new Pessoa();
+                    pessoa.Id = int.Parse(dr["id"].ToString());
+                    pessoa.Cpf = dr["cpf"].ToString();
+                    pessoa.Nome =dr["nome"].ToString();                    
+                    pessoa.Telefone = int.Parse(dr["telefone"].ToString());
+                    pessoa.Rua = dr["rua"].ToString();
+                    pessoa.Bairro = dr["bairro"].ToString();
+                    pessoa.Numero = int.Parse(dr["numero"].ToString());
+                    pessoa.Cep = dr["cep"].ToString();
+                    pessoa.Cidade = dr["cidade"].ToString();
+                    pessoa.Uf = dr["uf"].ToString();
+
+
+                    os.Pessoa=pessoa;
+                }
             }
+
             dr.Close();
             conexao.Close();
             return oss;

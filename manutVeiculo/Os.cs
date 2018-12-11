@@ -15,22 +15,21 @@ namespace manutVeiculo
         private String valor;
         private int km;
         private DateTime data;
-        List<Pessoa> pessoa;
+        Pessoa pessoa;
 
         public Os()
         {
-            this.pessoa = new List<Pessoa>();
             this.peca = new List<Peca>();
         }
 
-        public Os(int id, string placa, string status, List<Peca> peca, string valor, int km, List<Pessoa> pessoa)
+        public Os(int id, string placa, string status, List<Peca> peca, string valor, int km, Pessoa pessoa)
             : this(id, placa, status, peca, valor, km, DateTime.Now, pessoa)
         {
 
         }
 
         public Os(int id, string placa, string status, List<Peca> peca, string valor,
-            int km, DateTime data, List<Pessoa> pessoa) : this()
+            int km, DateTime data, Pessoa pessoa) : this()
         {
             this.id = id;
             this.placa = placa;
@@ -39,8 +38,7 @@ namespace manutVeiculo
             this.valor = valor;
             this.km = km;
             this.data = data;
-            if (pessoa != null)
-                this.pessoa = pessoa;
+            this.pessoa = pessoa;
         }
 
         public int Id { get => id; set => id = value; }
@@ -50,6 +48,6 @@ namespace manutVeiculo
         public string Valor { get => valor; set => valor = value; }
         public int Km { get => km; set => km = value; }
         public DateTime Data { get => data; set => data = value; }
-        public List<Pessoa> Pessoa { get => pessoa; set => pessoa = value; }
+        public Pessoa Pessoa { get => pessoa; set => pessoa = value; }
     }
 }

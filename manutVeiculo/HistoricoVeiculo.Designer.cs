@@ -35,9 +35,9 @@
             this.gbHistVeiculo = new System.Windows.Forms.GroupBox();
             this.dGViewHistVeiculo = new System.Windows.Forms.DataGridView();
             this.columnProprietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnModelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPlaca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnKm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnPeca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbHistVeiculo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGViewHistVeiculo)).BeginInit();
             this.SuspendLayout();
@@ -101,9 +101,9 @@
             this.dGViewHistVeiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGViewHistVeiculo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnProprietario,
+            this.columnModelo,
             this.columnPlaca,
-            this.columnKm,
-            this.columnPeca});
+            this.columnKm});
             this.dGViewHistVeiculo.Location = new System.Drawing.Point(26, 141);
             this.dGViewHistVeiculo.Name = "dGViewHistVeiculo";
             this.dGViewHistVeiculo.ReadOnly = true;
@@ -116,6 +116,13 @@
             this.columnProprietario.Name = "columnProprietario";
             this.columnProprietario.ReadOnly = true;
             this.columnProprietario.Width = 240;
+            // 
+            // columnModelo
+            // 
+            this.columnModelo.HeaderText = "Modelo";
+            this.columnModelo.Name = "columnModelo";
+            this.columnModelo.ReadOnly = true;
+            this.columnModelo.Width = 150;
             // 
             // columnPlaca
             // 
@@ -130,13 +137,6 @@
             this.columnKm.Name = "columnKm";
             this.columnKm.ReadOnly = true;
             this.columnKm.Width = 140;
-            // 
-            // columnPeca
-            // 
-            this.columnPeca.HeaderText = "Peça";
-            this.columnPeca.Name = "columnPeca";
-            this.columnPeca.ReadOnly = true;
-            this.columnPeca.Width = 150;
             // 
             // HistoricoVeiculo
             // 
@@ -163,8 +163,8 @@
         private System.Windows.Forms.GroupBox gbHistVeiculo;
         private System.Windows.Forms.DataGridView dGViewHistVeiculo;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnProprietario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnModelo;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPlaca;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnKm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnPeca;
     }
 }

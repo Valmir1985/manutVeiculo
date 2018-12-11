@@ -39,11 +39,11 @@ namespace manutVeiculo
             foreach (Os os in lista_ordem)
             {
 
-                if (os.Id.Equals(int.Parse(txtOS.Text)))//os.NumeroOs.Equals(txtOS.Text)) //|| os.Placa.StartsWith(txtOS.Text))
+                if (os.Id.Equals(int.Parse(txtOS.Text)))
                 {
                    // foreach (var pessoa in os.)
                    // {
-                        dGViewConsultaOS.Rows.Add(os.Id, os.Pessoa, os.Placa, os.Status);
+                        dGViewConsultaOS.Rows.Add(os.Id, os.Pessoa.Nome, os.Placa, os.Status);
                   //  }
 
                 }

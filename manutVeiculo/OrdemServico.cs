@@ -60,15 +60,10 @@ namespace manutVeiculo
             {
                 if (os.Id.Equals(int.Parse(txtOs.Text)))
                 {
-                    //OsDAO.Fechar(os.Id);
-                    foreach(Peca pc in lista_peca)
+                    foreach (var pc in os.Peca)
                     {
-                       dGViewHistVeiculo.Rows.Add(pc.PecaServico, os.Km, pc.Preco, DateTime.Today.ToString("dd/MM/yyyy"));
+                        dGViewHistVeiculo.Rows.Add(pc.PecaServico, os.Km, pc.Preco, DateTime.Today.ToString("dd/MM/yyyy"));
                     }
-                    if(os.Status != "fechado")
-                    {
-                      //chamar o metodo Fechar() para atualizar o status da Os
-                    }                       
                 }
             }
         }
@@ -76,11 +71,32 @@ namespace manutVeiculo
         private void OrdemServico_Load(object sender, EventArgs e)
         {
             lista_os = new OsDAO().ListAll();
+            lista_peca = new PecaDAO().ListAll();
         }
 
         private void dGViewHistVeiculo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnFinaliza_Click(object sender, EventArgs e)
+        {
+
+            while (dGViewHistVeiculo.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecione uma OS para finalizar!");
+                return;
+                
+            }
+            if (MessageBox.Show("Tem certeza que deseja fechar essa OS?", "Confirmação",
+               MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Database manutVeiculo = Database.GetInstance();
+                string qry = string.Format("UPDATE os SET status= 'fechado'" + " WHERE id='{0}'", txtOs.Text);
+                manutVeiculo.ExecuteSQL(qry);
+
+            }
+            this.Close();
         }
     }
 }

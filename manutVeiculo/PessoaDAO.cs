@@ -16,15 +16,15 @@ namespace manutVeiculo
         public void Insert(Pessoa p)
         {
             Database manutVeiculo = Database.GetInstance();
-            string qry = "INSERT INTO pessoa ( cpf, nome, sexo, rua, bairro, numero, cep, cidade, uf)" +
-                $" VALUES ('{p.Cpf}','{p.Nome}','{p.Sexo}','{p.Rua}','{p.Bairro}',{p.Numero},'{p.Cep}','{ p.Cidade}','{p.Uf}')";
+            string qry = "INSERT INTO pessoa ( cpf, nome, telefone, sexo, rua, bairro, numero, cep, cidade, uf)" +
+                $" VALUES ('{p.Cpf}','{p.Nome}','{p.Telefone}','{p.Sexo}','{p.Rua}','{p.Bairro}',{p.Numero},'{p.Cep}','{ p.Cidade}','{p.Uf}')";
             manutVeiculo.ExecuteSQL(qry);
             p.Id = manutVeiculo.LastId;
         }
 
         public Pessoa getById(string id)
         {
-            string qry = string.Format("SELECT id, cpf, nome, sexo, rua, bairro, numero, cep, cidade, uf FROM pessoa WHERE id ='{0}'", id);
+            string qry = string.Format("SELECT id, cpf, nome, telefone, sexo, rua, bairro, numero, cep, cidade, uf FROM pessoa WHERE id ='{0}'", id);
             return Read(qry).FirstOrDefault();
 
         }
@@ -50,13 +50,15 @@ namespace manutVeiculo
                 p.Id = dr.GetInt16(0);
                 p.Cpf = dr.GetString(1);
                 p.Nome = dr.GetString(2);
-                p.Sexo = dr.GetString(3);
-                p.Rua = dr.GetString(4);
-                p.Bairro = dr.GetString(5);
-                p.Numero = dr.GetInt32(6);
-                p.Cep = dr.GetString(7);
-                p.Cidade = dr.GetString(8);
-                p.Uf = dr.GetString(9);
+                p.Telefone = dr.GetInt16(3);
+                p.Sexo = dr.GetString(4);
+                p.Rua = dr.GetString(5);
+                p.Bairro = dr.GetString(6);
+                p.Numero = dr.GetInt32(7);
+                p.Cep = dr.GetString(8);
+                p.Cidade = dr.GetString(9);
+                p.Uf = dr.GetString(10);
+                
                 pessoa.Add(p);
             }
 
@@ -78,7 +80,7 @@ namespace manutVeiculo
                     v.Placa = dr["placa"].ToString();
                     v.KmRodado = int.Parse(dr["kmRodado"].ToString());
                     v.Ano = int.Parse(dr["ano"].ToString());
-                    p.Veiculo.Add(v);
+                    ps.Veiculo.Add(v);
                 }
             }
 
@@ -92,7 +94,7 @@ namespace manutVeiculo
         {
             Database manutVeiculo = Database.GetInstance();
 
-            string qry = string.Format("UPDATE pessoa SET id='{0}',cpf='{1}',nome='{2}',sexo='{3}',rua='{4}',bairro='{5}',numero='{6}',cep='{7}',cidade='{8}',uf='{9}'" + "WHERE id='{0}'", p.Id, p.Cpf, p.Nome, p.Sexo, p.Rua, p.Bairro, p.Numero, p.Cep);
+            string qry = string.Format("UPDATE pessoa SET id='{0}',cpf='{1}',nome='{2}',telefone='{3},sexo='{4}',rua='{5}',bairro='{6}',numero='{7}',cep='{8}',cidade='{9}',uf='{10}'" + "WHERE id='{0}'", p.Id, p.Cpf, p.Nome,p.Telefone, p.Sexo, p.Rua, p.Bairro, p.Numero, p.Cep);
 
             manutVeiculo.ExecuteSQL(qry);
         }
@@ -106,7 +108,7 @@ namespace manutVeiculo
 
         public List<Pessoa> ListAll()
         {
-            string qry = string.Format("SELECT id,cpf,nome,sexo,rua,bairro,numero,cep,cidade,uf FROM pessoa;");
+            string qry = string.Format("SELECT id,cpf,nome,telefone,sexo,rua,bairro,numero,cep,cidade,uf FROM pessoa;");
             return Read(qry);
         }
 
@@ -115,9 +117,9 @@ namespace manutVeiculo
             string qry;
 
             if (cpf != "")
-                qry = string.Format("SELECT id,cpf,nome,sexo,rua,bairro,numero,cep,cidade,uf FROM Pessoa WHERE cpf LIKE '%{0}%'", cpf);
+                qry = string.Format("SELECT id,cpf,nome,telefone,sexo,rua,bairro,numero,cep,cidade,uf FROM Pessoa WHERE cpf LIKE '%{0}%'", cpf);
             else
-                qry = string.Format("SELECT id,cpf,nome,sexo,rua,bairro,numero,cep,cidade,uf FROM Pessoa");
+                qry = string.Format("SELECT id,cpf,nome,telefone,sexo,rua,bairro,numero,cep,cidade,uf FROM Pessoa");
 
             return Read(qry);
         }
