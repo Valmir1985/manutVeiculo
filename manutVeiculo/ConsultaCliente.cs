@@ -23,7 +23,7 @@ namespace manutVeiculo
         List<Os> lista_os = new List<Os>();
         Os oss = new Os();
         private List<Peca> pecas;
-        //private string placa;
+        //private string placa;       
         private Pessoa pessoa;
         private Veiculo veiculoAtual;
         private Peca pecaa;
@@ -178,6 +178,8 @@ namespace manutVeiculo
                 txtCidade.Text = p.Cidade;
                 txtUf.Text = p.Uf;
 
+                //Veiculo v = p.Veiculo.First();
+
                 foreach (var veiculo in p.Veiculo)
                 {
                     //if (veiculo.Modelo.Equals(txtModelo.Text) && veiculo.Marca.Equals(txtMarca.Text) && veiculo.Ano.Equals(txtAno.Text))
@@ -202,12 +204,18 @@ namespace manutVeiculo
                     txtCombustivel.Enabled = true;
                 }
             }
+            
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            //CadastrarCliente cadastrarCliente = new CadastrarCliente(grid_pacientes.CurrentRow.Cells[2].Value.ToString());
-            //cadastrarCliente.ShowDialog();
+            var cadastrocliente = new CadastrarCliente();
+            cadastrocliente.ShowDialog();
+            
+            var p = cadastrocliente.Pessoa;
+
+            cadastrocliente.AtualizaCliente(p);
+           
             //if (cadastrarCliente.adicionou())
             //{
             //    grid_pacientes.DataSource = pessoaDAO.ListAll();

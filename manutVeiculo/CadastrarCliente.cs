@@ -22,6 +22,7 @@ namespace manutVeiculo
         private bool adicionado = false;
         private bool existe = false;
         private Veiculo veiculo;
+        private Pessoa pessoa;
 
         public Pessoa Pessoa { get; internal set; }
 
@@ -178,6 +179,26 @@ namespace manutVeiculo
             }
             var cadastraVeiculo = new CadastrarVeiculo(p);
             cadastraVeiculo.ShowDialog();
+
+        }
+
+        public void AtualizaCliente(Pessoa p)
+        {
+            pessoa = p;
+            if (p != null)
+            {
+                rbtnFem.Checked = p.Sexo == "feminino";
+                rbtnMasc.Checked = p.Sexo == "masculino";
+                txtNome.Text = p.Nome;
+                txtTelefone.Text = p.Telefone.ToString();
+                txtRua.Text = p.Rua;
+                txtNro.Text = p.Numero.ToString();
+                txtBairro.Text = p.Bairro;
+                txtCep.Text = p.Cep;
+                txtCidade.Text = p.Cidade;
+                txtUf.Text = p.Uf;
+            }
+            pessoadao.Update(p);
 
         }
 
